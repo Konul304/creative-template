@@ -197,7 +197,7 @@ const Navbar = ({ lr, theme }) => {
               </a>
             </li>
             <li className="nav-item">
-              <a href={`/contact/contact-dark`} className="nav-link">
+              <a href={`/news/news-dark`} className="nav-link">
                 News
               </a>
             </li>
