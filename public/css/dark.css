@@ -1080,7 +1080,7 @@ span:hover {
   left: 0;
   height: 50%;
   width: 100%;
-  background: #fff;
+  background: #000;
   -webkit-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
   -o-transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
   transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
