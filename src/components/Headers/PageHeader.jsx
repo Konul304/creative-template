@@ -4,7 +4,7 @@ function PageHeader({ title, paragraph, classText }) {
   return (
     <section
       className={`page-header ${classText && classText}`}
-      style={{ background: 'white' }}
+      // style={{ background: 'white' }}
     >
       <div className="container">
         <div className="row justify-content-center">

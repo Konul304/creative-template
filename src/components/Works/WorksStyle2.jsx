@@ -216,7 +216,7 @@ function WorksStyle2({
                   </div>
                   <div className="cont">
                     <h6
-                      style={{ color: '#5f5f5f', textAlign: 'center' }}
+                      // style={{ color: '#5f5f5f', textAlign: 'center' }}
                       className="text-center mt-4"
                     >
                       {item?.title}

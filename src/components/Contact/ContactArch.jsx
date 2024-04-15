@@ -65,7 +65,7 @@ function ContactArch() {
                           name="message"
                           placeholder="Message"
                           rows="4"
-                          style={{ border: '1px solid #5f5f5f' }}
+                          // style={{ border: '1px solid #5f5f5f' }}
                           required={true}
                         ></textarea>
                       </div>
