@@ -1,9 +1,7 @@
 'use client';
 import HTMLReactParser from 'html-react-parser';
-import Split from '@/components/Common/Split';
 import React from 'react';
 import styles from '../../styles/Cases.module.scss';
-import { useQuery } from 'react-query';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
 
@@ -133,7 +131,7 @@ function Team2(data) {
                   </div>
                 </div>
               </div>
-              <div className={` text-center mt-5`}>
+              <div className={` text-center mt-5 ${styles.team_info}`}>
                 {data?.data?.description &&
                   HTMLReactParser(data?.data?.description)}
               </div>

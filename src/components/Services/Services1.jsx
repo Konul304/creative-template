@@ -1,8 +1,7 @@
 'use client';
 import React from 'react';
 //= Static Data
-import Link from 'next/link';
-import { getServiceDetail, getServices } from '@/app/(api)/api';
+import { getServiceDetail } from '@/app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 // import styles from '../../styles/Serv/ices.module.scss';
@@ -45,7 +44,9 @@ function Services1({ style, lines }) {
             />
           </div>
 
-          <h2>{data?.description && HTMLReactParser(data?.description)}</h2>
+          <h2 className={styles.team_info}>
+            {data?.description && HTMLReactParser(data?.description)}
+          </h2>
         </div>
         {/* <div className="row_services"> */}
         {/* {services?.map((item, index) => {

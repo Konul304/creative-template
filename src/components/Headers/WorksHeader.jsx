@@ -1,7 +1,7 @@
-"use client";
-import { getPresentationInfo } from "@/app/(api)/api";
-import React, { useRef, useEffect } from "react";
-import { useQuery } from "react-query";
+'use client';
+import { getPresentationInfo } from '@/app/(api)/api';
+import React, { useRef, useEffect } from 'react';
+import { useQuery } from 'react-query';
 
 function WorksHeader() {
   const fixedSlider = useRef();
@@ -9,31 +9,31 @@ function WorksHeader() {
     data: presentationInfo,
     isLoading: infoLoading,
     isError: infoError,
-  } = useQuery(["presentationInfo"], async () => await getPresentationInfo(), {
+  } = useQuery(['presentationInfo'], async () => await getPresentationInfo(), {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
   // });
   useEffect(() => {
     if (fixedSlider.current) {
-      const MainContent = document.querySelector(".main-content");
+      const MainContent = document.querySelector('.main-content');
       const slideHeight = fixedSlider.current.offsetHeight;
-      MainContent.style.marginTop = slideHeight + "px";
+      MainContent.style.marginTop = slideHeight + 'px';
     }
   }, []);
 
   const img_link =
-    "https://project141.s3.eu-north-1.amazonaws.com/" +
+    'https://project141.s3.eu-north-1.amazonaws.com/' +
     presentationInfo?.[0]?.imageLink;
   return (
     <header
       ref={fixedSlider}
-      className="works-header fixed-slider hfixd valign sub-bg"
+      className="works-header fixed-slider hfixd valign "
       style={{
         backgroundImage: `url('${img_link}')`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        opacity: "0.5",
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        opacity: '0.5',
       }}
     >
       <div className="container">
