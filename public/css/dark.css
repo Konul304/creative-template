@@ -5661,7 +5661,7 @@ span:hover {
   -webkit-transition-delay: 0.5s;
   -o-transition-delay: 0.5s;
   transition-delay: 0.5s;
-  background-color: white !important;
+  background-color: #000 !important;
 }
 
 .work-carousel .next-ctrl,
@@ -8188,7 +8188,7 @@ footer .item li .subscribe input {
   border-radius: 30px;
   border: 1px solid #fff !important;
   background: transparent;
-  color: #000 !important;
+  color: #fff !important;
   font-size: 13px;
 }
 
@@ -8202,7 +8202,7 @@ footer .item li .subscribe .subs {
   text-align: center;
   border-radius: 50%;
   background: #12c2e9;
-  color: #000;
+  color: #fff;
 }
 
 footer .item .logo {
