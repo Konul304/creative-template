@@ -1,19 +1,23 @@
 'use client';
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { getCases } from '@/app/(api)/api';
+import { getNews } from '@/app/(api)/api';
 import { useQuery } from 'react-query';
 import initIsotope from '@/common/initIsotopePortfolio';
 
 const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
   const { data, isLoading, isError } = useQuery(
-    ['casesData'],
-    async () => await getCases(),
+    ['newsData'],
+    async () => await getNews(),
     {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
     }
   );
+
+  const ourNews = data?.filter((item) => item?.isOurNews === true);
+  const otherNews = data?.filter((item) => item?.isOurNews === false);
+
   useEffect(() => {
     // setTimeout(() => {
     initIsotope();
@@ -50,7 +54,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
           >
             <div className="posts">
               <div className="row">
-                {data?.map((item, index) => {
+                {ourNews?.map((item, index) => {
                   const img_url =
                     'https://project141.s3.eu-north-1.amazonaws.com/' +
                     item?.logoLink;
@@ -67,7 +71,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                           data-wow-delay=".3s"
                         >
                           <a
-                            href={`/cases/cases-dark/${item?.id}`}
+                            href={`/news/news-dark/${item?.id}`}
                             className="img"
                           >
                             <img
@@ -91,7 +95,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                                     <>
                                       <Link
                                         key={index}
-                                        href={`/cases/cases-dark/${item?.id}`}
+                                        href={`/news/news-dark/${item?.id}`}
                                         className="tag"
                                       >
                                         <span
@@ -108,7 +112,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                               </div>
                               <h5>
                                 <Link
-                                  href={`/cases/cases-dark/${item?.id}`}
+                                  href={`/news/news-dark/${item?.id}`}
                                   // style={{ color: '#5f5f5f' }}
                                 >
                                   {item.title.substr(0, 55) + '...'}
@@ -116,7 +120,86 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                               </h5>
                               <div className="btn-more">
                                 <Link
-                                  href={`/cases/cases-dark/${item?.id}`}
+                                  href={`/news/news-dark/${item?.id}`}
+                                  className="simple-btn"
+                                >
+                                  Read More
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                {otherNews?.map((item, index) => {
+                  const img_url =
+                    'https://project141.s3.eu-north-1.amazonaws.com/' +
+                    item?.logoLink;
+                  return (
+                    <div
+                      key={index}
+                      className={`col-md-4
+                       items videos wow fadeInUp`}
+                      data-wow-delay=".4s"
+                    >
+                      <div className="" key={item.id}>
+                        <div
+                          className="item mb-80 wow fadeInUp"
+                          data-wow-delay=".3s"
+                        >
+                          <a
+                            href={`/news/news-dark/${item?.id}`}
+                            className="img"
+                          >
+                            <img
+                              style={{ height: '277px' }}
+                              src={img_url}
+                              alt=""
+                            />
+                          </a>
+                          <div className="cont">
+                            <div>
+                              <div className="info">
+                                {/* <Link href="/blog/blog-dark" className="date">
+                          <span>
+                            <i>{blogItem.date.day}</i>
+                            {blogItem.date.month}
+                          </span>
+                        </Link> */}
+                                {/* <span>/</span> */}
+                                {item.tagNames.map((tagItem, index) => {
+                                  return (
+                                    <>
+                                      <Link
+                                        key={index}
+                                        href={`/news/news-dark/${item?.id}`}
+                                        className="tag"
+                                      >
+                                        <span
+                                          className="wow color-font fw-700 "
+                                          key={index}
+                                        >
+                                          {tagItem}
+                                        </span>
+                                        &nbsp;&nbsp;&nbsp;
+                                      </Link>
+                                    </>
+                                  );
+                                })}
+                              </div>
+                              <h5>
+                                <Link
+                                  href={`/news/news-dark/${item?.id}`}
+                                  // style={{ color: '#5f5f5f' }}
+                                >
+                                  {item.title.substr(0, 55) + '...'}
+                                </Link>
+                              </h5>
+                              <div className="btn-more">
+                                <Link
+                                  href={`/news/news-dark/${item?.id}`}
                                   className="simple-btn"
                                 >
                                   Read More
