@@ -7,7 +7,7 @@ import { Navigation, Pagination, Parallax } from 'swiper';
 import removeSlashFromBagination from '@/common/removeSlashpagination';
 import fadeWhenScroll from '@/common/fadeWhenScroll';
 //= Static Data
-import { getCases, getSlider } from '@/app/(api)/api';
+import { getCases, getNews, getSlider } from '@/app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 
@@ -46,7 +46,17 @@ const SliderHeader = () => {
     }
   );
 
-  const filteredData = data?.filter((item) => item.isSlider === true);
+  const {
+    data: newsData,
+    isLoading: newsLoading,
+    isError: newsError,
+  } = useQuery(['newsData'], async () => await getNews(), {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
+
+  const filteredCaseData = data?.filter((item) => item.isSlider === true);
+  const filteredNewsData = newsData?.filter((item) => item.isSlider === true);
 
   useEffect(() => {
     removeSlashFromBagination();
@@ -67,9 +77,9 @@ const SliderHeader = () => {
       ref={fixedSlider}
     >
       <div className="swiper-container parallax-slider">
-        {filteredData && (
+        {(filteredCaseData || filteredNewsData) && (
           <Swiper {...swiperOptions} className="swiper-wrapper">
-            {filteredData?.map((slide) => {
+            {filteredCaseData?.map((slide) => {
               const img_url =
                 'https://project141.s3.eu-north-1.amazonaws.com/' +
                 slide?.sliderLogoLink;
@@ -82,6 +92,66 @@ const SliderHeader = () => {
                   >
                     <a
                       href={`/cases/cases-dark/${slide?.id}`}
+                      className="container"
+                      style={{
+                        display: 'block',
+                        height: '100vh',
+                        position: 'absolute',
+                      }}
+                    >
+                      <div
+                        className=" justify-content-center"
+                        style={{
+                          position: 'absolute',
+                          bottom: '10px',
+                          left: '3%',
+                          maxWidth: '900px',
+                        }}
+                      >
+                        <div>
+                          <div className="caption center mt-30">
+                            <h1
+                              className="color-font"
+                              style={{ fontSize: '48px', textAlign: 'left' }}
+                            >
+                              {' '}
+                              {slide.sliderTitle &&
+                                HTMLReactParser(slide.sliderTitle)}
+                            </h1>
+                            <div
+                              style={{
+                                fontSize: '16px',
+                                textAlign: 'left',
+                              }}
+                              className="slider_desc"
+                            >
+                              {slide.sliderDescription &&
+                                HTMLReactParser(slide.sliderDescription)}
+                            </div>
+                            {/* <a href="#" className="butn bord curve mt-30">
+                              <span>Look More</span>
+                            </a> */}
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+            {filteredNewsData?.map((slide) => {
+              const img_url =
+                'https://project141.s3.eu-north-1.amazonaws.com/' +
+                slide?.sliderLogoLink;
+              return (
+                <SwiperSlide key={slide.id} className="swiper-slide">
+                  <div
+                    className="bg-img valign"
+                    style={{ backgroundImage: `url('${img_url}')` }}
+                    data-overlay-dark="6"
+                  >
+                    <a
+                      href={`/news/news-dark/${slide?.id}`}
                       className="container"
                       style={{
                         display: 'block',
