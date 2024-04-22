@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const axiosTemplate = axios.create({
-  baseURL: 'https://c141-admin-api.eynullabeyli.com/api/',
+  baseURL: 'http://172.16.10.132:8080/api',
 });
