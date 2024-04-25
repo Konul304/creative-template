@@ -170,7 +170,7 @@ const Navbar = ({ lr, theme }) => {
                 </a>
               </div> */}
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <a
                 href={`/cases/cases-dark`}
                 className="nav-link "
@@ -182,7 +182,7 @@ const Navbar = ({ lr, theme }) => {
               >
                 Cases
               </a>
-            </li>
+            </li> */}
             <li className="nav-item">
               <a href={`/contact/contact-dark`} className="nav-link">
                 Contact
