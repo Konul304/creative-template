@@ -33,7 +33,7 @@ const Home1 = async () => {
         <FullTestimonials />
         {/* <SkillsCircle theme="dark" />
         <CallToAction /> */}
-        <Cases />
+        {/* <Cases /> */}
         <Footer />
       </div>
     </>
