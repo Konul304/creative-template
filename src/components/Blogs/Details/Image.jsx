@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const Image = (data) => {
-  const img_url =
-    "https://project141.s3.eu-north-1.amazonaws.com/" + data?.data?.logoLink;
+  // const img_url =
+  //   'https://project141.s3.eu-north-1.amazonaws.com/' + data?.data?.image;
   return (
     <div className="case_header_img">
-      <img src={img_url} alt="" />
+      <img src={data?.data?.image} alt="" />
     </div>
   );
 };
