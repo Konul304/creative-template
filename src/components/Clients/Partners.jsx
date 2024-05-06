@@ -1,9 +1,9 @@
 'use client';
-import Split from '@/components/Common/Split';
+import Split from '../../components/Common/Split';
 //= Static Data
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
-import { getPartners } from '@/app/(api)/api';
+import { getPartners } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 //= Scripts
 
@@ -94,6 +94,7 @@ const Clients = ({ theme }) => {
                                   href={`${partner?.link}`}
                                   className="link words chars splitting"
                                   data-splitting
+                                  target="_blank"
                                 >
                                   {partner.link}
                                 </a>

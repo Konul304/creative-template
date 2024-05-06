@@ -1,5 +1,5 @@
 'use client';
-import { getAbout } from '@/app/(api)/api';
+import { getAbout } from '../../app/(api)/api';
 import React, { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
 

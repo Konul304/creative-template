@@ -1,8 +1,8 @@
 'use client';
 
-import { getContactData, getPortfolio, postEmail } from '@/app/(api)/api';
+import { getContactData, getPortfolio, postEmail } from '../../app/(api)/api';
 import { useEffect, useState } from 'react';
-import countryData from '@/data/regions-to-countries';
+import countryData from '../../data/regions-to-countries';
 import { Select, message } from 'antd';
 
 const Footer = ({ hideBGCOLOR }) => {

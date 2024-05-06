@@ -1,7 +1,7 @@
 'use client';
-import { useEffect } from "react";
+import { useEffect } from 'react';
 //= Scripts
-import mouseEffect from "@/common/mouseEffect";
+import mouseEffect from '../../common/mouseEffect';
 
 function Cursor() {
   useEffect(() => {
@@ -14,6 +14,6 @@ function Cursor() {
       <div className="mouse-cursor cursor-inner"></div>
     </>
   );
-};
+}
 
 export default Cursor;

@@ -1,20 +1,20 @@
-import Script from "next/script";
+import Script from 'next/script';
 //= Scripts
-import generateStylesheetObject from "@/common/generateStylesheetsObject";
+import generateStylesheetObject from '../../common/generateStylesheetsObject';
 //= Common Components
-import Cursor from "@/components/Common/Cursor";
-import ProgressScroll from "@/components/Common/ProgressScroll";
+import Cursor from '../../components/Common/Cursor';
+import ProgressScroll from '../../components/Common/ProgressScroll';
 
 export const metadata = {
-  title: "C141",
+  title: 'C141',
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
     other: generateStylesheetObject([
-      "https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap",
-      "https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap",
-      "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap",
-      "/css/dark.css",
+      'https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap',
+      'https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap',
+      'https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap',
+      '/css/dark.css',
     ]),
   },
 };

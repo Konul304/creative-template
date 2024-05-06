@@ -3,7 +3,7 @@ import React from 'react';
 //= Modules
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
-import { getPortfolio } from '@/app/(api)/api';
+import { getPortfolio } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 //= Static Data
 

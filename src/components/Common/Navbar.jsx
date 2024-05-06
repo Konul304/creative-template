@@ -2,10 +2,10 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 //= Scripts
-import { handleDropdown, handleMobileDropdown } from '@/common/navbar';
+import { handleDropdown, handleMobileDropdown } from '../../common/navbar';
 import { usePathname } from 'next/navigation';
 //= Static Data
-import { getLogo } from '@/app/(api)/api';
+import { getLogo } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 
 const Navbar = ({ lr, theme }) => {
@@ -189,8 +189,13 @@ const Navbar = ({ lr, theme }) => {
               </a>
             </li>
             <li className="nav-item">
-              <a href={`/news/news-dark`} className="nav-link">
+              <a href={`/news`} className="nav-link">
                 News
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href={`/events`} className="nav-link">
+                Events
               </a>
             </li>
           </ul>

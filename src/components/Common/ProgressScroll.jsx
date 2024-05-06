@@ -1,6 +1,6 @@
 'use client';
-import React, { useEffect } from "react";
-import scrollToTop from "@/common/scrollToTop";
+import React, { useEffect } from 'react';
+import scrollToTop from '../../common/scrollToTop';
 
 function ProgressScroll() {
   useEffect(() => {
@@ -19,6 +19,6 @@ function ProgressScroll() {
       </svg>
     </div>
   );
-};
+}
 
 export default ProgressScroll;

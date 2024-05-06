@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 //= Static Data
-import aboutData from '@/data/about-us1.json';
-import { getAbout } from '@/app/(api)/api';
+import aboutData from '../../data/about-us1.json';
+import { getAbout } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 

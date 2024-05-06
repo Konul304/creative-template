@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 //= Static Data
-import contentHeaderData from '@/data/contact-header.json';
+import contentHeaderData from '../../data/contact-header.json';
 
 function ContactHeader() {
   useEffect(() => {

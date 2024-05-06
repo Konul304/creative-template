@@ -1,13 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 //= Components
-import Split from '@/components/Common/Split';
+import Split from '../Common/Split';
 //= Static Data
-import contentFormData from '@/data/contact-form.json';
+import contentFormData from '../../data/contact-form.json';
 import styles from '../../styles/Contact.module.scss';
-import countryData from '@/data/regions-to-countries';
+import countryData from '../../data/regions-to-countries';
 import { Select, message } from 'antd';
-import { getContactData, postMessage } from '@/app/(api)/api';
+import { getContactData, postMessage } from '../../app/(api)/api';
 
 const ContactForm = ({ theme }) => {
   const { countries, zones } = require('moment-timezone/data/meta/latest.json');

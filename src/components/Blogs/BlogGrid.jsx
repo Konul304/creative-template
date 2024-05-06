@@ -1,9 +1,9 @@
 'use client';
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { getNews } from '@/app/(api)/api';
+import { getNews } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
-import initIsotope from '@/common/initIsotopePortfolio';
+import initIsotope from '../../common/initIsotopePortfolio';
 
 const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
   const { data, isLoading, isError } = useQuery(
@@ -70,10 +70,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                           className="item mb-80 wow fadeInUp"
                           data-wow-delay=".3s"
                         >
-                          <a
-                            href={`/news/news-dark/${item?.id}`}
-                            className="img"
-                          >
+                          <a href={`/news/${item?.id}`} className="img">
                             <img
                               style={{ height: '277px' }}
                               src={img_url}
@@ -95,7 +92,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                                     <>
                                       <Link
                                         key={index}
-                                        href={`/news/news-dark/${item?.id}`}
+                                        href={`/news/${item?.id}`}
                                         className="tag"
                                       >
                                         <span
@@ -112,7 +109,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                               </div>
                               <h5>
                                 <Link
-                                  href={`/news/news-dark/${item?.id}`}
+                                  href={`/news/${item?.id}`}
                                   // style={{ color: '#5f5f5f' }}
                                 >
                                   {item.title.substr(0, 55) + '...'}
@@ -120,7 +117,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                               </h5>
                               <div className="btn-more">
                                 <Link
-                                  href={`/news/news-dark/${item?.id}`}
+                                  href={`/news/${item?.id}`}
                                   className="simple-btn"
                                 >
                                   Read More
@@ -149,10 +146,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                           className="item mb-80 wow fadeInUp"
                           data-wow-delay=".3s"
                         >
-                          <a
-                            href={`/news/news-dark/${item?.id}`}
-                            className="img"
-                          >
+                          <a href={`/news/${item?.id}`} className="img">
                             <img
                               style={{ height: '277px' }}
                               src={img_url}
@@ -174,7 +168,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                                     <>
                                       <Link
                                         key={index}
-                                        href={`/news/news-dark/${item?.id}`}
+                                        href={`/news/${item?.id}`}
                                         className="tag"
                                       >
                                         <span
@@ -191,7 +185,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                               </div>
                               <h5>
                                 <Link
-                                  href={`/news/news-dark/${item?.id}`}
+                                  href={`/news/${item?.id}`}
                                   // style={{ color: '#5f5f5f' }}
                                 >
                                   {item.title.substr(0, 55) + '...'}
@@ -199,7 +193,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                               </h5>
                               <div className="btn-more">
                                 <Link
-                                  href={`/news/news-dark/${item?.id}`}
+                                  href={`/news/${item?.id}`}
                                   className="simple-btn"
                                 >
                                   Read More

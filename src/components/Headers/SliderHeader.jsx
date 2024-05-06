@@ -4,10 +4,10 @@ import React, { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Parallax } from 'swiper';
 //= Scripts
-import removeSlashFromBagination from '@/common/removeSlashpagination';
-import fadeWhenScroll from '@/common/fadeWhenScroll';
+import removeSlashFromBagination from '../../common/removeSlashpagination';
+import fadeWhenScroll from '../../common/fadeWhenScroll';
 //= Static Data
-import { getCases, getNews, getSlider } from '@/app/(api)/api';
+import { getCases, getNews, getSlider } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 
@@ -151,7 +151,7 @@ const SliderHeader = () => {
                     data-overlay-dark="6"
                   >
                     <a
-                      href={`/news/news-dark/${slide?.id}`}
+                      href={`/news/${slide?.id}`}
                       className="container"
                       style={{
                         display: 'block',

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 //= Scripts
-import initIsotope from '@/common/initIsotope';
+import initIsotope from '../../common/initIsotope';
 import { download_icon } from '../../../public/img';
 import styles from '../../styles/Works2.module.scss';
 import ModalVideo from '../Common/ModalVideo';

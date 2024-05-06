@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 //= Scripts
-import initIsotope from '@/common/initIsotopePortfolio';
+import initIsotope from '../../common/initIsotopePortfolio';
 import { download_icon } from '../../../public/img';
 import styles from '../../styles/Works2.module.scss';
 import ModalVideo from '../Common/ModalVideo';
-import { getPortfolio, getPresentationInfo, getVideos } from '@/app/(api)/api';
+import {
+  getPortfolio,
+  getPresentationInfo,
+  getVideos,
+} from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 
 function WorksStylePortfolio({ grid, filterPosition, hideFilter }) {

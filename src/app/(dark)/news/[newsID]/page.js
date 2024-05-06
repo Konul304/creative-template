@@ -1,5 +1,5 @@
-import { getNews } from '@/app/(api)/api';
-import NewsDetailsPage from '@/components/Blogs/NewsDetailsPage';
+import { getNews } from '../../../(api)/api';
+import NewsDetailsPage from '../../../../components/Blogs/NewsDetailsPage';
 import React from 'react';
 
 const page = async ({ params }) => {

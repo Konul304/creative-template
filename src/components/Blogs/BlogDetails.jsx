@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 //= Components
-import Image from "./Details/Image";
-import Content from "./Details/Content";
-import Pagination from "./Details/Pagination";
-import CommentsArea from "./Details/CommentsArea";
-import CommentsForm from "./Details/CommentsForm";
-import SimilarCases from "@/components/Blogs/SimilarCases";
-import WorksStyle2 from "../Works/WorksStyle2";
+import Image from './Details/Image';
+import Content from './Details/Content';
+// import Pagination from "./Details/Pagination";
+// import CommentsArea from "./Details/CommentsArea";
+// import CommentsForm from "./Details/CommentsForm";
+import SimilarCases from '../Blogs/SimilarCases';
+import WorksStyle2 from '../Works/WorksStyle2';
 
 const BlogDetails = ({ theme, data }) => {
   const caseData = data?.data?.find(

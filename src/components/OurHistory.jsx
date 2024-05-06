@@ -1,5 +1,5 @@
 'use client';
-import { getAbout } from '@/app/(api)/api';
+import { getAbout } from '../app/(api)/api';
 import HTMLReactParser from 'html-react-parser';
 import React from 'react';
 import { useQuery } from 'react-query';
