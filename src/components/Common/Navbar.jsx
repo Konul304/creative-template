@@ -183,11 +183,7 @@ const Navbar = ({ lr, theme }) => {
                 Cases
               </a>
             </li> */}
-            <li className="nav-item">
-              <a href={`/contact/contact-dark`} className="nav-link">
-                Contact
-              </a>
-            </li>
+
             <li className="nav-item">
               <a href={`/news`} className="nav-link">
                 News
@@ -196,6 +192,11 @@ const Navbar = ({ lr, theme }) => {
             <li className="nav-item">
               <a href={`/events`} className="nav-link">
                 Events
+              </a>
+            </li>
+            <li className="nav-item">
+              <a href={`/contact/contact-dark`} className="nav-link">
+                Contact
               </a>
             </li>
           </ul>
