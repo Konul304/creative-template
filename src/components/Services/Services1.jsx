@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 //= Static Data
-import { getServiceDetail } from '@/app/(api)/api';
+import { getServiceDetail } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 // import styles from '../../styles/Serv/ices.module.scss';
@@ -29,7 +29,7 @@ function Services1({ style, lines }) {
             {/* <h6 className="wow fadeIn" data-wow-delay=".5s">
                 Best Features
               </h6> */}
-            <h3 className="wow color-font">
+            <h3 style={{ fontSize: '48px' }} className="wow color-font">
               {' '}
               {data?.title && HTMLReactParser(data?.title)}
             </h3>
@@ -44,9 +44,9 @@ function Services1({ style, lines }) {
             />
           </div>
 
-          <h2 className={styles.team_info}>
+          <div className={styles.team_info}>
             {data?.description && HTMLReactParser(data?.description)}
-          </h2>
+          </div>
         </div>
         {/* <div className="row_services"> */}
         {/* {services?.map((item, index) => {

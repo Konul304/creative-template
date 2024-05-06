@@ -44,7 +44,7 @@ const SimilarNews = (data) => {
             return (
               <div key={item?.id} className="col-md-4 mt-5">
                 <div className="item md-mb50 wow fadeInUp" data-wow-delay=".3s">
-                  <a href={`/news/news-dark/${item?.id}`} className="img">
+                  <a href={`/news/${item?.id}`} className="img">
                     <img src={img_url} alt="" />
                   </a>
                   <div className="cont">
@@ -56,10 +56,7 @@ const SimilarNews = (data) => {
                           </span>
                         </Link>
                         <span>/</span> */}
-                        <Link
-                          href={`/news/news-dark/${item?.id}`}
-                          className="tag"
-                        >
+                        <Link href={`/news/${item?.id}`} className="tag">
                           {item?.tagNames?.map((tag, index) => {
                             return (
                               <>
@@ -70,15 +67,10 @@ const SimilarNews = (data) => {
                         </Link>
                       </div>
                       <h5>
-                        <Link href={`/news/news-dark/${item?.id}`}>
-                          {item?.title}
-                        </Link>
+                        <Link href={`/news/${item?.id}`}>{item?.title}</Link>
                       </h5>
                       <div className="btn-more">
-                        <Link
-                          href={`/news/news-dark/${item?.id}`}
-                          className="simple-btn"
-                        >
+                        <Link href={`/news/${item?.id}`} className="simple-btn">
                           Read More
                         </Link>
                       </div>

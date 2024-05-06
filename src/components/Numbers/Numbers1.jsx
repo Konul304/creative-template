@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
 //= Components
-import Split from '@/components/Common/Split';
+import Split from '../Common/Split';
 //= Static Data
 import { useQuery } from 'react-query';
-import { getStatistics } from '@/app/(api)/api';
+import { getStatistics } from '../../app/(api)/api';
 
 const Numbers = () => {
   const [renderCounters, setRenderCounters] = useState(false);

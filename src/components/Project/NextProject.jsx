@@ -7,8 +7,13 @@ function NextProject() {
         <div className="row">
           <div className="col-12">
             <div className="box">
-              <div className="bg-img valign" style={{ backgroundImage: `url('/img/portfolio/project2/6.jpg')` }}
-                data-overlay-dark="4">
+              <div
+                className="bg-img valign"
+                style={{
+                  backgroundImage: `url('/img/portfolio/project2/6.jpg')`,
+                }}
+                data-overlay-dark="4"
+              >
                 <div className="caption ontop valign">
                   <div className="o-hidden full-width">
                     <h1>
@@ -33,7 +38,7 @@ function NextProject() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default NextProject
+export default NextProject;

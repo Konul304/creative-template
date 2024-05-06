@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { getCases } from '@/app/(api)/api';
+import { getCases } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 
 const CasesGrid = () => {

@@ -1,7 +1,7 @@
 //= Global Styles
-import '@/styles/main.scss';
-import '@/styles/preloader.css';
-import '@/styles/modal-video.css';
+import '../styles/main.scss';
+import '../styles/preloader.css';
+import '../styles//modal-video.css';
 import 'swiper/css/bundle';
 import 'react-circular-progressbar/dist/styles.css';
 import ProvidersWrapper from './Providers';

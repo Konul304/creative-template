@@ -1,10 +1,9 @@
-"use client";
-import React from "react";
-import Works from "@/components/Works/WorksStyle2";
-import { useQuery } from "react-query";
-import { getServiceFAQ } from "@/app/(api)/api";
-import HTMLReactParser from "html-react-parser";
-import { Collapse } from "antd";
+'use client';
+import React from 'react';
+import { useQuery } from 'react-query';
+import { getServiceFAQ } from '../../app/(api)/api';
+import HTMLReactParser from 'html-react-parser';
+import { Collapse } from 'antd';
 
 const ServicesFAQ = () => {
   // const onChange = (key) => {
@@ -12,7 +11,7 @@ const ServicesFAQ = () => {
   // };
 
   const { data, isLoading, isError } = useQuery(
-    ["servicesFAQ"],
+    ['servicesFAQ'],
     async () => await getServiceFAQ(),
     {
       refetchOnWindowFocus: false,

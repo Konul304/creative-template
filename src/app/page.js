@@ -1,9 +1,9 @@
 import Script from 'next/script';
 //= Scripts
-import generateStylesheetObject from '@/common/generateStylesheetsObject';
+import generateStylesheetObject from '../common/generateStylesheetsObject';
 //= Common Components
-import Cursor from '@/components/Common/Cursor';
-import ProgressScroll from '@/components/Common/ProgressScroll';
+import Cursor from '../components/Common/Cursor';
+import ProgressScroll from '../components/Common/ProgressScroll';
 //= Page Components
 import Home1 from './(dark)/homepage/home1-dark/page';
 

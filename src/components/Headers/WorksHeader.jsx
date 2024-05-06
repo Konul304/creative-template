@@ -1,5 +1,5 @@
 'use client';
-import { getPresentationInfo } from '@/app/(api)/api';
+import { getPresentationInfo } from '../../app/(api)/api';
 import React, { useRef, useEffect } from 'react';
 import { useQuery } from 'react-query';
 
