@@ -9,6 +9,7 @@ import {
   organizerIcon,
   organizerLocationIcon,
 } from '../../../public/img';
+import Link from 'next/link';
 // import Pagination from "./Details/Pagination";
 // import CommentsArea from "./Details/CommentsArea";
 // import CommentsForm from "./Details/CommentsForm";
@@ -109,10 +110,10 @@ const EventDetails = ({ theme, data }) => {
                   <div>{organizerIcon}</div>
                   <div>{eventsData?.organizer?.name}</div>
                 </div>
-                <div style={{ display: 'flex', gap: '7px' }}>
+                <Link href="" style={{ display: 'flex', gap: '7px' }}>
                   <div>{organizerLocationIcon}</div>
                   <div>{eventsData?.organizer?.adress}</div>
-                </div>
+                </Link>
               </Card>
             )}
             {eventsData?.ticketSeller && (
@@ -131,18 +132,20 @@ const EventDetails = ({ theme, data }) => {
                   <div>{organizerIcon}</div>
                   <div>{eventsData?.ticketSeller?.company}</div>
                 </div>
-                <div
+                <a
+                  href={`tel: ${eventsData?.ticketSeller?.phoneNumber}`}
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{callIcon}</div>
                   <div>{eventsData?.ticketSeller?.phoneNumber}</div>
-                </div>
-                <div
+                </a>
+                <a
+                  href={`mailto: ${eventsData?.ticketSeller?.email}`}
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{emailIcon}</div>
                   <div>{eventsData?.ticketSeller?.email}</div>
-                </div>
+                </a>
               </Card>
             )}
           </div>
