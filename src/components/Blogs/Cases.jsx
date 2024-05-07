@@ -85,6 +85,8 @@ const CasesHomePage = () => {
                   </div>
                 );
               })}
+            </div>
+            <div className={styles.see_more_container}>
               <a href={`/cases/cases-dark`} className={styles.see_more}>
                 See more
               </a>
