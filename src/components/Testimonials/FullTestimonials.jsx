@@ -33,6 +33,14 @@ const swiperOptions = {
       slidesPerView: 1,
       centeredSlides: false,
     },
+    410: {
+      slidesPerView: 1,
+      centeredSlides: false,
+    },
+    110: {
+      slidesPerView: 1,
+      centeredSlides: false,
+    },
   },
 };
 
