@@ -183,6 +183,11 @@ const Navbar = ({ lr, theme }) => {
                 Cases
               </a>
             </li> */}
+            <li className="nav-item">
+              <a href={`/cases/cases-dark`} className="nav-link">
+                Cases
+              </a>
+            </li>
 
             <li className="nav-item">
               <a href={`/news`} className="nav-link">
