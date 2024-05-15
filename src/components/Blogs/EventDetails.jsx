@@ -1,6 +1,4 @@
 import React from 'react';
-//= Components
-// import Image from './Details/Image';
 import Content from './Details/Content';
 import { Card } from 'antd';
 import {
@@ -10,18 +8,16 @@ import {
   organizerLocationIcon,
 } from '../../../public/img';
 import Link from 'next/link';
-// import Pagination from "./Details/Pagination";
-// import CommentsArea from "./Details/CommentsArea";
-// import CommentsForm from "./Details/CommentsForm";
-// import WorksStyle2 from '../Works/WorksStyle2';
-// import SimilarNews from './SimilarNews';
+import dayjs from 'dayjs';
 
 const EventDetails = ({ theme, data }) => {
   const eventsData = data?.data?.find(
     (item) => item.id?.toString() === data?.id?.eventID
   );
-  //   const hasImages = newsData?.newsImages && newsData?.newsImages.length > 0;
-  //   const hasVideos = newsData?.newsVideos && newsData.newsVideos.length > 0;
+  const img_url =
+    'https://project141.s3.eu-north-1.amazonaws.com/' + eventsData?.logoLink;
+  const formattedStartDate = dayjs(eventsData?.startDate).format('D MMM');
+  const formattedEndDate = dayjs(eventsData?.endDate).format('D MMM');
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">
@@ -48,7 +44,7 @@ const EventDetails = ({ theme, data }) => {
                 height: '100%',
                 objectFit: 'cover',
               }}
-              src={eventsData?.image}
+              src={img_url}
               alt=""
             />
             <div
@@ -76,10 +72,10 @@ const EventDetails = ({ theme, data }) => {
                   marginBottom: '10px',
                 }}
               >
-                {eventsData?.date}
+                {formattedStartDate} - {formattedEndDate}
               </div>
               <div style={{ fontWeight: '500', fontSize: '12px' }}>
-                {eventsData?.adress}
+                {eventsData?.location}
               </div>
             </div>
           </div>
@@ -94,7 +90,7 @@ const EventDetails = ({ theme, data }) => {
               marginTop: '100px',
             }}
           >
-            {eventsData?.organizer && (
+            {eventsData?.organizerName && (
               <Card
                 title="TƏŞKİLATÇI"
                 bordered={false}
@@ -108,15 +104,15 @@ const EventDetails = ({ theme, data }) => {
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{organizerIcon}</div>
-                  <div>{eventsData?.organizer?.name}</div>
+                  <div>{eventsData?.organizerName}</div>
                 </div>
                 <Link href="" style={{ display: 'flex', gap: '7px' }}>
                   <div>{organizerLocationIcon}</div>
-                  <div>{eventsData?.organizer?.adress}</div>
+                  <div>{eventsData?.organizerAddress}</div>
                 </Link>
               </Card>
             )}
-            {eventsData?.ticketSeller && (
+            {eventsData?.ticketSellerName && (
               <Card
                 title="BİLET SATICI"
                 bordered={false}
@@ -130,21 +126,21 @@ const EventDetails = ({ theme, data }) => {
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{organizerIcon}</div>
-                  <div>{eventsData?.ticketSeller?.company}</div>
+                  <div>{eventsData?.ticketSellerName}</div>
                 </div>
                 <a
-                  href={`tel: ${eventsData?.ticketSeller?.phoneNumber}`}
+                  href={`tel: ${eventsData?.ticketSellerPhoneNumber}`}
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{callIcon}</div>
-                  <div>{eventsData?.ticketSeller?.phoneNumber}</div>
+                  <div>{eventsData?.ticketSellerPhoneNumber}</div>
                 </a>
                 <a
-                  href={`mailto: ${eventsData?.ticketSeller?.email}`}
+                  href={`mailto: ${eventsData?.ticketSellerEmail}`}
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{emailIcon}</div>
-                  <div>{eventsData?.ticketSeller?.email}</div>
+                  <div>{eventsData?.ticketSellerEmail}</div>
                 </a>
               </Card>
             )}

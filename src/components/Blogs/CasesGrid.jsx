@@ -13,7 +13,6 @@ const CasesGrid = () => {
       refetchOnMount: false,
     }
   );
-  console.log(data);
   return (
     <section className="blog-pg blog section-padding pt-0">
       <div className="container">
