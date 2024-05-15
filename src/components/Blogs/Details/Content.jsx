@@ -2,7 +2,6 @@ import HTMLReactParser from 'html-react-parser';
 import React from 'react';
 
 const Content = (data) => {
-  console.log(data?.data?.content?.heading1);
   return (
     <div
       className="content pt-60"

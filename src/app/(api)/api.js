@@ -72,6 +72,15 @@ export const getNews = async () => {
   }
 };
 
+export const getEvents = async () => {
+  try {
+    const response = await axiosTemplate.get('Event');
+    return response?.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const getServices = async () => {
   try {
     const response = await axiosTemplate.get('Services');

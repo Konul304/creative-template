@@ -1,48 +1,22 @@
+'use client';
 import { Card } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import React from 'react';
 import { calendarIconEvents } from '../../../public/img';
-
-const data = [
-  {
-    id: 1,
-    image:
-      'https://img.redbull.com/images/c_crop,x_725,y_0,h_3640,w_3640/c_fill,w_450,h_450/q_auto,f_auto/redbullcom/2023/9/12/r8qqcafimi9dnlz1hmn2/car-park-drift-2023',
-    title: 'Red Bull Four 2 Score Azerbaijan',
-    date: '13 – 21 Aprel 2024',
-    adress: 'Baku,Azerbaijan',
-    content: 'lorem ipsum lorem ipsum',
-    organizer: {
-      name: 'Veyseloglu LLC',
-      adress: 'Keshle SettleMent',
-    },
-    ticketSeller: {
-      company: 'ticket seller',
-      phoneNumber: '+99412',
-      email: 'info@tickets.az',
-    },
-  },
-  {
-    id: 2,
-    image:
-      'https://img.redbull.com/images/c_crop,x_725,y_0,h_3640,w_3640/c_fill,w_450,h_450/q_auto,f_auto/redbullcom/2023/9/12/r8qqcafimi9dnlz1hmn2/car-park-drift-2023',
-    title: 'Red Bull Four 2 Score Azerbaijan',
-    date: '13 – 21 Aprel 2024',
-    adress: 'Baku,Azerbaijan',
-    content: 'lorem ipsum lorem ipsum',
-    organizer: {
-      name: 'Veyseloglu LLC',
-      adress: 'Keshle SettleMent',
-    },
-    ticketSeller: {
-      company: 'ticket seller',
-      phoneNumber: '+99412',
-      email: 'info@tickets.az',
-    },
-  },
-];
+import { useQuery } from 'react-query';
+import { getEvents } from '../../app/(api)/api';
+import dayjs from 'dayjs';
 
 const EventCards = () => {
+  const {
+    data: eventData,
+    isLoading,
+    isError,
+  } = useQuery(['eventsData'], async () => await getEvents(), {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
+
   return (
     <div className="container">
       <div className="row">
@@ -53,7 +27,14 @@ const EventCards = () => {
         >
           <div className="posts" style={{ width: '100%' }}>
             <div className="row">
-              {data.map((item, index) => {
+              {eventData?.map((item, index) => {
+                const img_url =
+                  'https://project141.s3.eu-north-1.amazonaws.com/' +
+                  item?.thumbnailLink;
+                const formattedStartDate = dayjs(item?.startDate).format(
+                  'D MMM'
+                );
+                const formattedEndDate = dayjs(item?.endDate).format('D MMM');
                 return (
                   <div
                     key={index}
@@ -76,7 +57,7 @@ const EventCards = () => {
                               <img
                                 alt="example"
                                 style={{ height: '250px', objectFit: 'cover' }}
-                                src={item?.image}
+                                src={img_url}
                               />
                             }
                           >
@@ -93,7 +74,7 @@ const EventCards = () => {
                                   {' '}
                                   <div>{calendarIconEvents}</div>
                                   <div style={{ marginBottom: '5px' }}>
-                                    {item?.date}
+                                    {formattedStartDate} - {formattedEndDate}
                                   </div>
                                 </div>
                               }
