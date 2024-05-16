@@ -10,9 +10,7 @@ const Content = (data) => {
       <div className="row justify-content-center">
         <div className="col-lg-10">
           <div className="cont cases_content">
-            <div className="extra-title">
-              {data?.data?.heading1 && HTMLReactParser(data?.data?.heading1)}
-            </div>
+            <div className="extra-title">{data?.data?.heading1}</div>
             {/* <div className="spacial">
               <p>{data?.data?.heading2}</p>
             </div> */}
