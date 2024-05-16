@@ -11,15 +11,13 @@ const Content = (data) => {
         <div className="col-lg-10">
           <div className="cont cases_content">
             <div className="extra-title">
-              {data?.data?.content?.heading1 &&
-                HTMLReactParser(data?.data?.content?.heading1)}
+              {data?.data?.heading1 && HTMLReactParser(data?.data?.heading1)}
             </div>
             {/* <div className="spacial">
               <p>{data?.data?.heading2}</p>
             </div> */}
             <div>
-              {data?.data?.content?.paragraph &&
-                HTMLReactParser(data?.data?.content?.paragraph)}
+              {data?.data?.paragraph && HTMLReactParser(data?.data?.paragraph)}
             </div>
           </div>
         </div>
