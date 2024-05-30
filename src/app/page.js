@@ -5,7 +5,7 @@ import generateStylesheetObject from '../common/generateStylesheetsObject';
 import Cursor from '../components/Common/Cursor';
 import ProgressScroll from '../components/Common/ProgressScroll';
 //= Page Components
-import Home1 from './(dark)/homepage/home1-dark/page';
+import Home1 from './[lang]/homepage/page';
 
 export const metadata = {
   title: 'C141',

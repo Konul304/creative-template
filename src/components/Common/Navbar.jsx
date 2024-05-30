@@ -3,14 +3,18 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 //= Scripts
 import { handleDropdown, handleMobileDropdown } from '../../common/navbar';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 //= Static Data
 import { getLogo } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
+import { Select } from 'antd';
+import { i18n } from '../../../i18n-config';
 
 const Navbar = ({ lr, theme }) => {
   const navbar = useRef();
+  const router = useRouter();
   const pathname = usePathname();
+  const language = pathname.substring(1, 3);
 
   const { data, isLoading, isError } = useQuery(
     ['Logo'],
@@ -30,13 +34,16 @@ const Navbar = ({ lr, theme }) => {
       navbar?.current?.classList?.remove('nav-scroll');
     }
   }
+  const handleTranslate = (e) => {
+    const route = pathname.substring(4, pathname.length);
+    router.push(`/${e}/${route}`);
+  };
 
   useEffect(() => {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });
-
   return (
     <nav
       ref={navbar}
@@ -68,7 +75,7 @@ const Navbar = ({ lr, theme }) => {
           <ul className="navbar-nav ml-auto">
             <li className="nav-item dropdown" onClick={handleDropdown}>
               <a
-                href={`/`}
+                href={`/${pathname?.split('/')?.[1]}/homepage`}
                 className="nav-link "
                 // className="nav-link dropdown-toggle"
                 data-toggle="dropdown"
@@ -106,13 +113,16 @@ const Navbar = ({ lr, theme }) => {
               </div> */}
             </li>
             <li className="nav-item">
-              <a className="nav-link" href={`/about/about-dark`}>
+              <a
+                className="nav-link"
+                href={`/${pathname?.split('/')?.[1]}/about`}
+              >
                 About
               </a>
             </li>
-            <li className="nav-item dropdown">
+            {/* <li className="nav-item dropdown">
               <a
-                href={`/works2/portfolio`}
+                href={`/${pathname?.split('/')?.[1]}/portfolio`}
                 className="nav-link "
                 // className="nav-link dropdown-toggle"
                 // data-toggle="dropdown"
@@ -142,10 +152,10 @@ const Navbar = ({ lr, theme }) => {
                   Portfolio Gallery
                 </a>
               </div> */}
-            </li>
+            {/* </li> */}
             <li className="nav-item dropdown">
               <a
-                href={`/services/services_dark`}
+                href={`/${pathname?.split('/')?.[1]}/services`}
                 className="nav-link "
                 // className="nav-link dropdown-toggle"
                 // data-toggle="dropdown"
@@ -170,39 +180,50 @@ const Navbar = ({ lr, theme }) => {
                 </a>
               </div> */}
             </li>
-            {/* <li className="nav-item dropdown">
-              <a
-                href={`/cases/cases-dark`}
-                className="nav-link "
-                // className="nav-link dropdown-toggle"
-                // data-toggle="dropdown"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Cases
-              </a>
-            </li> */}
             <li className="nav-item">
-              <a href={`/cases/cases-dark`} className="nav-link">
+              <a
+                href={`/${pathname?.split('/')?.[1]}/cases`}
+                className="nav-link"
+              >
                 Cases
               </a>
             </li>
 
             <li className="nav-item">
-              <a href={`/news`} className="nav-link">
+              <a
+                href={`/${pathname?.split('/')?.[1]}/news`}
+                className="nav-link"
+              >
                 News
               </a>
             </li>
             <li className="nav-item">
-              <a href={`/events`} className="nav-link">
+              <a
+                href={`/${pathname?.split('/')?.[1]}/events`}
+                className="nav-link"
+              >
                 Events
               </a>
             </li>
             <li className="nav-item">
-              <a href={`/contact/contact-dark`} className="nav-link">
+              <a
+                href={`/${pathname?.split('/')?.[1]}/contact`}
+                className="nav-link"
+              >
                 Contact
               </a>
+            </li>
+            <li>
+              <Select
+                style={{ width: '70px', color: 'white', marginTop: '18px' }}
+                onChange={(e) => handleTranslate(e)}
+                placeholder={pathname?.split('/')?.[1]}
+                options={[
+                  { value: 'az', label: 'az' },
+                  { value: 'en', label: 'en' },
+                  { value: 'ru', label: 'ru' },
+                ]}
+              />
             </li>
           </ul>
         </div>

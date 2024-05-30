@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formatjs/intl-localematcher": "^0.5.4",
     "antd": "^5.12.8",
     "axios": "^1.6.5",
     "eslint": "8.48.0",
@@ -16,6 +17,7 @@
     "geoip-country": "^4.2.61",
     "html-react-parser": "^5.1.1",
     "moment-timezone": "^0.5.44",
+    "negotiator": "^0.6.3",
     "next": "^13.4.12",
     "react": "18.2.0",
     "react-circular-progressbar": "^2.1.0",

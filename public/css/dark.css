@@ -1287,7 +1287,7 @@ span:hover {
 
 /* ====================== [ End Text Animation & Images ] ====================== */
 /* ====================== [ Start Cursor Style ] ====================== */
-.mouse-cursor {
+/* .mouse-cursor {
   position: fixed;
   left: 0;
   top: 0;
@@ -1309,9 +1309,9 @@ span:hover {
     margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out,
     margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
+} */
 
-.cursor-inner.cursor-hover {
+/* .cursor-inner.cursor-hover {
   margin-left: -35px;
   margin-top: -35px;
   width: 70px;
@@ -1337,7 +1337,7 @@ span:hover {
 
 .cursor-outer.cursor-hover {
   opacity: 0;
-}
+} */
 
 /* ====================== [ End Cursor Style ] ====================== */
 /* ====================== [ Start progress-wrap ] ====================== */

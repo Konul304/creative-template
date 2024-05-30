@@ -1,10 +1,10 @@
 import React from 'react';
 //= Page components
-import Loading from '../../../../components/Common/Loader';
-import Navbar from '../../../../components/Common/Navbar';
-import PageHeader from '../../../../components/Headers/PageHeader';
-import Footer from '../../../../components/Common/Footer';
-import CasesGrid from '../../../../components/Blogs/CasesGrid';
+import Loading from '../../../components/Common/Loader';
+import Navbar from '../../../components/Common/Navbar';
+import PageHeader from '../../../components/Headers/PageHeader';
+import Footer from '../../../components/Common/Footer';
+import CasesGrid from '../../../components/Blogs/CasesGrid';
 
 export const metadata = {
   title: 'C141',

@@ -20,6 +20,15 @@ const AboutUs1 = () => {
   return (
     <section className="about-us section-padding">
       <div className="container">
+        <div
+          style={{
+            margin: '0px auto 50px',
+            color: '#fff',
+            fontSize: '32px',
+          }}
+        >
+          Your Most Valuable Partner
+        </div>
         <div className="row">
           <div className="col-lg-5 valign md-mb50">
             <div className="mb-50">
