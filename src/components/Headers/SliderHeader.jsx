@@ -13,6 +13,7 @@ import HTMLReactParser from 'html-react-parser';
 
 const swiperOptions = {
   modules: [Parallax, Navigation, Pagination],
+  loop: true,
   speed: 1000,
   navigation: {
     prevEl: '.swiper-button-prev',
