@@ -107,7 +107,7 @@ const EventDetails = ({ theme, data }) => {
                   <div>{eventsData?.organizerName}</div>
                 </div>
                 <Link
-                  href={`${eventsData?.organizerAddresLink}`}
+                  href={`${eventsData?.organizerAddressLink}`}
                   style={{ display: 'flex', gap: '7px' }}
                 >
                   <div>{organizerLocationIcon}</div>
