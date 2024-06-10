@@ -51,9 +51,20 @@ const Navbar = ({ lr, theme }) => {
         theme === 'light' ? 'light' : ''
       }`}
     >
-      <div className="container">
+      <div
+        className="container"
+        style={{
+          marginLeft: '0px',
+          marginRight: '24px',
+          maxWidth: '100%',
+          justifyContent: 'space-between',
+        }}
+      >
         <Link className="logo" href="/">
-          <img src={data ? `${img_url}` : ''} />
+          <img
+            src={data ? `${img_url}` : ''}
+            style={{ maxWidth: '300px', maxHeight: '150px' }}
+          />
         </Link>
 
         <button
@@ -71,8 +82,18 @@ const Navbar = ({ lr, theme }) => {
           </span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarSupportedContent"
+          style={{
+            flexGrow: '0',
+            backdropFilter: ' blur(20px)',
+            backgroundColor: '#2d303273',
+            borderRadius: '9999px',
+            // marginRight: '120px',
+          }}
+        >
+          <ul className="navbar-nav ">
             <li className="nav-item dropdown" onClick={handleDropdown}>
               <a
                 href={`/${pathname?.split('/')?.[1]}/homepage`}
@@ -213,19 +234,24 @@ const Navbar = ({ lr, theme }) => {
                 Contact
               </a>
             </li>
-            <li>
-              <Select
-                style={{ width: '70px', color: 'white', marginTop: '18px' }}
-                onChange={(e) => handleTranslate(e)}
-                placeholder={pathname?.split('/')?.[1]}
-                options={[
-                  { value: 'az', label: 'az' },
-                  { value: 'en', label: 'en' },
-                  { value: 'ru', label: 'ru' },
-                ]}
-              />
-            </li>
           </ul>
+        </div>
+        <div style={{ height: '73px', width: '155px', paddingLeft: '90px' }}>
+          <Select
+            style={{
+              width: '70px',
+              color: 'white',
+              marginTop: '18px',
+              maxHeight: '150px',
+            }}
+            onChange={(e) => handleTranslate(e)}
+            placeholder={pathname?.split('/')?.[1]}
+            options={[
+              { value: 'az', label: 'az' },
+              { value: 'en', label: 'en' },
+              { value: 'ru', label: 'ru' },
+            ]}
+          />
         </div>
       </div>
     </nav>
