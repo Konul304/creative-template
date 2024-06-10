@@ -63,7 +63,7 @@ const Navbar = ({ lr, theme }) => {
         <Link className="logo" href="/">
           <img
             src={data ? `${img_url}` : ''}
-            style={{ maxWidth: '300px', maxHeight: '150px' }}
+            style={{ maxWidth: '300px', maxHeight: '150px', padding: '10px' }}
           />
         </Link>
 
