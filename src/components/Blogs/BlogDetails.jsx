@@ -1,14 +1,10 @@
 import React from 'react';
-//= Components
 import Image from './Details/Image';
 import Content from './Details/Content';
-// import Pagination from "./Details/Pagination";
-// import CommentsArea from "./Details/CommentsArea";
-// import CommentsForm from "./Details/CommentsForm";
 import SimilarCases from '../Blogs/SimilarCases';
 import WorksStyle2 from '../Works/WorksStyle2';
 
-const BlogDetails = ({ theme, data }) => {
+const BlogDetails = ({ data }) => {
   const caseData = data?.data?.find(
     (item) => item.id?.toString() === data?.id?.casesID
   );
@@ -18,7 +14,6 @@ const BlogDetails = ({ theme, data }) => {
     <section className="blog-pg single section-padding pt-0">
       <div className="container">
         <div className="row justify-content-center">
-          {/* <div className="col-lg-11"> */}
           <div className="">
             <Image data={caseData} />
             <Content data={caseData} />
@@ -33,11 +28,7 @@ const BlogDetails = ({ theme, data }) => {
                 filterPosition="center"
               />
             )}
-            {/* <Pagination /> */}
-            {/* <CommentsArea />
-              <CommentsForm theme={theme} /> */}
           </div>
-          {/* </div> */}
         </div>
       </div>
       <SimilarCases data={data} />

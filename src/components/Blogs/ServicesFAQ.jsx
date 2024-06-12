@@ -6,11 +6,7 @@ import HTMLReactParser from 'html-react-parser';
 import { Collapse } from 'antd';
 
 const ServicesFAQ = () => {
-  // const onChange = (key) => {
-  //   console.log(key);
-  // };
-
-  const { data, isLoading, isError } = useQuery(
+  const { data } = useQuery(
     ['servicesFAQ'],
     async () => await getServiceFAQ(),
     {
@@ -36,46 +32,6 @@ const ServicesFAQ = () => {
                 // defaultActiveKey={["1"]}
                 // onChange={onChange}
               />
-              {/* {services?.map((item, index) => {
-                const hasPresentations =
-                  item?.servicePresentations &&
-                  item.servicePresentations.length > 0;
-                const hasVideos =
-                  item?.serviceVideos && item.serviceVideos.length > 0;
-
-                return (
-                  <div
-                    id={`service-${item?.id}`}
-                    key={index}
-                    className={`item scroll-offset`}
-                  >
-                    <div className="content">
-                      <div className="row justify-content-center">
-                        <div className="col-10">
-                          <h4 className="title">
-                            <div>{item?.title}</div>
-                          </h4>
-                          <p>
-                            {item?.description &&
-                              HTMLReactParser(item?.description)}
-                          </p>
-                          {(hasPresentations || hasVideos) && (
-                            <Works
-                              id={item?.id}
-                              grid={3}
-                              presentations={item?.servicePresentations}
-                              videos={item?.serviceVideos}
-                              images={item?.serviceImages}
-                              hideHeader={true}
-                              filterPosition="center"
-                            />
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })} */}
             </div>
           </div>
         </div>

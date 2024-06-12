@@ -9,8 +9,11 @@ import {
 } from '../../../public/img';
 import Link from 'next/link';
 import dayjs from 'dayjs';
+import { usePathname } from 'next/navigation';
 
-const EventDetails = ({ theme, data }) => {
+const EventDetails = ({ data }) => {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const eventsData = data?.data?.find(
     (item) => item.id?.toString() === data?.id?.eventID
   );
@@ -18,11 +21,39 @@ const EventDetails = ({ theme, data }) => {
     'https://project141.s3.eu-north-1.amazonaws.com/' + eventsData?.logoLink;
   const formattedStartDate = dayjs(eventsData?.startDate).format('D MMM');
   const formattedEndDate = dayjs(eventsData?.endDate).format('D MMM');
+
+  const azEventData = {
+    title: eventsData?.titleAz,
+    location: eventsData?.locationAz,
+    organizerName: eventsData?.organizerNameAz,
+    organizerAddress: eventsData?.organizerAddressAz,
+    ticketSellerName: eventsData?.ticketSellerNameAz,
+  };
+  const engEventData = {
+    title: eventsData?.titleEng,
+    location: eventsData?.locationEng,
+    organizerName: eventsData?.organizerNameEng,
+    organizerAddress: eventsData?.organizerAddressEng,
+    ticketSellerName: eventsData?.ticketSellerNameEng,
+  };
+  const rusEventData = {
+    title: eventsData?.titleRus,
+    location: eventsData?.locationRus,
+    organizerName: eventsData?.organizerNameRus,
+    organizerAddress: eventsData?.organizerAddressRus,
+    ticketSellerName: eventsData?.ticketSellerNameRus,
+  };
+
+  const dataToRender =
+    language === 'en'
+      ? engEventData
+      : language === 'az'
+      ? azEventData
+      : rusEventData;
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">
         <div className="row justify-content-center">
-          {/* <div className="col-lg-11"> */}
           <div
             className="case_header_img"
             style={{ position: 'relative', height: '650px' }}
@@ -50,10 +81,10 @@ const EventDetails = ({ theme, data }) => {
             <div
               style={{
                 position: 'absolute',
-                bottom: '10px', // Adjust as needed
-                left: '200px', // Adjust as needed
+                bottom: '10px',
+                left: '200px',
                 color: 'white',
-                fontSize: '20px', // Adjust as needed
+                fontSize: '20px',
               }}
             >
               <div
@@ -63,7 +94,7 @@ const EventDetails = ({ theme, data }) => {
                   marginBottom: '20px',
                 }}
               >
-                {eventsData?.title}
+                {dataToRender?.title}
               </div>
               <div
                 style={{
@@ -75,7 +106,7 @@ const EventDetails = ({ theme, data }) => {
                 {formattedStartDate} - {formattedEndDate}
               </div>
               <div style={{ fontWeight: '500', fontSize: '12px' }}>
-                {eventsData?.location}
+                {dataToRender?.location}
               </div>
             </div>
           </div>
@@ -90,7 +121,7 @@ const EventDetails = ({ theme, data }) => {
               marginTop: '100px',
             }}
           >
-            {eventsData?.organizerName && (
+            {dataToRender?.organizerName && (
               <Card
                 title="TƏŞKİLATÇI"
                 bordered={false}
@@ -104,18 +135,18 @@ const EventDetails = ({ theme, data }) => {
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{organizerIcon}</div>
-                  <div>{eventsData?.organizerName}</div>
+                  <div>{dataToRender?.organizerName}</div>
                 </div>
                 <Link
                   href={`${eventsData?.organizerAddressLink}`}
                   style={{ display: 'flex', gap: '7px' }}
                 >
                   <div>{organizerLocationIcon}</div>
-                  <div>{eventsData?.organizerAddress}</div>
+                  <div>{dataToRender?.organizerAddress}</div>
                 </Link>
               </Card>
             )}
-            {eventsData?.ticketSellerName && (
+            {dataToRender?.ticketSellerName && (
               <Card
                 title="BİLET SATICI"
                 bordered={false}
@@ -129,7 +160,7 @@ const EventDetails = ({ theme, data }) => {
                   style={{ display: 'flex', gap: '7px', marginBottom: '10px' }}
                 >
                   <div>{organizerIcon}</div>
-                  <div>{eventsData?.ticketSellerName}</div>
+                  <div>{dataToRender?.ticketSellerName}</div>
                 </div>
                 <a
                   href={`tel: ${eventsData?.ticketSellerPhoneNumber}`}

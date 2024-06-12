@@ -1,5 +1,4 @@
 import React from 'react';
-//= Page components
 import Navbar from '../../../components/Common/Navbar';
 import PagesHeader from '../../../components/Headers/PagesHeader';
 import AboutIntro from '../../../components/AboutUs/AboutIntro';
@@ -24,11 +23,6 @@ const AboutDark = async () => {
         <Partners theme="dark" />
         <OurHistory />
         <Team />
-        {/* <Services style="4item" />
-      <TestimonialsWithVideo />
-      <SkillsCircle from="aboutPage" />
-      <MinimalArea />
-      <CallToAction /> */}
         <Footer />
       </div>
     </>

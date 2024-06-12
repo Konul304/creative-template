@@ -1,11 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-//= Scripts
 import initIsotope from '../../common/initIsotope';
 import { download_icon } from '../../../public/img';
 import styles from '../../styles/Works2.module.scss';
 import ModalVideo from '../Common/ModalVideo';
+import { usePathname } from 'next/navigation';
 
 function WorksStyle2({
   grid,
@@ -16,8 +16,9 @@ function WorksStyle2({
   images,
   id,
 }) {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const [isOpenMap, setOpenMap] = useState({});
-  // Function to handle opening/closing modal for a specific video
   const handleToggleModal = (index) => {
     setOpenMap((prevOpenMap) => ({
       ...prevOpenMap,
@@ -26,9 +27,7 @@ function WorksStyle2({
   };
 
   useEffect(() => {
-    // setTimeout(() => {
     initIsotope(id, videos, images);
-    // }, 500);
   }, [id]);
 
   const handleDownload = (pdfUrl, pdfName) => {
@@ -77,9 +76,6 @@ function WorksStyle2({
             } col-12`}
           >
             <div className="filter">
-              {/* {presentations && presentations.length > 0 && (
-                <span data-filter=".presentation">Presentation content</span>
-              )} */}
               {videos && videos.length > 0 && (
                 <span
                   data-filter=".videos"
@@ -133,21 +129,31 @@ function WorksStyle2({
                   </div>
                   <div className="cont">
                     <h6>
-                      {item?.title}
+                      {language === 'en'
+                        ? item?.titleEng
+                        : language === 'az'
+                        ? item?.titleAz
+                        : item?.titleRus}
                       <span
                         onClick={handleDownload}
                         className={styles.download_icon}
                       >
                         <div
                           onClick={() =>
-                            handleDownload(download_url, item?.title)
+                            handleDownload(
+                              download_url,
+                              language === 'en'
+                                ? item?.titleEng
+                                : language === 'az'
+                                ? item?.titleAz
+                                : item?.titleRus
+                            )
                           }
                         >
                           {download_icon}
                         </div>
                       </span>
                     </h6>
-                    {/* <span> <a href="#0">Design</a>, <a href="#0">WordPress</a> </span> */}
                   </div>
                 </div>
               );
@@ -177,14 +183,20 @@ function WorksStyle2({
                     </div>
                   </div>
                   <div className="cont">
-                    <h6 className="text-center mt-4">{item?.title}</h6>
+                    <h6 className="text-center mt-4">
+                      {' '}
+                      {language === 'en'
+                        ? item?.titleEng
+                        : language === 'az'
+                        ? item?.titleAz
+                        : item?.titleRus}
+                    </h6>
                     <ModalVideo
                       source={video_link}
                       isOpen={isOpenMap[index]}
                       onClose={() => handleToggleModal(index)}
                       autoplay
                     />
-                    {/* <span> <a href="#0">Design</a>, <a href="#0">WordPress</a> </span> */}
                   </div>
                 </div>
               );
@@ -215,13 +227,14 @@ function WorksStyle2({
                     </div>
                   </div>
                   <div className="cont">
-                    <h6
-                      // style={{ color: '#5f5f5f', textAlign: 'center' }}
-                      className="text-center mt-4"
-                    >
-                      {item?.title}
+                    <h6 className="text-center mt-4">
+                      {' '}
+                      {language === 'en'
+                        ? item?.titleEng
+                        : language === 'az'
+                        ? item?.titleAz
+                        : item?.titleRus}
                     </h6>
-                    {/* <span> <a href="#0">Design</a>, <a href="#0">WordPress</a> </span> */}
                   </div>
                 </div>
               );

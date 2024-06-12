@@ -4,8 +4,11 @@ import { getContactData, getPortfolio, postEmail } from '../../app/(api)/api';
 import { useEffect, useState } from 'react';
 import countryData from '../../data/regions-to-countries';
 import { Select, message } from 'antd';
+import { usePathname } from 'next/navigation';
 
 const Footer = ({ hideBGCOLOR }) => {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const { countries, zones } = require('moment-timezone/data/meta/latest.json');
   const timeZoneToCountry = {};
   const timeZoneCityToCountry = {};
@@ -45,6 +48,28 @@ const Footer = ({ hideBGCOLOR }) => {
       console.log(error);
     }
   };
+  const azPortfolioData = portfolioData?.map((item) => ({
+    logoLink: item?.logoLink,
+    id: item?.id,
+    title: item?.titleAz,
+  }));
+  const engPortfolioData = portfolioData?.map((item) => ({
+    logoLink: item?.logoLink,
+    id: item?.id,
+    title: item?.titleEng,
+  }));
+  const rusPortfolioData = portfolioData?.map((item) => ({
+    logoLink: item?.logoLink,
+    id: item?.id,
+    title: item?.titleRus,
+  }));
+
+  const dataToRender =
+    language === 'en'
+      ? engPortfolioData
+      : language === 'az'
+      ? azPortfolioData
+      : rusPortfolioData;
 
   const getContact = async () => {
     try {
@@ -91,7 +116,12 @@ const Footer = ({ hideBGCOLOR }) => {
       setContactInfo({
         email: currentLocationData?.email,
         phoneNumber: currentLocationData?.phoneNumber,
-        address: currentLocationData?.address,
+        address:
+          language === 'en'
+            ? currentLocationData?.addressEng
+            : language === 'az'
+            ? currentLocationData?.addressAz
+            : currentLocationData?.addressRus,
       });
     }
   }, [portfolioData, contactData]);
@@ -130,7 +160,12 @@ const Footer = ({ hideBGCOLOR }) => {
                     setContactInfo({
                       email: selectedLocationData?.email,
                       phoneNumber: selectedLocationData?.phoneNumber,
-                      address: selectedLocationData?.address,
+                      address:
+                        language === 'en'
+                          ? selectedLocationData?.addressEng
+                          : language === 'az'
+                          ? selectedLocationData?.addressAz
+                          : selectedLocationData?.addressRus,
                     });
                   }
                 }}
@@ -170,7 +205,7 @@ const Footer = ({ hideBGCOLOR }) => {
                 <h5>Portfolio</h5>
               </div>
               <ul>
-                {portfolioData?.map((item) => {
+                {dataToRender?.map((item) => {
                   const img_link =
                     'https://project141.s3.eu-north-1.amazonaws.com/' +
                     item?.logoLink;
@@ -199,12 +234,10 @@ const Footer = ({ hideBGCOLOR }) => {
                         required
                         placeholder="Type Your Email"
                         onChange={(e) => setEmail(e?.target?.value)}
-                        // style={{ color: '#000' }}
                       />
                       <button
                         type="submit"
                         className="subs pe-7s-paper-plane"
-                        // style={{ border: 'none', marginTop: '0.5px' }}
                       ></button>
                     </form>
                   </div>
@@ -217,9 +250,6 @@ const Footer = ({ hideBGCOLOR }) => {
               <div className="title">
                 <h5>Socials</h5>
               </div>
-              {/* <div className="logo">
-                <img src="/img/logo-light.png" alt="logo" />
-              </div> */}
               <div className="social">
                 <a href="https://www.instagram.com/creative_141?igsh=ZjZtZjAxcGdoMjJh">
                   <i className="fab fa-instagram"></i>

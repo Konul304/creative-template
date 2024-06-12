@@ -1,11 +1,10 @@
 'use client';
 import React from 'react';
-//= Modules
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
 import { getPortfolio } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
-//= Static Data
+import { usePathname } from 'next/navigation';
 
 const swiperOptions = {
   modules: [Autoplay, Navigation],
@@ -43,14 +42,41 @@ const swiperOptions = {
 };
 
 const Works1 = () => {
-  const {
-    data: portfolio,
-    isLoading,
-    isError,
-  } = useQuery(['portfolioData'], async () => await getPortfolio(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
+
+  const { data: portfolio } = useQuery(
+    ['portfolioData'],
+    async () => await getPortfolio(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
+
+  const azPortfolioData = portfolio?.map((item) => ({
+    logoLink: item.logoLink,
+    id: item.id,
+    title: item.titleAz,
+  }));
+  const engPortfolioData = portfolio?.map((item) => ({
+    logoLink: item.logoLink,
+    id: item.id,
+    title: item.titleEng,
+  }));
+  const rusPortfolioData = portfolio?.map((item) => ({
+    logoLink: item.logoLink,
+    id: item.id,
+    title: item.titleRus,
+  }));
+
+  const dataToRender =
+    language === 'en'
+      ? engPortfolioData
+      : language === 'az'
+      ? azPortfolioData
+      : rusPortfolioData;
+
   return (
     <section className="work-carousel metro position-re">
       <div className="container-fluid">
@@ -58,7 +84,7 @@ const Works1 = () => {
           <div className="col-lg-12 no-padding">
             <div className="swiper-container">
               <Swiper {...swiperOptions} className="swiper-wrapper">
-                {portfolio?.map((item) => {
+                {dataToRender?.map((item) => {
                   const img_url =
                     'https://project141.s3.eu-north-1.amazonaws.com/' +
                     item?.logoLink;
@@ -76,11 +102,6 @@ const Works1 = () => {
                           <h6 className="color-font">
                             <a href="#">{item?.title}</a>
                           </h6>
-                          {/* <h4>
-                            <Link href="/project-details2/project-details2-dark">
-                              {slide.secTex}
-                            </Link>
-                          </h4> */}
                         </div>
                       </div>
                     </SwiperSlide>

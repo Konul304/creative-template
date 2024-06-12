@@ -4,8 +4,11 @@ import React from 'react';
 import styles from '../../styles/Cases.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
+import { usePathname } from 'next/navigation';
 
 function Team2(data) {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const img_url =
     'https://project141.s3.eu-north-1.amazonaws.com/' + data?.data?.imageLink;
 
@@ -38,6 +41,23 @@ function Team2(data) {
       },
     },
   };
+
+  const azTeamData = {
+    description: data?.data?.descriptionAz,
+  };
+  const engTeamData = {
+    description: data?.data?.descriptionEng,
+  };
+  const rusTeamData = {
+    description: data?.data?.descriptionRus,
+  };
+
+  const dataToRender =
+    language === 'en'
+      ? engTeamData
+      : language === 'az'
+      ? azTeamData
+      : rusTeamData;
 
   const imagesPerPage = 4;
   const totalSlides = Math.ceil(
@@ -132,8 +152,8 @@ function Team2(data) {
                 </div>
               </div>
               <div className={` text-center mt-5 ${styles.team_info}`}>
-                {data?.data?.description &&
-                  HTMLReactParser(data?.data?.description)}
+                {dataToRender?.description &&
+                  HTMLReactParser(dataToRender?.description)}
               </div>
             </div>
           </div>

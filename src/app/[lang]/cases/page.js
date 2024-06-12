@@ -1,5 +1,4 @@
 import React from 'react';
-//= Page components
 import Loading from '../../../components/Common/Loader';
 import Navbar from '../../../components/Common/Navbar';
 import PageHeader from '../../../components/Headers/PageHeader';
