@@ -1,15 +1,13 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-//= Modules
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Parallax } from 'swiper';
-//= Scripts
 import removeSlashFromBagination from '../../common/removeSlashpagination';
 import fadeWhenScroll from '../../common/fadeWhenScroll';
-//= Static Data
-import { getCases, getNews, getSlider } from '../../app/(api)/api';
+import { getCases, getNews } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
+import { usePathname } from 'next/navigation';
 
 const swiperOptions = {
   modules: [Parallax, Navigation, Pagination],
@@ -37,27 +35,62 @@ const swiperOptions = {
 
 const SliderHeader = () => {
   const fixedSlider = useRef();
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
 
-  const { data, isLoading, isError } = useQuery(
-    ['caseData'],
-    async () => await getCases(),
+  const { data } = useQuery(['caseData'], async () => await getCases(), {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
+
+  const { data: newsData } = useQuery(
+    ['newsData'],
+    async () => await getNews(),
     {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
     }
   );
 
-  const {
-    data: newsData,
-    isLoading: newsLoading,
-    isError: newsError,
-  } = useQuery(['newsData'], async () => await getNews(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
-
   const filteredCaseData = data?.filter((item) => item.isSlider === true);
   const filteredNewsData = newsData?.filter((item) => item.isSlider === true);
+
+  const azCaseData = filteredCaseData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleAz,
+    sliderDescription: item.sliderDescriptionAz,
+  }));
+  const engCaseData = filteredCaseData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleEng,
+    sliderDescription: item.sliderDescriptionEng,
+  }));
+  const rusCaseData = filteredCaseData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleRus,
+    sliderDescription: item.sliderDescriptionRus,
+  }));
+  const azNewsData = filteredNewsData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleAz,
+    sliderDescription: item.sliderDescriptionAz,
+  }));
+  const engNewsData = filteredNewsData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleEng,
+    sliderDescription: item.sliderDescriptionEng,
+  }));
+  const rusNewsData = filteredNewsData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleRus,
+    sliderDescription: item.sliderDescriptionRus,
+  }));
 
   useEffect(() => {
     removeSlashFromBagination();
@@ -72,15 +105,27 @@ const SliderHeader = () => {
     }
   }, [data]);
 
+  const casesToRender =
+    language === 'en'
+      ? engCaseData
+      : language === 'az'
+      ? azCaseData
+      : rusCaseData;
+  const newsToRender =
+    language === 'en'
+      ? engNewsData
+      : language === 'az'
+      ? azNewsData
+      : rusNewsData;
   return (
     <header
       className="slider slider-prlx fixed-slider text-center"
       ref={fixedSlider}
     >
       <div className="swiper-container parallax-slider">
-        {(filteredCaseData || filteredNewsData) && (
+        {(casesToRender || newsToRender) && (
           <Swiper {...swiperOptions} className="swiper-wrapper">
-            {filteredCaseData?.map((slide) => {
+            {casesToRender?.map((slide) => {
               const img_url =
                 'https://project141.s3.eu-north-1.amazonaws.com/' +
                 slide?.sliderLogoLink;
@@ -140,7 +185,7 @@ const SliderHeader = () => {
                 </SwiperSlide>
               );
             })}
-            {filteredNewsData?.map((slide) => {
+            {newsToRender?.map((slide) => {
               const img_url =
                 'https://project141.s3.eu-north-1.amazonaws.com/' +
                 slide?.sliderLogoLink;
@@ -211,27 +256,6 @@ const SliderHeader = () => {
           </div>
         </div>
         <div className="swiper-pagination top botm"></div>
-
-        {/* <div className="social-icon"> */}
-        {/* <a href="https://www.instagram.com/creative_141?igsh=ZjZtZjAxcGdoMjJh">
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com/c141worldwide?mibextid=ZbWKwL">
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.linkedin.com/company/marketing-agency-c141-creative-one-for-one-/">
-            <i className="fab fa-linkedin"></i>
-          </a> */}
-        {/* <a href="#">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="#">
-            <i className="fab fa-behance"></i>
-          </a>
-          <a href="#">
-            <i className="fab fa-pinterest-p"></i>
-          </a> */}
-        {/* </div> */}
       </div>
     </header>
   );

@@ -14,7 +14,7 @@ const Navbar = ({ lr, theme }) => {
   const navbar = useRef();
   const router = useRouter();
   const pathname = usePathname();
-  const language = pathname.substring(1, 3);
+  const language = pathname?.split('/')[1];
 
   const { data, isLoading, isError } = useQuery(
     ['Logo'],

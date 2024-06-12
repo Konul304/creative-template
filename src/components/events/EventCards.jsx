@@ -8,14 +8,14 @@ import { getEvents } from '../../app/(api)/api';
 import dayjs from 'dayjs';
 
 const EventCards = () => {
-  const {
-    data: eventData,
-    isLoading,
-    isError,
-  } = useQuery(['eventsData'], async () => await getEvents(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  const { data: eventData } = useQuery(
+    ['eventsData'],
+    async () => await getEvents(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
 
   return (
     <div className="container">
@@ -62,7 +62,13 @@ const EventCards = () => {
                             }
                           >
                             <Meta
-                              title={item?.title}
+                              title={
+                                language === 'en'
+                                  ? item?.titleEng
+                                  : language === 'az'
+                                  ? item?.titleAz
+                                  : item?.titleRus
+                              }
                               description={
                                 <div
                                   style={{

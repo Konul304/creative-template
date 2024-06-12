@@ -14,12 +14,6 @@ const NewsPage = async () => {
   return (
     <>
       <Loading />
-      {/* <div className="circle-bg">
-        <div className="circle-color fixed">
-          <div className="gradient-circle"></div>
-          <div className="gradient-circle two"></div>
-        </div>
-      </div> */}
       <Navbar />
       <PageHeader title="Our News" />
       <BlogGrid />

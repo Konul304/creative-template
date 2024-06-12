@@ -1,17 +1,19 @@
 'use client';
 import React from 'react';
-//= Page components
 import Loading from '../Common/Loader';
 import Navbar from '../Common/Navbar';
 import PageHeader from '../Headers/PageHeader';
 import Footer from '../Common/Footer';
 import NewsDetails from './NewsDetails';
+import { usePathname } from 'next/navigation';
 
 export const metadata = {
   title: 'C141',
 };
 
 const NewsDetailsPage = (data) => {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const newsData = data?.data?.find(
     (item) => item.id?.toString() === data?.id?.newsID
   );
@@ -26,7 +28,13 @@ const NewsDetailsPage = (data) => {
       </div>
       <Navbar />
       <PageHeader
-        title={newsData?.title}
+        title={
+          language === 'en'
+            ? newsData?.titleEng
+            : language === 'az'
+            ? newsData?.titleAz
+            : newsData?.titleRus
+        }
         paragraph="All the most current news and events of our creative team."
       />
       <NewsDetails data={data} />

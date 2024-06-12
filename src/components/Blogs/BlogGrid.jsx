@@ -4,24 +4,21 @@ import Link from 'next/link';
 import { getNews } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import initIsotope from '../../common/initIsotopePortfolio';
+import { usePathname } from 'next/navigation';
 
-const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
-  const { data, isLoading, isError } = useQuery(
-    ['newsData'],
-    async () => await getNews(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
+const BlogGrid = ({ grid = 3, hideFilter }) => {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
+  const { data } = useQuery(['newsData'], async () => await getNews(), {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
 
   const ourNews = data?.filter((item) => item?.isOurNews === true);
   const otherNews = data?.filter((item) => item?.isOurNews === false);
 
   useEffect(() => {
-    // setTimeout(() => {
     initIsotope();
-    // }, 500);
   }, [data]);
 
   return (
@@ -43,8 +40,6 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                   Öz xəbərlərimiz{' '}
                 </span>
                 <span data-filter=".videos">Digərlər </span>
-                {/* <span data-filter=".web">Mobile App</span>
-                <span data-filter=".graphic">Creative</span> */}
               </div>
             </div>
           )}
@@ -80,14 +75,12 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                           <div className="cont">
                             <div>
                               <div className="info">
-                                {/* <Link href="/blog/blog-dark" className="date">
-                          <span>
-                            <i>{blogItem.date.day}</i>
-                            {blogItem.date.month}
-                          </span>
-                        </Link> */}
-                                {/* <span>/</span> */}
-                                {item.tagNames.map((tagItem, index) => {
+                                {(language === 'en'
+                                  ? item?.tagNamesEng
+                                  : language === 'az'
+                                  ? item?.tagNamesAz
+                                  : item?.tagNamesRus
+                                ).map((tagItem, index) => {
                                   return (
                                     <>
                                       <Link
@@ -108,10 +101,7 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                                 })}
                               </div>
                               <h5>
-                                <Link
-                                  href={`/news/${item?.id}`}
-                                  // style={{ color: '#5f5f5f' }}
-                                >
+                                <Link href={`/news/${item?.id}`}>
                                   {item.title.substr(0, 55) + '...'}
                                 </Link>
                               </h5>
@@ -156,14 +146,12 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                           <div className="cont">
                             <div>
                               <div className="info">
-                                {/* <Link href="/blog/blog-dark" className="date">
-                          <span>
-                            <i>{blogItem.date.day}</i>
-                            {blogItem.date.month}
-                          </span>
-                        </Link> */}
-                                {/* <span>/</span> */}
-                                {item.tagNames.map((tagItem, index) => {
+                                {(language === 'en'
+                                  ? item?.tagNamesEng
+                                  : language === 'az'
+                                  ? item?.tagNamesAz
+                                  : item?.tagNamesRus
+                                ).map((tagItem, index) => {
                                   return (
                                     <>
                                       <Link
@@ -184,11 +172,13 @@ const BlogGrid = ({ grid = 3, filterPosition, hideFilter }) => {
                                 })}
                               </div>
                               <h5>
-                                <Link
-                                  href={`/news/${item?.id}`}
-                                  // style={{ color: '#5f5f5f' }}
-                                >
-                                  {item.title.substr(0, 55) + '...'}
+                                <Link href={`/news/${item?.id}`}>
+                                  {(language === 'en'
+                                    ? item.titleEng
+                                    : language === 'az'
+                                    ? item.titleAz
+                                    : item.titleRus
+                                  )?.substr(0, 55) + '...'}
                                 </Link>
                               </h5>
                               <div className="btn-more">

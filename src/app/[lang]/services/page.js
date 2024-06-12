@@ -1,5 +1,4 @@
 import React from 'react';
-//= Page components
 import Navbar from '../../../components/Common/Navbar';
 import Footer from '../../../components/Common/Footer';
 import Loading from '../../../components/Common/Loader';
@@ -21,7 +20,6 @@ export default async function Services() {
         </div>
       </div>
       <Navbar />
-      {/* <ServicesHeader /> */}
       <div className="main-content">
         <Services1 style="4item" />
         <BlogStanderd />

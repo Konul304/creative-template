@@ -1,22 +1,46 @@
 'use client';
 import React from 'react';
-//= Static Data
 import aboutData from '../../data/about-us1.json';
 import { getAbout } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
+import { usePathname } from 'next/navigation';
 
 const AboutUs1 = () => {
-  const { data, isLoading, isError } = useQuery(
-    ['aboutData'],
-    async () => await getAbout(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
+
+  const { data } = useQuery(['aboutData'], async () => await getAbout(), {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
+  const azAboutData = {
+    wePhotoLink: data?.wePhotoLink,
+    weTitle: data?.weTitleAz,
+    weText: data?.weTextAz,
+  };
+  const engAboutData = {
+    wePhotoLink: data?.wePhotoLink,
+    weTitle: data?.weTitleEng,
+    weText: data?.weTextEng,
+  };
+  const rusAboutData = {
+    wePhotoLink: data?.wePhotoLink,
+    weTitle: data?.weTitleRus,
+    weText: data?.weTextRus,
+  };
+
+  const dataToRender =
+    language === 'en'
+      ? engAboutData
+      : language === 'az'
+      ? azAboutData
+      : rusAboutData;
+
   const img_link =
-    'https://project141.s3.eu-north-1.amazonaws.com/' + data?.wePhotoLink;
+    'https://project141.s3.eu-north-1.amazonaws.com/' +
+    dataToRender?.wePhotoLink;
+
   return (
     <section className="about-us section-padding">
       <div className="container">
@@ -36,9 +60,12 @@ const AboutUs1 = () => {
                 {aboutData.smallTitle}
               </h6>
               <h3 className="fw-600 text-u ls1 mb-30 color-font">
-                {data?.weTitle && HTMLReactParser(data?.weTitle)}
+                {dataToRender?.weTitle &&
+                  HTMLReactParser(dataToRender?.weTitle)}
               </h3>
-              <p>{data?.weText && HTMLReactParser(data?.weText)}</p>
+              <p>
+                {dataToRender?.weText && HTMLReactParser(dataToRender?.weText)}
+              </p>
               <a href={`/about/about-dark`} className="butn bord curve mt-30">
                 <span>Read More</span>
               </a>
@@ -46,19 +73,7 @@ const AboutUs1 = () => {
           </div>
           <div className="col-lg-7 img">
             <img src={img_link} alt={aboutData.title} />
-            <div className="stauts">
-              {/* {
-                aboutData.status.map(stat => (
-                  <div className="item" key={stat.id}>
-                    <h4>
-                      {stat.number}
-                      <span>{stat.letter}</span>
-                    </h4>
-                    <h6>{stat.statusName}</h6>
-                  </div>
-                ))
-              } */}
-            </div>
+            <div className="stauts"></div>
           </div>
         </div>
       </div>

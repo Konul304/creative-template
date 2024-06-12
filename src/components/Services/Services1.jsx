@@ -1,15 +1,16 @@
 'use client';
 import React from 'react';
-//= Static Data
 import { getServiceDetail } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
-// import styles from '../../styles/Serv/ices.module.scss';
 import styles from '../../styles/Cases.module.scss';
 import ReactPlayer from 'react-player';
+import { usePathname } from 'next/navigation';
 
 function Services1({ style, lines }) {
-  const { data, isLoading, isError } = useQuery(
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
+  const { data } = useQuery(
     ['serviceDetails'],
     async () => await getServiceDetail(),
     {
@@ -17,6 +18,30 @@ function Services1({ style, lines }) {
       refetchOnMount: false,
     }
   );
+
+  const azServicesData = {
+    title: data?.titleAz,
+    videoLink: data?.videoLink,
+    description: data?.descriptionAz,
+  };
+  const engServicesData = {
+    title: data?.titleEng,
+    videoLink: data?.videoLink,
+    description: data?.descriptionEng,
+  };
+  const rusServicesData = {
+    title: data?.titleRus,
+    videoLink: data?.videoLink,
+    description: data?.descriptionRus,
+  };
+
+  const dataToRender =
+    language === 'en'
+      ? engServicesData
+      : language === 'az'
+      ? azServicesData
+      : rusServicesData;
+
   return (
     <section
       className={`services bords section-padding ${
@@ -26,15 +51,12 @@ function Services1({ style, lines }) {
       <div className="container">
         <div className="row justify-content-center">
           <div className="sec-head  text-center ">
-            {/* <h6 className="wow fadeIn" data-wow-delay=".5s">
-                Best Features
-              </h6> */}
             <h3 style={{ fontSize: '48px' }} className="wow color-font">
               {' '}
-              {data?.title && HTMLReactParser(data?.title)}
+              {dataToRender?.title && HTMLReactParser(dataToRender?.title)}
             </h3>
             <ReactPlayer
-              url={data?.videoLink}
+              url={dataToRender?.videoLink}
               width={1280}
               height={680}
               controls
@@ -45,27 +67,10 @@ function Services1({ style, lines }) {
           </div>
 
           <div className={styles.team_info}>
-            {data?.description && HTMLReactParser(data?.description)}
+            {dataToRender?.description &&
+              HTMLReactParser(dataToRender?.description)}
           </div>
         </div>
-        {/* <div className="row_services"> */}
-        {/* {services?.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="col-md-4 wow fadeInLeft"
-                data-wow-delay={`0s`}
-              >
-                <Link href={`#service-${item.id}`} className="item-box">
-                  <div className="cont">
-                    <h6 className="text-center">{item?.title}</h6>
-                    {/* <p>sdfsd</p> */}
-        {/* </div>
-                </Link>
-              </div> */}
-        {/* ); */}
-        {/* // })} */}
-        {/* // </div> */}
       </div>
     </section>
   );

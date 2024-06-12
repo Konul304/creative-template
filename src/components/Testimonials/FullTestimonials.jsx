@@ -1,13 +1,12 @@
 'use client';
 import React, { useEffect } from 'react';
-//= Modules
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
-//= Scripts
 import removeSlashFromBagination from '../../common/removeSlashpagination';
 import { getTestimonials } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
+import { usePathname } from 'next/navigation';
 
 const swiperOptions = {
   modules: [Autoplay, Navigation],
@@ -51,7 +50,10 @@ function FullTestimonials({
   classText,
   showHead,
 }) {
-  const { data, isLoading, isError } = useQuery(
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
+
+  const { data } = useQuery(
     ['testimonialData'],
     async () => await getTestimonials(),
     {
@@ -59,8 +61,38 @@ function FullTestimonials({
       refetchOnMount: false,
     }
   );
-  // const img_link =
-  //   'https://project141.s3.eu-north-1.amazonaws.com/' + data?.historyPhotoLink;
+
+  const azTestimonialsData = data?.map((item) => ({
+    logoLink: item.logoLink,
+    id: item.id,
+    fullName: item.fullNameAz,
+    position: item?.positionAz,
+    company: item?.companyAz,
+    testimonial: item?.testimonialAz,
+  }));
+  const engTestimonialsData = data?.map((item) => ({
+    logoLink: item.logoLink,
+    id: item.id,
+    fullName: item.fullNameEng,
+    position: item?.positionEng,
+    company: item?.companyEng,
+    testimonial: item?.testimonialEng,
+  }));
+  const rusTestimonialsData = data?.map((item) => ({
+    logoLink: item.logoLink,
+    id: item.id,
+    fullName: item.fullNameRus,
+    position: item?.positionRus,
+    company: item?.companyRus,
+    testimonial: item?.testimonialRus,
+  }));
+
+  const dataToRender =
+    language === 'en'
+      ? engTestimonialsData
+      : language === 'az'
+      ? azTestimonialsData
+      : rusTestimonialsData;
 
   useEffect(() => {
     removeSlashFromBagination();
@@ -106,7 +138,7 @@ function FullTestimonials({
               className="slic-item"
               data-wow-delay=".5s"
             >
-              {data?.map((item) => {
+              {dataToRender?.map((item) => {
                 const img_url =
                   'https://project141.s3.eu-north-1.amazonaws.com/' +
                   item?.logoLink;

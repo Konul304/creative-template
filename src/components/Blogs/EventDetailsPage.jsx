@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-//= Page components
 import Loading from '../Common/Loader';
 import Navbar from '../Common/Navbar';
 import Footer from '../Common/Footer';
