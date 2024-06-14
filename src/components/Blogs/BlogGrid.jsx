@@ -65,7 +65,12 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                           className="item mb-80 wow fadeInUp"
                           data-wow-delay=".3s"
                         >
-                          <a href={`/news/${item?.id}`} className="img">
+                          <a
+                            href={`/${pathname?.split('/')?.[1]}/news/${
+                              item?.id
+                            }`}
+                            className="img"
+                          >
                             <img
                               style={{ height: '277px' }}
                               src={img_url}
@@ -80,12 +85,14 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                   : language === 'az'
                                   ? item?.tagNamesAz
                                   : item?.tagNamesRus
-                                ).map((tagItem, index) => {
+                                )?.map((tagItem, index) => {
                                   return (
                                     <>
                                       <Link
                                         key={index}
-                                        href={`/news/${item?.id}`}
+                                        href={`/${
+                                          pathname?.split('/')?.[1]
+                                        }/news/${item?.id}`}
                                         className="tag"
                                       >
                                         <span
@@ -101,13 +108,19 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                 })}
                               </div>
                               <h5>
-                                <Link href={`/news/${item?.id}`}>
-                                  {item.title.substr(0, 55) + '...'}
+                                <Link
+                                  href={`/${pathname?.split('/')?.[1]}/news/${
+                                    item?.id
+                                  }`}
+                                >
+                                  {item?.title?.substr(0, 55) + '...'}
                                 </Link>
                               </h5>
                               <div className="btn-more">
                                 <Link
-                                  href={`/news/${item?.id}`}
+                                  href={`/${pathname?.split('/')?.[1]}/news/${
+                                    item?.id
+                                  }`}
                                   className="simple-btn"
                                 >
                                   Read More
@@ -136,7 +149,12 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                           className="item mb-80 wow fadeInUp"
                           data-wow-delay=".3s"
                         >
-                          <a href={`/news/${item?.id}`} className="img">
+                          <a
+                            href={`/${pathname?.split('/')?.[1]}/news/${
+                              item?.id
+                            }`}
+                            className="img"
+                          >
                             <img
                               style={{ height: '277px' }}
                               src={img_url}
@@ -151,12 +169,14 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                   : language === 'az'
                                   ? item?.tagNamesAz
                                   : item?.tagNamesRus
-                                ).map((tagItem, index) => {
+                                )?.map((tagItem, index) => {
                                   return (
                                     <>
                                       <Link
                                         key={index}
-                                        href={`/news/${item?.id}`}
+                                        href={`/${
+                                          pathname?.split('/')?.[1]
+                                        }/news/${item?.id}`}
                                         className="tag"
                                       >
                                         <span
@@ -172,7 +192,11 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                 })}
                               </div>
                               <h5>
-                                <Link href={`/news/${item?.id}`}>
+                                <Link
+                                  href={`/${pathname?.split('/')?.[1]}/news/${
+                                    item?.id
+                                  }`}
+                                >
                                   {(language === 'en'
                                     ? item.titleEng
                                     : language === 'az'
@@ -183,7 +207,9 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                               </h5>
                               <div className="btn-more">
                                 <Link
-                                  href={`/news/${item?.id}`}
+                                  href={`/${pathname?.split('/')?.[1]}/news/${
+                                    item?.id
+                                  }`}
                                   className="simple-btn"
                                 >
                                   Read More

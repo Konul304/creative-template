@@ -6,8 +6,11 @@ import { calendarIconEvents } from '../../../public/img';
 import { useQuery } from 'react-query';
 import { getEvents } from '../../app/(api)/api';
 import dayjs from 'dayjs';
+import { usePathname } from 'next/navigation';
 
 const EventCards = () => {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const { data: eventData } = useQuery(
     ['eventsData'],
     async () => await getEvents(),
@@ -49,7 +52,11 @@ const EventCards = () => {
                         data-wow-delay=".3s"
                       >
                         {' '}
-                        <a href={`/events/${item?.id}`}>
+                        <a
+                          href={`/${pathname?.split('/')?.[1]}/events/${
+                            item?.id
+                          }`}
+                        >
                           <Card
                             hoverable
                             style={{ width: 340 }}

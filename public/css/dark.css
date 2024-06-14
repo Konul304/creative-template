@@ -1940,7 +1940,7 @@ span:hover {
 }
 
 .case_header_img img {
-  width: 100vw !important;
+  width: 100vw;
 }
 
 .nav-scroll {
