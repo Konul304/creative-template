@@ -35,7 +35,7 @@ const CasesGrid = () => {
                             : language === 'az'
                             ? item?.tagNamesAz
                             : item?.tagNamesRus
-                          ).map((tagItem, index) => {
+                          )?.map((tagItem, index) => {
                             return (
                               <>
                                 <Link
