@@ -71,7 +71,7 @@ const EventDetails = ({ data }) => {
             ></div>
             <img
               style={{
-                width: '100%',
+                width: '100vw',
                 height: '100%',
                 objectFit: 'cover',
               }}
