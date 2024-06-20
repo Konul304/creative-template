@@ -68,7 +68,6 @@ const CelebritiesPage = () => {
       refetchOnMount: false,
     }
   );
-  console.log(data);
   return (
     <div className={styles.celebrities_container}>
       <div className={styles.heading}>Our Celebrities</div>
