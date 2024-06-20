@@ -11,8 +11,8 @@ const SimilarCases = (data) => {
     (item) => item.id?.toString() === data?.data?.id?.casesID
   );
   const matchingObjects = allData?.filter((item) => {
-    const hasMatchingTag = caseData.tagNamesAz.some(
-      (tagName) => item.tagNamesAz && item.tagNamesAz.includes(tagName)
+    const hasMatchingTag = caseData?.tagNamesAz?.some(
+      (tagName) => item.tagNamesAz && item.tagNamesAz?.includes(tagName)
     );
     return hasMatchingTag;
   });

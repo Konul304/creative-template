@@ -3,7 +3,6 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 
 const Content = (data) => {
-  console.log(data?.data?.heading1Az);
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
   const azContent = {

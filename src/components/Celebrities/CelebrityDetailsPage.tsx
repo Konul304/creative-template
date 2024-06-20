@@ -23,7 +23,6 @@ const CelebrityDetailsPage = ({ id }) => {
   const celebrityData = data?.find(
     (item: any) => item.id?.toString() === id?.id?.celebrityID
   );
-  console.log(celebrityData);
 
   const img_url =
     'https://project141.s3.eu-north-1.amazonaws.com/' +
@@ -44,7 +43,6 @@ const CelebrityDetailsPage = ({ id }) => {
       : language === 'az'
       ? azCelebrityData
       : rusCelebrityData;
-  console.log(dataToRender);
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">

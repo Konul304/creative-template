@@ -24,7 +24,10 @@ const CasesGrid = () => {
               return (
                 <div className="col-lg-4" key={item.id}>
                   <div className="item mb-80 wow fadeInUp" data-wow-delay=".3s">
-                    <a href={`/cases/cases-dark/${item?.id}`} className="img">
+                    <a
+                      href={`/${pathname?.split('/')?.[1]}/cases/${item?.id}`}
+                      className="img"
+                    >
                       <img src={img_url} alt="" />
                     </a>
                     <div className="cont">
@@ -40,7 +43,9 @@ const CasesGrid = () => {
                               <>
                                 <Link
                                   key={index}
-                                  href={`/cases/cases-dark/${item?.id}`}
+                                  href={`/${pathname?.split('/')?.[1]}/cases/${
+                                    item?.id
+                                  }`}
                                   className="tag"
                                 >
                                   <span
@@ -57,7 +62,9 @@ const CasesGrid = () => {
                         </div>
                         <h5>
                           <Link
-                            href={`/cases/cases-dark/${item?.id}`}
+                            href={`/${pathname?.split('/')?.[1]}/cases/${
+                              item?.id
+                            }`}
                             style={{ color: '#5f5f5f' }}
                           >
                             {(language === 'en'
@@ -70,7 +77,9 @@ const CasesGrid = () => {
                         </h5>
                         <div className="btn-more">
                           <Link
-                            href={`/cases/cases-dark/${item?.id}`}
+                            href={`/${pathname?.split('/')?.[1]}/cases/${
+                              item?.id
+                            }`}
                             className="simple-btn"
                           >
                             Read More
