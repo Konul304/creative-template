@@ -66,7 +66,10 @@ const AboutUs1 = () => {
               <p>
                 {dataToRender?.weText && HTMLReactParser(dataToRender?.weText)}
               </p>
-              <a href={`/about/about-dark`} className="butn bord curve mt-30">
+              <a
+                href={`/${pathname?.split('/')?.[1]}/about`}
+                className="butn bord curve mt-30"
+              >
                 <span>Read More</span>
               </a>
             </div>

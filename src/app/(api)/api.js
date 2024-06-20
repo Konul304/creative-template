@@ -172,3 +172,12 @@ export const getServiceFAQ = async () => {
     console.log(err);
   }
 };
+
+export const getCelebrities = async () => {
+  try {
+    const response = await axiosTemplate.get('Celebrity');
+    return response?.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
