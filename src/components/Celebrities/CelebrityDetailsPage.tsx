@@ -1,70 +1,50 @@
 'use client';
 import React from 'react';
-import dayjs from 'dayjs';
 import { usePathname } from 'next/navigation';
 import styles from '../../styles/Celebrities.module.scss';
 import Content from '../Blogs/Details/Content';
 import { medal } from '../../../public/img';
+import dayjs from 'dayjs';
+import { useQuery } from 'react-query';
+import { getCelebrities } from '../../app/(api)/api';
+import HTMLReactParser from 'html-react-parser';
 
-const listData = [
-  {
-    id: 1,
-    name: '1st Plave: Egyptian Super Cup',
-    date: '2023 - Egypt',
-  },
-  {
-    id: 1,
-    name: '1st Plave: Egyptian Super Cup',
-    date: '2023 - Egypt',
-  },
-  {
-    id: 1,
-    name: '1st Plave: Egyptian Super Cup',
-    date: '2023 - Egypt',
-  },
-  {
-    id: 1,
-    name: '1st Plave: Egyptian Super Cup',
-    date: '2023 - Egypt',
-  },
-];
-
-const CelebrityDetailsPage = ({ data }) => {
+const CelebrityDetailsPage = ({ id }) => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
-  const eventsData = data?.data?.find(
-    (item) => item.id?.toString() === data?.id?.eventID
+  const { data } = useQuery(
+    ['celebrityData'],
+    async () => await getCelebrities(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
   );
+  const celebrityData = data?.find(
+    (item: any) => item.id?.toString() === id?.id?.celebrityID
+  );
+  console.log(celebrityData);
+
   const img_url =
-    'https://project141.s3.eu-north-1.amazonaws.com/' + eventsData?.logoLink;
-  const azEventData = {
-    title: eventsData?.titleAz,
-    location: eventsData?.locationAz,
-    organizerName: eventsData?.organizerNameAz,
-    organizerAddress: eventsData?.organizerAddressAz,
-    ticketSellerName: eventsData?.ticketSellerNameAz,
+    'https://project141.s3.eu-north-1.amazonaws.com/' +
+    celebrityData?.backgroundImage;
+  const azCelebrityData = {
+    description: celebrityData?.descriptionAz,
   };
-  const engEventData = {
-    title: eventsData?.titleEng,
-    location: eventsData?.locationEng,
-    organizerName: eventsData?.organizerNameEng,
-    organizerAddress: eventsData?.organizerAddressEng,
-    ticketSellerName: eventsData?.ticketSellerNameEng,
+  const engCelebrityData = {
+    description: celebrityData?.descriptionEng,
   };
-  const rusEventData = {
-    title: eventsData?.titleRus,
-    location: eventsData?.locationRus,
-    organizerName: eventsData?.organizerNameRus,
-    organizerAddress: eventsData?.organizerAddressRus,
-    ticketSellerName: eventsData?.ticketSellerNameRus,
+  const rusCelebrityData = {
+    description: celebrityData?.descriptionRus,
   };
 
   const dataToRender =
     language === 'en'
-      ? engEventData
+      ? engCelebrityData
       : language === 'az'
-      ? azEventData
-      : rusEventData;
+      ? azCelebrityData
+      : rusCelebrityData;
+  console.log(dataToRender);
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">
@@ -138,7 +118,7 @@ const CelebrityDetailsPage = ({ data }) => {
                         marginBottom: '20px',
                       }}
                     >
-                      Nicola Abadjiev
+                      {celebrityData?.fullname}
                     </div>
                     <div
                       style={{
@@ -147,7 +127,7 @@ const CelebrityDetailsPage = ({ data }) => {
                         marginBottom: '10px',
                       }}
                     >
-                      Bulgaria - Kitesurfing
+                      {celebrityData?.country} - {celebrityData?.field}
                     </div>
                   </div>
                 </div>
@@ -155,11 +135,11 @@ const CelebrityDetailsPage = ({ data }) => {
                 <div style={{ marginBottom: '10px' }}>
                   <a
                     style={{ marginRight: '30px' }}
-                    href="https://www.instagram.com/creative_141?igsh=ZjZtZjAxcGdoMjJh"
+                    href={`${celebrityData?.instagram}`}
                   >
                     <i className="fab fa-instagram"></i>
                   </a>
-                  <a href="https://www.facebook.com/c141worldwide?mibextid=ZbWKwL">
+                  <a href={`${celebrityData?.facebook}`}>
                     <i className="fab fa-facebook-f"></i>
                   </a>
                 </div>
@@ -179,70 +159,78 @@ const CelebrityDetailsPage = ({ data }) => {
                 textAlign: 'center',
               }}
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-              commodi obcaecati culpa consectetur rem ullam esse neque corporis
-              similique? Explicabo, sint ex? Ex ipsa dolorum nam mollitia ipsum
-              quo provident?Lorem ipsum, dolor sit amet consectetur adipisicing
-              elit. Eveniet, dolore maiores. Doloribus aut architecto ullam
-              quis, nulla dicta vel facere consequuntur quaerat nesciunt
-              voluptas neque doloremque, animi laboriosam explicabo praesentium.
+              {dataToRender?.description &&
+                HTMLReactParser(dataToRender?.description)}
             </div>
             <div className={styles.info_card}>
               <div className={styles.item}>
                 <div className={styles.title}>Date of birth</div>
-                <div className={styles.description}>27 January 2000</div>
+                <div className={styles.description}>
+                  {dayjs(celebrityData?.birthdate).format('D MMM YYYY')}
+                </div>
               </div>
               <div className={styles.item}>
                 <div className={styles.title}>Place of birth</div>
-                <div className={styles.description}>Sofia</div>
+                <div className={styles.description}>
+                  {celebrityData?.birthPlace}
+                </div>
               </div>
               <div className={styles.item}>
                 <div className={styles.title}>Age</div>
-                <div className={styles.description}>24</div>
+                <div className={styles.description}>{celebrityData?.age}</div>
               </div>
               <div className={styles.item}>
                 <div className={styles.title}>Nationality</div>
-                <div className={styles.description}>Bulgaria</div>
+                <div className={styles.description}>
+                  {celebrityData?.country}
+                </div>
               </div>
               <div className={styles.item}>
                 <div className={styles.title}>Career start</div>
-                <div className={styles.description}>2012</div>
+                <div className={styles.description}>
+                  {celebrityData?.careerStart}
+                </div>
               </div>
               <div className={styles.item}>
                 <div className={styles.title}>Disciplines</div>
-                <div className={styles.description}>Kitesurfing wave</div>
+                <div className={styles.description}>{celebrityData?.field}</div>
               </div>
             </div>
-            <Content data={[]} />
-            <div className={styles.celebrity_list}>
+            <Content data={celebrityData} />
+            <div
+              className={styles.celebrity_list}
+              style={{ marginTop: '30px' }}
+            >
               <div className={styles.achievements}>
                 <span style={{ marginRight: '20px', paddingTop: '6px' }}>
                   {medal}
                 </span>
                 Achievements
               </div>
-              {listData?.map((celebrity, index) => (
-                <div
-                  onClick={() =>
-                    window.open(
-                      `/${pathname?.split('/')?.[1]}/celebrities/${
-                        celebrity?.id
-                      }`,
-                      '_blank'
-                    )
-                  }
-                  key={index}
-                  className={styles.celebrity_item}
-                  style={{ cursor: 'default' }}
-                >
-                  <div className={styles.celebrity_info}>
-                    <h2 className={styles.celebrity_name}>{celebrity.name}</h2>
-                    <div style={{ fontSize: '12px', marginTop: '15px' }}>
-                      {celebrity?.date}
+              {celebrityData?.celebrityAchievements?.map(
+                (achievement: any, index: any) => (
+                  <div
+                    key={index}
+                    className={styles.celebrity_item}
+                    style={{ cursor: 'default' }}
+                  >
+                    <div className={styles.celebrity_info}>
+                      <h2 className={styles.celebrity_name}>
+                        {achievement?.place} Place:{' '}
+                        {language === 'en'
+                          ? achievement?.nameEng
+                          : language === 'az'
+                          ? achievement?.nameAz
+                          : achievement?.nameRus}
+                      </h2>
+                      <div style={{ fontSize: '12px', marginTop: '15px' }}>
+                        {dayjs(achievement?.date).format('YYYY')} -{' '}
+                        {achievement?.country}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </div>
           </div>
         </div>

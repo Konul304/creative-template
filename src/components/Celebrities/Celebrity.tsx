@@ -15,7 +15,7 @@ const Celebrity = (id: any) => {
           <div className="gradient-circle two"></div>
         </div>
       </div>
-      <CelebrityDetailsPage data={[]} />
+      <CelebrityDetailsPage id={id} />
       <Navbar theme={''} />
       <Footer hideBGCOLOR={''} />
     </>

@@ -113,7 +113,12 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                     item?.id
                                   }`}
                                 >
-                                  {item?.title?.substr(0, 55) + '...'}
+                                  {(language === 'en'
+                                    ? item.titleEng
+                                    : language === 'az'
+                                    ? item.titleAz
+                                    : item.titleRus
+                                  )?.substr(0, 55) + '...'}
                                 </Link>
                               </h5>
                               <div className="btn-more">
