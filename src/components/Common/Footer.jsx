@@ -4,10 +4,11 @@ import { getContactData, getPortfolio, postEmail } from '../../app/(api)/api';
 import { useEffect, useState } from 'react';
 import countryData from '../../data/regions-to-countries';
 import { Select, message } from 'antd';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Footer = ({ hideBGCOLOR }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const language = pathname?.split('/')[1];
   const { countries, zones } = require('moment-timezone/data/meta/latest.json');
   const timeZoneToCountry = {};
@@ -211,13 +212,20 @@ const Footer = ({ hideBGCOLOR }) => {
                     item?.logoLink;
                   return (
                     <li key={item?.id}>
-                      <div className="img">
-                        <a href="#">
+                      <div
+                        onClick={() =>
+                          router?.push(
+                            `/${pathname?.split('/')?.[1]}/portfolio`
+                          )
+                        }
+                        className="img"
+                      >
+                        <a href="/portfolio">
                           <img src={img_link} alt="" />
                         </a>
                       </div>
                       <div className="sm-post">
-                        <a href="#">
+                        <a href={`/${pathname?.split('/')?.[1]}/portfolio`}>
                           <p>{item?.title}</p>
                           {/* <span className="date">14 sep 2023</span> */}
                         </a>
