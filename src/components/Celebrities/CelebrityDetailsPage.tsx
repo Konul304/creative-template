@@ -214,7 +214,15 @@ const CelebrityDetailsPage = ({ id }) => {
                   >
                     <div className={styles.celebrity_info}>
                       <h2 className={styles.celebrity_name}>
-                        {achievement?.place} Place:{' '}
+                        {achievement?.place}
+                        {achievement?.place == '1'
+                          ? 'st'
+                          : achievement?.place == '2'
+                          ? 'nd'
+                          : achievement?.place == '3'
+                          ? 'rd'
+                          : 'th'}{' '}
+                        Place:{' '}
                         {language === 'en'
                           ? achievement?.nameEng
                           : language === 'az'
