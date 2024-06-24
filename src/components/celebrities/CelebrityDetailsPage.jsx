@@ -21,12 +21,12 @@ const CelebrityDetailsPage = ({ id }) => {
     }
   );
   const celebrityData = data?.find(
-    (item: any) => item.id?.toString() === id?.id?.celebrityID
+    (item) => item.id?.toString() === id?.id?.celebrityID
   );
 
-  const img_url =
-    'https://project141.s3.eu-north-1.amazonaws.com/' +
-    celebrityData?.backgroundImage;
+  // const img_url =
+  //   'https://project141.s3.eu-north-1.amazonaws.com/' +
+  //   celebrityData?.backgroundImage;
   const azCelebrityData = {
     description: celebrityData?.descriptionAz,
   };
@@ -206,7 +206,7 @@ const CelebrityDetailsPage = ({ id }) => {
                 Achievements
               </div>
               {celebrityData?.celebrityAchievements?.map(
-                (achievement: any, index: any) => (
+                (achievement, index) => (
                   <div
                     key={index}
                     className={styles.celebrity_item}

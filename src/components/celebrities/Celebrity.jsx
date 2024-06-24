@@ -4,7 +4,7 @@ import Navbar from '../Common/Navbar';
 import Footer from '../Common/Footer';
 import CelebrityDetailsPage from './CelebrityDetailsPage';
 
-const Celebrity = (id: any) => {
+const Celebrity = (id) => {
   return (
     <>
       {' '}

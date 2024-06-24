@@ -1,5 +1,5 @@
 import React from 'react';
-import Celebrity from '../../../../components/Celebrities/Celebrity';
+import Celebrity from '../../../../components/celebrities/Celebrity';
 
 const page = async ({ params }) => {
   console.log(params);
