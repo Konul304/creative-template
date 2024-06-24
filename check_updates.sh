@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Change directory to the desired path
+cd /var/www/outsource/sec2-web/creative-template
+
 # Function to check for local changes and push them
 push_local_changes() {
     if [ -n "$(git status --porcelain)" ]; then
@@ -49,5 +52,5 @@ check_updates() {
     fi
 }
 
-# Call the function
-check_updates
+# Create a new screen session and run the check_updates function inside it
+screen -dmS update_session bash -c "check_updates; screen -S update_session -X quit"
