@@ -11,7 +11,7 @@ import HomepageServicesSection from '../../../components/Services/HomepageServic
 import Navbar from '../../../components/Common/Navbar';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 const Home1 = async () => {

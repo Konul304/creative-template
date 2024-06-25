@@ -6,7 +6,7 @@ import Cursor from '../../components/Common/Cursor';
 import ProgressScroll from '../../components/Common/ProgressScroll';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',

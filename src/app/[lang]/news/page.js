@@ -7,7 +7,7 @@ import BlogGrid from '../../../components/Blogs/BlogGrid';
 import Footer from '../../../components/Common/Footer';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 const NewsPage = async () => {

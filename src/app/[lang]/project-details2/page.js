@@ -13,7 +13,7 @@ import Footer from '../../../components/Common/Footer';
 import ProjectDate from '../../../data/project-details2.json';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 export default function ProjectDetailsPage() {

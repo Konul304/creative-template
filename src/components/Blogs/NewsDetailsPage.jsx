@@ -8,7 +8,7 @@ import NewsDetails from './NewsDetails';
 import { usePathname } from 'next/navigation';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 const NewsDetailsPage = (data) => {

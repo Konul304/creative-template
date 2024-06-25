@@ -9,7 +9,7 @@ import Loading from '../../../components/Common/Loader';
 import OurHistory from '../../../components/OurHistory';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 const AboutDark = async () => {
