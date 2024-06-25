@@ -104,23 +104,23 @@ const SliderHeader = () => {
     sliderDescription: item.sliderDescriptionRus,
   }));
 
-  const azEventData = filteredNewsData?.map((item) => ({
+  const azEventData = filteredEventsData?.map((item) => ({
     sliderLogoLink: item.sliderLogoLink,
     id: item.id,
-    sliderTitle: item.sliderTitleAz,
-    sliderDescription: item.sliderDescriptionAz,
+    sliderTitle: item.titleAz,
+    sliderDescription: item.descriptionAz,
   }));
-  const engEventData = filteredNewsData?.map((item) => ({
+  const engEventData = filteredEventsData?.map((item) => ({
     sliderLogoLink: item.sliderLogoLink,
     id: item.id,
-    sliderTitle: item.sliderTitleEng,
-    sliderDescription: item.sliderDescriptionEng,
+    sliderTitle: item.titleEng,
+    sliderDescription: item.descriptionEng,
   }));
-  const rusEventData = filteredNewsData?.map((item) => ({
+  const rusEventData = filteredEventsData?.map((item) => ({
     sliderLogoLink: item.sliderLogoLink,
     id: item.id,
-    sliderTitle: item.sliderTitleRus,
-    sliderDescription: item.sliderDescriptionRus,
+    sliderTitle: item.titleRus,
+    sliderDescription: item.descriptionRus,
   }));
 
   useEffect(() => {
@@ -135,7 +135,7 @@ const SliderHeader = () => {
       MainContent.style.marginTop = slideHeight + 'px';
     }
   }, [data]);
-
+  console.log(eventsData);
   const casesToRender =
     language === 'en'
       ? engCaseData
@@ -154,6 +154,7 @@ const SliderHeader = () => {
       : language === 'az'
       ? azEventData
       : rusEventData;
+  console.log(engEventData);
   return (
     <header
       className="slider slider-prlx fixed-slider text-center"
@@ -294,7 +295,7 @@ const SliderHeader = () => {
                     data-overlay-dark="6"
                   >
                     <a
-                      href={`/${pathname?.split('/')?.[1]}/news/${slide?.id}`}
+                      href={`/${pathname?.split('/')?.[1]}/events/${slide?.id}`}
                       className="container"
                       style={{
                         display: 'block',
