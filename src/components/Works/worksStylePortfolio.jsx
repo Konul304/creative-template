@@ -145,8 +145,8 @@ function WorksStylePortfolio({ grid, filterPosition, hideFilter }) {
                       : grid === 2
                       ? 'col-md-6'
                       : 'col-12'
-                  } items presentation wow fadeInUp`}
-                  data-wow-delay=".4s"
+                  } items presentation`}
+                  // data-wow-delay=".4s"
                 >
                   <div className="item-img">
                     <div className="imago wow">
@@ -189,8 +189,8 @@ function WorksStylePortfolio({ grid, filterPosition, hideFilter }) {
               return (
                 <div
                   key={index}
-                  className={`col-lg-4 col-md-6 col-12 items videos wow fadeInUp`}
-                  data-wow-delay=".4s"
+                  className={`col-lg-4 col-md-6 col-12 items videos `}
+                  // data-wow-delay=".4s"
                 >
                   <div className="item-img">
                     <div

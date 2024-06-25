@@ -24,9 +24,10 @@ const CelebrityDetailsPage = ({ id }) => {
     (item) => item.id?.toString() === id?.id?.celebrityID
   );
 
-  // const img_url =
-  //   'https://project141.s3.eu-north-1.amazonaws.com/' +
-  //   celebrityData?.backgroundImage;
+  const img_url =
+    'https://project141.s3.eu-north-1.amazonaws.com/' +
+    celebrityData?.backgroundImage;
+
   const azCelebrityData = {
     description: celebrityData?.descriptionAz,
   };
@@ -69,10 +70,8 @@ const CelebrityDetailsPage = ({ id }) => {
                 height: '100%',
                 objectFit: 'cover',
               }}
-              src={
-                'https://img.redbull.com/images/c_crop,x_0,y_3,h_2787,w_4180/c_fill,w_1700,h_1100/q_auto,f_auto/redbullcom/2020/12/9/joytbf9g7obwgq7zzulb/nicola-abadjiev-sofia-2020'
-              }
-              alt=""
+              src={img_url}
+              alt="bgImage"
             />
             <div
               style={{
