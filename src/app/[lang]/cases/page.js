@@ -6,7 +6,7 @@ import Footer from '../../../components/Common/Footer';
 import CasesGrid from '../../../components/Blogs/CasesGrid';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 const CasesPage = async () => {

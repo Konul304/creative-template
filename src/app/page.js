@@ -8,7 +8,7 @@ import ProgressScroll from '../components/Common/ProgressScroll';
 import Home1 from './[lang]/homepage/page';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',

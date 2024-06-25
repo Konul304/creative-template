@@ -7,7 +7,7 @@ import Footer from '../../../components/Common/Footer';
 import WorksStylePortfolio from '../../../components/Works/worksStylePortfolio';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 const Works2Page = async () => {

@@ -6,7 +6,7 @@ import Services1 from '../../../components/Services/Services1';
 import BlogStanderd from '../../../components/Blogs/ServicesFAQ';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 export default async function Services() {

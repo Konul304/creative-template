@@ -7,7 +7,7 @@ import ContactForm from '../../../components/Contact/ContactForm';
 import Footer from '../../../components/Common/Footer';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
 };
 
 const ContactPage = async () => {

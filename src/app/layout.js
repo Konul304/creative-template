@@ -7,7 +7,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import ProvidersWrapper from './Providers';
 
 export const metadata = {
-  title: 'C141',
+  title: 'MVP Agency',
   description: 'Creative 141',
   keywords: ['HTML5', '', '', 'Multi-Purpose', ''],
   icons: {
