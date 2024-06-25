@@ -7,6 +7,7 @@ import { getCelebrities } from '../../app/(api)/api';
 
 const CelebritiesPage = () => {
   const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const { data } = useQuery(
     ['celebrityData'],
     async () => await getCelebrities(),
@@ -18,7 +19,13 @@ const CelebritiesPage = () => {
 
   return (
     <div className={styles.celebrities_container}>
-      <div className={styles.heading}>Our Athletes and Artists</div>
+      <div className={styles.heading}>
+        {language === 'en'
+          ? 'Our Athletes and Artists'
+          : language === 'az'
+          ? 'İdmançılarımız'
+          : 'Наши Атлеты'}
+      </div>
       <div className={styles.celebrity_list}>
         {data?.map((celebrity, index) => {
           const profile_img =

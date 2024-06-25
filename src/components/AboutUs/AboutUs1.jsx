@@ -51,14 +51,23 @@ const AboutUs1 = () => {
             fontSize: '32px',
           }}
         >
-          Your Most Valuable Partner
+          {language === 'az'
+            ? 'Ən Dəyərli Partnyorunuz'
+            : language === 'en'
+            ? 'Your Most Valuable Partner'
+            : 'Ваш самый ценный партнер'}
         </div>
         <div className="row">
           <div className="col-lg-5 valign md-mb50">
             <div className="mb-50">
               <h6 className="fw-100 text-u ls10 mb-10 fw-500">
-                {aboutData.smallTitle}
+                {language === 'en'
+                  ? 'About us'
+                  : language === 'az'
+                  ? 'Haqqımızda'
+                  : 'О нас'}
               </h6>
+
               <h3 className="fw-600 text-u ls1 mb-30 color-font">
                 {dataToRender?.weTitle &&
                   HTMLReactParser(dataToRender?.weTitle)}
@@ -70,7 +79,13 @@ const AboutUs1 = () => {
                 href={`/${pathname?.split('/')?.[1]}/about`}
                 className="butn bord curve mt-30"
               >
-                <span>Read More</span>
+                <span>
+                  {language === 'az'
+                    ? 'Daha çox'
+                    : language === 'en'
+                    ? 'Read more'
+                    : 'Далее'}
+                </span>
               </a>
             </div>
           </div>

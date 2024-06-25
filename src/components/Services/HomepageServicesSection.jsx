@@ -41,7 +41,13 @@ const HomepageServicesSection = ({ style, lines }) => {
         <div className="row justify-content-center">
           <div className="col-lg-8 col-md-10">
             <div className="sec-head  text-center">
-              <h3 className="wow color-font">Our Services</h3>
+              <h3 className="wow color-font">
+                {language === 'en'
+                  ? 'Our Services'
+                  : language === 'az'
+                  ? 'Xidmətlərimiz'
+                  : 'Наши услуги'}
+              </h3>
             </div>
           </div>
         </div>

@@ -8,8 +8,11 @@ import styles from '../../styles/Contact.module.scss';
 import countryData from '../../data/regions-to-countries';
 import { Select, message } from 'antd';
 import { getContactData, postMessage } from '../../app/(api)/api';
+import { usePathname } from 'next/navigation';
 
 const ContactForm = ({ theme }) => {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const { countries, zones } = require('moment-timezone/data/meta/latest.json');
   const timeZoneToCountry = {};
   const timeZoneCityToCountry = {};
@@ -128,7 +131,13 @@ const ContactForm = ({ theme }) => {
         <div className="row">
           <div className="col-lg-6">
             <div className="form md-mb50">
-              <h4 className="fw-700 color-font mb-50">Get In Touch.</h4>
+              <h4 className="fw-700 color-font mb-50">
+                {language === 'en'
+                  ? 'Get In Touch.'
+                  : language === 'ru'
+                  ? 'Свяжись с нами.'
+                  : 'Əlaqə saxlayın"'}
+              </h4>
 
               <form id="contact-form" onSubmit={handleSubmit}>
                 <div className="messages"></div>
@@ -139,7 +148,13 @@ const ContactForm = ({ theme }) => {
                       id="form_name"
                       type="text"
                       name="name"
-                      placeholder="Name"
+                      placeholder={
+                        language === 'en'
+                          ? 'Name'
+                          : language === 'ru'
+                          ? 'Имя'
+                          : 'Ad'
+                      }
                       required="required"
                       onChange={(e) =>
                         setInputValues((prevState) => ({
@@ -155,7 +170,13 @@ const ContactForm = ({ theme }) => {
                       id="form_email"
                       type="email"
                       name="email"
-                      placeholder="Email"
+                      placeholder={
+                        language === 'en'
+                          ? 'Email'
+                          : language === 'ru'
+                          ? 'e-mail'
+                          : 'Email'
+                      }
                       required="required"
                       onChange={(e) =>
                         setInputValues((prevState) => ({
@@ -170,7 +191,13 @@ const ContactForm = ({ theme }) => {
                     <textarea
                       id="form_message"
                       name="message"
-                      placeholder="Message"
+                      placeholder={
+                        language === 'en'
+                          ? 'Message'
+                          : language === 'ru'
+                          ? 'Введите сообщение...'
+                          : 'Mesaj'
+                      }
                       rows="4"
                       required="required"
                       onChange={(e) =>
@@ -186,7 +213,13 @@ const ContactForm = ({ theme }) => {
                     type="submit"
                     className={`butn ${theme === 'light' ? 'dark' : 'bord'}`}
                   >
-                    <span>Send Message</span>
+                    <span>
+                      {language === 'en'
+                        ? 'Send Message'
+                        : language === 'ru'
+                        ? 'Отправить'
+                        : 'Göndər'}
+                    </span>
                   </button>
                 </div>
               </form>
@@ -194,10 +227,21 @@ const ContactForm = ({ theme }) => {
           </div>
           <div className="col-lg-5 offset-lg-1">
             <div className="cont-info">
-              <h4 className="fw-700 color-font mb-50">Contact Info.</h4>
+              <h4 className="fw-700 color-font mb-50">
+                {' '}
+                {language === 'en'
+                  ? 'Contact Info.'
+                  : language === 'ru'
+                  ? 'Контакты'
+                  : 'Əlaqə'}
+              </h4>
               <Split>
                 <h3 className="wow" data-splitting>
-                  {contentFormData.title}
+                  {language === 'en'
+                    ? "Let's Talk."
+                    : language === 'ru'
+                    ? 'Давай поговорим.'
+                    : 'Danışaq'}
                 </h3>
               </Split>
               <div className="item mb-40">
@@ -208,7 +252,11 @@ const ContactForm = ({ theme }) => {
               </div>
               <Split>
                 <h3 className="wow" data-splitting>
-                  Visit Us.
+                  {language === 'en'
+                    ? 'Visit Us.'
+                    : language === 'ru'
+                    ? 'Приходи к нам.'
+                    : 'Ünvanımız'}
                 </h3>
               </Split>
               <div className="item">
@@ -216,22 +264,25 @@ const ContactForm = ({ theme }) => {
               </div>
               <div className="social mt-50">
                 <a
-                  href="https://www.instagram.com/creative_141?igsh=ZjZtZjAxcGdoMjJh"
+                  href="https://www.instagram.com/mvpeventsagency?igsh=MTZnMzQ4MnNqM2kzcg=="
                   target="_blank"
                 >
                   <i className="fab fa-instagram"></i>
                 </a>
                 <a
-                  href="https://www.facebook.com/c141worldwide?mibextid=ZbWKwL"
+                  href="https://www.facebook.com/MVPAzerbaijan?mibextid=LQQJ4d"
                   target="_blank"
                 >
                   <i className="fab fa-facebook-f"></i>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/marketing-agency-c141-creative-one-for-one-/"
+                  href="https://www.linkedin.com/company/mvp-sports-events/"
                   target="_blank"
                 >
                   <i className="fab fa-linkedin"></i>
+                </a>
+                <a href="#0">
+                  <i className="fab fa-youtube"></i>
                 </a>
               </div>
             </div>

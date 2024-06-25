@@ -135,7 +135,14 @@ const Footer = ({ hideBGCOLOR }) => {
           <div className="col-lg-4">
             <div className="item md-mb50">
               <div className="title">
-                <h5>Contact Us</h5>
+                <h5>
+                  {' '}
+                  {language === 'en'
+                    ? 'Contact Us'
+                    : language === 'ru'
+                    ? 'Контакты'
+                    : 'Əlaqə '}
+                </h5>
               </div>
               <Select
                 showSearch
@@ -179,21 +186,40 @@ const Footer = ({ hideBGCOLOR }) => {
                 <li>
                   <span className="icon pe-7s-map-marker"></span>
                   <div className="cont">
-                    <h6>Official Address</h6>
+                    <h6>
+                      {' '}
+                      {language === 'en'
+                        ? 'Official Address'
+                        : language === 'ru'
+                        ? 'Оффицальный адресс'
+                        : 'Rəsmi ünvan'}
+                    </h6>
                     <p>{contactInfo?.address}</p>
                   </div>
                 </li>
                 <li>
                   <span className="icon pe-7s-mail"></span>
                   <div className="cont">
-                    <h6>Email Us</h6>
+                    <h6>
+                      {language === 'en'
+                        ? 'Email Us'
+                        : language === 'ru'
+                        ? 'Отправить е-маил'
+                        : 'Email göndər'}
+                    </h6>
                     <p>{contactInfo?.email}</p>
                   </div>
                 </li>
                 <li>
                   <span className="icon pe-7s-call"></span>
                   <div className="cont">
-                    <h6>Call Us</h6>
+                    <h6>
+                      {language === 'en'
+                        ? 'Call Us'
+                        : language === 'ru'
+                        ? 'Позвони нам'
+                        : 'Zəng edin'}
+                    </h6>
                     <p>{contactInfo?.phoneNumber}</p>
                   </div>
                 </li>
@@ -203,7 +229,14 @@ const Footer = ({ hideBGCOLOR }) => {
           <div className="col-lg-4">
             <div className="item md-mb50">
               <div className="title">
-                <h5>Portfolio</h5>
+                <h5>
+                  {' '}
+                  {language === 'en'
+                    ? 'Portfolio'
+                    : language === 'ru'
+                    ? 'Портфолио'
+                    : 'Portfolio'}
+                </h5>
               </div>
               <ul>
                 {dataToRender?.map((item) => {
@@ -240,7 +273,13 @@ const Footer = ({ hideBGCOLOR }) => {
                       <input
                         type="email"
                         required
-                        placeholder="Type Your Email"
+                        placeholder={
+                          language === 'en'
+                            ? '"Type Your Email"'
+                            : language === 'ru'
+                            ? 'Напишите ваш е-маил'
+                            : 'Emailinizi yazın'
+                        }
                         onChange={(e) => setEmail(e?.target?.value)}
                       />
                       <button
@@ -256,26 +295,36 @@ const Footer = ({ hideBGCOLOR }) => {
           <div className="col-lg-4">
             <div className="item">
               <div className="title">
-                <h5>Socials</h5>
+                <h5>
+                  {' '}
+                  {language === 'en'
+                    ? 'Socials'
+                    : language === 'ru'
+                    ? 'Соцыальные сети'
+                    : 'Sosial'}
+                </h5>
               </div>
               <div className="social">
                 <a
-                  href="https://www.instagram.com/creative_141?igsh=ZjZtZjAxcGdoMjJh"
+                  href="https://www.instagram.com/mvpeventsagency?igsh=MTZnMzQ4MnNqM2kzcg=="
                   target="_blank"
                 >
                   <i className="fab fa-instagram"></i>
                 </a>
                 <a
-                  href="https://www.facebook.com/c141worldwide?mibextid=ZbWKwL"
+                  href="https://www.facebook.com/MVPAzerbaijan?mibextid=LQQJ4d"
                   target="_blank"
                 >
                   <i className="fab fa-facebook-f"></i>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/marketing-agency-c141-creative-one-for-one-/"
+                  href="https://www.linkedin.com/company/mvp-sports-events/"
                   target="_blank"
                 >
                   <i className="fab fa-linkedin"></i>
+                </a>
+                <a href="#0">
+                  <i className="fab fa-youtube"></i>
                 </a>
                 {/* <a href="https://www.facebook.com/c141worldwide?mibextid=ZbWKwL">
                   <i className="fab fa-facebook-f"></i>
@@ -286,9 +335,7 @@ const Footer = ({ hideBGCOLOR }) => {
                 <a href="#0">
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="#0">
-                  <i className="fab fa-youtube"></i>
-                </a> */}
+                */}
               </div>
             </div>
           </div>

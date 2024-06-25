@@ -6,12 +6,13 @@ import { usePathname, useRouter } from 'next/navigation';
 import { getLogo } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import { Select } from 'antd';
+import styles from '../../styles/Navbar.module.scss';
 
 const Navbar = ({ theme }) => {
   const navbar = useRef();
   const router = useRouter();
   const pathname = usePathname();
-  // const language = pathname?.split('/')[1];
+  const language = pathname?.split('/')[1];
 
   const { data } = useQuery(['Logo'], async () => await getLogo(), {
     refetchOnWindowFocus: false,
@@ -97,7 +98,11 @@ const Navbar = ({ theme }) => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Home
+                {language === 'en'
+                  ? 'Home'
+                  : language === 'az'
+                  ? 'Ana səhifə'
+                  : 'Главная'}
               </a>
             </li>
             <li className="nav-item">
@@ -105,7 +110,11 @@ const Navbar = ({ theme }) => {
                 className="nav-link"
                 href={`/${pathname?.split('/')?.[1]}/about`}
               >
-                About
+                {language === 'en'
+                  ? 'About'
+                  : language === 'az'
+                  ? 'Haqqımızda'
+                  : 'О нас'}
               </a>
             </li>
             <li className="nav-item dropdown">
@@ -118,7 +127,11 @@ const Navbar = ({ theme }) => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Services
+                {language === 'en'
+                  ? 'Services'
+                  : language === 'az'
+                  ? 'Xidmətlər'
+                  : 'Услуги'}
               </a>
             </li>
             <li className="nav-item">
@@ -126,7 +139,11 @@ const Navbar = ({ theme }) => {
                 href={`/${pathname?.split('/')?.[1]}/cases`}
                 className="nav-link"
               >
-                Cases
+                {language === 'en'
+                  ? 'Cases'
+                  : language === 'az'
+                  ? 'Cases'
+                  : 'Кейсы '}
               </a>
             </li>
 
@@ -135,7 +152,11 @@ const Navbar = ({ theme }) => {
                 href={`/${pathname?.split('/')?.[1]}/news`}
                 className="nav-link"
               >
-                News
+                {language === 'en'
+                  ? 'News'
+                  : language === 'az'
+                  ? 'Xəbərlər'
+                  : 'Новости'}
               </a>
             </li>
             <li className="nav-item">
@@ -143,7 +164,11 @@ const Navbar = ({ theme }) => {
                 href={`/${pathname?.split('/')?.[1]}/events`}
                 className="nav-link"
               >
-                Events
+                {language === 'en'
+                  ? 'Events'
+                  : language === 'az'
+                  ? 'Tədbirlər'
+                  : 'Мероприятия'}
               </a>
             </li>
             <li className="nav-item">
@@ -151,7 +176,11 @@ const Navbar = ({ theme }) => {
                 className="nav-link"
                 href={`/${pathname?.split('/')?.[1]}/celebrities`}
               >
-                Athletes and Artists
+                {language === 'en'
+                  ? 'Athletes and Artists'
+                  : language === 'az'
+                  ? 'İdmançılar'
+                  : 'Атлеты'}
               </a>
             </li>
             <li className="nav-item">
@@ -159,12 +188,16 @@ const Navbar = ({ theme }) => {
                 href={`/${pathname?.split('/')?.[1]}/contact`}
                 className="nav-link"
               >
-                Contact
+                {language === 'en'
+                  ? 'Contact'
+                  : language === 'az'
+                  ? 'Əlaqə'
+                  : 'Контакты'}
               </a>
             </li>
           </ul>
         </div>
-        <div style={{ height: '73px', width: '155px', paddingLeft: '90px' }}>
+        <div className={styles.translate_select}>
           <Select
             style={{
               width: '70px',

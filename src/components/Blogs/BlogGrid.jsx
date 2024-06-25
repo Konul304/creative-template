@@ -31,37 +31,37 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (ourNewsTabRef.current) {
-      ourNewsTabRef.current.addEventListener('click', () => {
-        setSelectedTab('ourNews');
-        localStorage.setItem('selectedTab', 'ourNews');
-      });
-    }
+  // useEffect(() => {
+  //   if (ourNewsTabRef.current) {
+  //     ourNewsTabRef.current.addEventListener('click', () => {
+  //       setSelectedTab('ourNews');
+  //       localStorage.setItem('selectedTab', 'ourNews');
+  //     });
+  //   }
 
-    if (otherNewsTabRef.current) {
-      otherNewsTabRef.current.addEventListener('click', () => {
-        setSelectedTab('otherNews');
-        localStorage.setItem('selectedTab', 'otherNews');
-      });
-    }
+  //   if (otherNewsTabRef.current) {
+  //     otherNewsTabRef.current.addEventListener('click', () => {
+  //       setSelectedTab('otherNews');
+  //       localStorage.setItem('selectedTab', 'otherNews');
+  //     });
+  //   }
 
-    return () => {
-      if (ourNewsTabRef.current) {
-        ourNewsTabRef.current.removeEventListener(
-          'click',
-          handleOurNewsTabClick
-        );
-      }
+  //   return () => {
+  //     if (ourNewsTabRef.current) {
+  //       ourNewsTabRef?.current?.removeEventListener(
+  //         'click',
+  //         handleOurNewsTabClick
+  //       );
+  //     }
 
-      if (otherNewsTabRef.current) {
-        otherNewsTabRef.current.removeEventListener(
-          'click',
-          handleOtherNewsTabClick
-        );
-      }
-    };
-  }, [ourNewsTabRef, otherNewsTabRef]);
+  //     if (otherNewsTabRef.current) {
+  //       otherNewsTabRef?.current?.removeEventListener(
+  //         'click',
+  //         handleOtherNewsTabClick
+  //       );
+  //     }
+  //   };
+  // }, [ourNewsTabRef, otherNewsTabRef]);
 
   return (
     <section
@@ -76,18 +76,24 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
               <div className="filter">
                 <span
                   data-filter=".presentation"
-                  className={
-                    data?.length > 0 && selectedTab === 'ourNews'
-                      ? `active`
-                      : ''
-                  }
-                  ref={ourNewsTabRef}
+                  className={data?.length > 0 ? `active` : ''}
+                  // ref={ourNewsTabRef}
                 >
-                  {' '}
-                  Öz xəbərlərimiz{' '}
+                  {language === 'az'
+                    ? 'Öz xəbərlərimiz'
+                    : language === 'en'
+                    ? 'Our news'
+                    : 'Наши новости'}
                 </span>
-                <span data-filter=".videos" ref={otherNewsTabRef}>
-                  Digərlər{' '}
+                <span
+                  data-filter=".videos"
+                  // ref={otherNewsTabRef}
+                >
+                  {language === 'az'
+                    ? 'Digərləri'
+                    : language === 'en'
+                    ? 'Other news'
+                    : 'Другугие'}
                 </span>
               </div>
             </div>
@@ -177,7 +183,11 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                   }`}
                                   className="simple-btn"
                                 >
-                                  Read More
+                                  {language === 'az'
+                                    ? 'Daha çox'
+                                    : language === 'en'
+                                    ? 'Read more'
+                                    : 'читать далее'}
                                 </Link>
                               </div>
                             </div>
@@ -263,7 +273,11 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                   }`}
                                   className="simple-btn"
                                 >
-                                  Read More
+                                  {language === 'az'
+                                    ? 'Daha çox'
+                                    : language === 'en'
+                                    ? 'Read more'
+                                    : 'читать далее'}
                                 </Link>
                               </div>
                             </div>

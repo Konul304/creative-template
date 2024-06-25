@@ -8241,6 +8241,7 @@ footer .item .copy-right p a {
 
 /* ====================== [ End Footer ] ====================== */
 /* ====================== [ Start Responsive ] ====================== */
+
 @media screen and (max-width: 991px) {
   .navbar .navbar-collapse.show-with-trans {
     opacity: 1;
