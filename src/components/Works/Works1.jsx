@@ -107,7 +107,9 @@ const Works1 = () => {
                         ></div>
                         <div className="cont">
                           <h6 className="color-font">
-                            <a href="#">{item?.title}</a>
+                            <a href={`/${pathname?.split('/')?.[1]}/portfolio`}>
+                              {item?.title}
+                            </a>
                           </h6>
                         </div>
                       </div>
