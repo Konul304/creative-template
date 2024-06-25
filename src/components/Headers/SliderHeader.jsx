@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Parallax } from 'swiper';
 import removeSlashFromBagination from '../../common/removeSlashpagination';
 import fadeWhenScroll from '../../common/fadeWhenScroll';
-import { getCases, getNews } from '../../app/(api)/api';
+import { getCases, getEvents, getNews } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 import { usePathname } from 'next/navigation';
@@ -52,8 +52,20 @@ const SliderHeader = () => {
     }
   );
 
+  const { data: eventsData } = useQuery(
+    ['eventData'],
+    async () => await getEvents(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
+
   const filteredCaseData = data?.filter((item) => item.isSlider === true);
   const filteredNewsData = newsData?.filter((item) => item.isSlider === true);
+  const filteredEventsData = eventsData?.filter(
+    (item) => item.isSlider === true
+  );
 
   const azCaseData = filteredCaseData?.map((item) => ({
     sliderLogoLink: item.sliderLogoLink,
@@ -92,6 +104,25 @@ const SliderHeader = () => {
     sliderDescription: item.sliderDescriptionRus,
   }));
 
+  const azEventData = filteredNewsData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleAz,
+    sliderDescription: item.sliderDescriptionAz,
+  }));
+  const engEventData = filteredNewsData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleEng,
+    sliderDescription: item.sliderDescriptionEng,
+  }));
+  const rusEventData = filteredNewsData?.map((item) => ({
+    sliderLogoLink: item.sliderLogoLink,
+    id: item.id,
+    sliderTitle: item.sliderTitleRus,
+    sliderDescription: item.sliderDescriptionRus,
+  }));
+
   useEffect(() => {
     removeSlashFromBagination();
     fadeWhenScroll(document.querySelectorAll('.fixed-slider .caption'));
@@ -117,13 +148,19 @@ const SliderHeader = () => {
       : language === 'az'
       ? azNewsData
       : rusNewsData;
+  const eventsToRender =
+    language === 'en'
+      ? engEventData
+      : language === 'az'
+      ? azEventData
+      : rusEventData;
   return (
     <header
       className="slider slider-prlx fixed-slider text-center"
       ref={fixedSlider}
     >
       <div className="swiper-container parallax-slider">
-        {(casesToRender || newsToRender) && (
+        {(casesToRender || newsToRender || eventsToRender) && (
           <Swiper {...swiperOptions} className="swiper-wrapper">
             {casesToRender?.map((slide) => {
               const img_url =
@@ -186,6 +223,66 @@ const SliderHeader = () => {
               );
             })}
             {newsToRender?.map((slide) => {
+              const img_url =
+                'https://project141.s3.eu-north-1.amazonaws.com/' +
+                slide?.sliderLogoLink;
+              return (
+                <SwiperSlide key={slide.id} className="swiper-slide">
+                  <div
+                    className="bg-img valign"
+                    style={{ backgroundImage: `url('${img_url}')` }}
+                    data-overlay-dark="6"
+                  >
+                    <a
+                      href={`/${pathname?.split('/')?.[1]}/news/${slide?.id}`}
+                      className="container"
+                      style={{
+                        display: 'block',
+                        height: '100vh',
+                        position: 'absolute',
+                      }}
+                    >
+                      <div
+                        className=" justify-content-center"
+                        style={{
+                          position: 'absolute',
+                          bottom: '10px',
+                          left: '3%',
+                          maxWidth: '900px',
+                        }}
+                      >
+                        <div>
+                          <div className="caption center mt-30">
+                            <h1
+                              className="color-font"
+                              style={{ fontSize: '48px', textAlign: 'left' }}
+                            >
+                              {' '}
+                              {slide.sliderTitle &&
+                                HTMLReactParser(slide.sliderTitle)}
+                            </h1>
+                            <div
+                              style={{
+                                fontSize: '16px',
+                                textAlign: 'left',
+                              }}
+                              className="slider_desc"
+                            >
+                              {slide.sliderDescription &&
+                                HTMLReactParser(slide.sliderDescription)}
+                            </div>
+                            {/* <a href="#" className="butn bord curve mt-30">
+                              <span>Look More</span>
+                            </a> */}
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+            {eventsToRender?.map((slide) => {
               const img_url =
                 'https://project141.s3.eu-north-1.amazonaws.com/' +
                 slide?.sliderLogoLink;
