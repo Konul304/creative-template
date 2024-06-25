@@ -82,7 +82,11 @@ const CasesGrid = () => {
                             }`}
                             className="simple-btn"
                           >
-                            Read More
+                            {language === 'az'
+                              ? 'Daha çox'
+                              : language === 'en'
+                              ? 'Read more'
+                              : 'читать далее'}
                           </Link>
                         </div>
                       </div>

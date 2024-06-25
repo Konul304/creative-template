@@ -21,7 +21,8 @@ const EventDetails = ({ data }) => {
     'https://project141.s3.eu-north-1.amazonaws.com/' + eventsData?.logoLink;
   const formattedStartDate = dayjs(eventsData?.startDate).format('D MMM');
   const formattedEndDate = dayjs(eventsData?.endDate).format('D MMM');
-
+  //Организатор
+  //Касса
   const azEventData = {
     title: eventsData?.titleAz,
     location: eventsData?.locationAz,

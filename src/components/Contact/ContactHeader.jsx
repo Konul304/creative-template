@@ -2,8 +2,11 @@
 import React, { useEffect } from 'react';
 //= Static Data
 import contentHeaderData from '../../data/contact-header.json';
+import { usePathname } from 'next/navigation';
 
 function ContactHeader() {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   useEffect(() => {
     setTimeout(() => {
       if (document.querySelector('#particles-js canvas')) {
@@ -20,13 +23,20 @@ function ContactHeader() {
             <div className="capt">
               <div className="text-center">
                 <h1 className="color-font  fw-700">
-                  {contentHeaderData.title.first} <br />
-                  {contentHeaderData.title.second}
+                  {language === 'en'
+                    ? "Let's talk about your project."
+                    : language === 'ru'
+                    ? 'Давай поговорим о твоем проекте.'
+                    : 'Layihəniz haqqında danışaq.'}
                 </h1>
-                <p>{contentHeaderData.content}</p>
-                {/* <button type="submit" className={`butn bord`}>
-                    <span>Send Message</span>
-                  </button> */}
+                <p>
+                  {' '}
+                  {language === 'en'
+                    ? "Feel free to ask me any question or let's talk about our future collaboration"
+                    : language === 'ru'
+                    ? 'Спрашивай что угодно или давай обсудим наше будущее сотрудничество.'
+                    : 'Bizə hər hansı bir sual verməkdən çəkinməyin , gəlin gələcək əməkdaşlığımız haqqında danışaq'}
+                </p>
               </div>
             </div>
           </div>

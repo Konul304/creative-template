@@ -4,8 +4,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
 import { getPartners } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
+import { usePathname } from 'next/navigation';
 
 const Clients = () => {
+  const pathname = usePathname();
+  const language = pathname?.split('/')[1];
   const { data: partners } = useQuery(
     ['partnerData'],
     async () => await getPartners(),
@@ -49,7 +52,13 @@ const Clients = () => {
 
   return (
     <section className="clients section-padding">
-      <h1 className="wow color-font text-center mb-50 fw-700 ">Our Partners</h1>
+      <h1 className="wow color-font text-center mb-50 fw-700 ">
+        {language === 'en'
+          ? 'Our Partners'
+          : language === 'az'
+          ? 'Partnyorlarımız'
+          : 'Наши партнеры'}
+      </h1>
       <div className="container-fluid position-re">
         <div className="row wow fadeInUp" data-wow-delay=".5s">
           <div className="col-lg-12">
