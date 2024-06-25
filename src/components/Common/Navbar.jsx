@@ -53,7 +53,7 @@ const Navbar = ({ theme }) => {
           justifyContent: 'space-between',
         }}
       >
-        <Link className="logo" href="/">
+        <Link className="logo" href="/" style={{ marginRight: '45px' }}>
           <img
             src={data ? `${img_url}` : ''}
             style={{ maxWidth: '300px', maxHeight: '150px', padding: '10px' }}
