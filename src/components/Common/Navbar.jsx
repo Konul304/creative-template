@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { getLogo } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 import { Select } from 'antd';
+import styles from '../../styles/Navbar.module.scss';
 
 const Navbar = ({ theme }) => {
   const navbar = useRef();
@@ -164,7 +165,7 @@ const Navbar = ({ theme }) => {
             </li>
           </ul>
         </div>
-        <div style={{ height: '73px', width: '155px', paddingLeft: '90px' }}>
+        <div className={styles.translate_select}>
           <Select
             style={{
               width: '70px',

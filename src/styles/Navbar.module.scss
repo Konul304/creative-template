@@ -1,0 +1,14 @@
+.translate_select {
+  height: 73px;
+  width: 155px;
+  padding-left: 90px;
+}
+
+@media screen and (max-width: 991px) {
+  .translate_select {
+    padding-left: 0px;
+    position: absolute;
+    top: -4px;
+    right: 0px;
+  }
+}
