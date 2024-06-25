@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { getNews } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
@@ -9,6 +9,9 @@ import { usePathname } from 'next/navigation';
 const BlogGrid = ({ grid = 3, hideFilter }) => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
+  const ourNewsTabRef = useRef(null);
+  const otherNewsTabRef = useRef(null);
+  const [selectedTab, setSelectedTab] = useState('ourNews');
   const { data } = useQuery(['newsData'], async () => await getNews(), {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
@@ -20,6 +23,45 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
   useEffect(() => {
     initIsotope();
   }, [data]);
+
+  useEffect(() => {
+    const savedTab = localStorage.getItem('selectedTab');
+    if (savedTab) {
+      setSelectedTab(savedTab);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (ourNewsTabRef.current) {
+      ourNewsTabRef.current.addEventListener('click', () => {
+        setSelectedTab('ourNews');
+        localStorage.setItem('selectedTab', 'ourNews');
+      });
+    }
+
+    if (otherNewsTabRef.current) {
+      otherNewsTabRef.current.addEventListener('click', () => {
+        setSelectedTab('otherNews');
+        localStorage.setItem('selectedTab', 'otherNews');
+      });
+    }
+
+    return () => {
+      if (ourNewsTabRef.current) {
+        ourNewsTabRef.current.removeEventListener(
+          'click',
+          handleOurNewsTabClick
+        );
+      }
+
+      if (otherNewsTabRef.current) {
+        otherNewsTabRef.current.removeEventListener(
+          'click',
+          handleOtherNewsTabClick
+        );
+      }
+    };
+  }, [ourNewsTabRef, otherNewsTabRef]);
 
   return (
     <section
@@ -34,12 +76,19 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
               <div className="filter">
                 <span
                   data-filter=".presentation"
-                  className={data?.length > 0 ? `active` : ''}
+                  className={
+                    data?.length > 0 && selectedTab === 'ourNews'
+                      ? `active`
+                      : ''
+                  }
+                  ref={ourNewsTabRef}
                 >
                   {' '}
                   Öz xəbərlərimiz{' '}
                 </span>
-                <span data-filter=".videos">Digərlər </span>
+                <span data-filter=".videos" ref={otherNewsTabRef}>
+                  Digərlər{' '}
+                </span>
               </div>
             </div>
           )}
@@ -57,13 +106,13 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                     <div
                       key={index}
                       className={`col-md-4
-                       items presentation wow fadeInUp`}
-                      data-wow-delay=".4s"
+                       items presentation `}
+                      // data-wow-delay=".4s"
                     >
                       <div className="" key={item.id}>
                         <div
-                          className="item mb-80 wow fadeInUp"
-                          data-wow-delay=".3s"
+                          className="item mb-80 "
+                          //  data-wow-delay=".3s"
                         >
                           <a
                             href={`/${pathname?.split('/')?.[1]}/news/${
@@ -96,7 +145,7 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                         className="tag"
                                       >
                                         <span
-                                          className="wow color-font fw-700 "
+                                          className=" color-font fw-700 "
                                           key={index}
                                         >
                                           {tagItem}
@@ -146,14 +195,11 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                     <div
                       key={index}
                       className={`col-md-4
-                       items videos wow fadeInUp`}
+                       items videos `}
                       data-wow-delay=".4s"
                     >
                       <div className="" key={item.id}>
-                        <div
-                          className="item mb-80 wow fadeInUp"
-                          data-wow-delay=".3s"
-                        >
+                        <div className="item mb-80 " data-wow-delay=".3s">
                           <a
                             href={`/${pathname?.split('/')?.[1]}/news/${
                               item?.id
@@ -185,7 +231,7 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                         className="tag"
                                       >
                                         <span
-                                          className="wow color-font fw-700 "
+                                          className=" color-font fw-700 "
                                           key={index}
                                         >
                                           {tagItem}

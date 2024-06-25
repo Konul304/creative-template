@@ -20,33 +20,38 @@ const CelebritiesPage = () => {
     <div className={styles.celebrities_container}>
       <div className={styles.heading}>Our Celebrities</div>
       <div className={styles.celebrity_list}>
-        {data?.map((celebrity, index) => (
-          <div
-            onClick={() =>
-              window.open(
-                `/${pathname?.split('/')?.[1]}/celebrities/${celebrity?.id}`,
-                '_blank'
-              )
-            }
-            key={index}
-            className={styles.celebrity_item}
-          >
-            {celebrity?.backgroundImage !== 'string' && (
-              <img
-                src={celebrity.backgroundImage}
-                alt={celebrity.fullname}
-                className={styles.celebrity_image}
-              />
-            )}
+        {data?.map((celebrity, index) => {
+          const profile_img =
+            'https://project141.s3.eu-north-1.amazonaws.com/' +
+            celebrity?.profileImage;
+          return (
+            <div
+              onClick={() =>
+                window.open(
+                  `/${pathname?.split('/')?.[1]}/celebrities/${celebrity?.id}`,
+                  '_blank'
+                )
+              }
+              key={index}
+              className={styles.celebrity_item}
+            >
+              {celebrity?.backgroundImage !== 'string' && (
+                <img
+                  src={profile_img}
+                  alt={celebrity.fullname}
+                  className={styles.celebrity_image}
+                />
+              )}
 
-            <div className={styles.celebrity_info}>
-              <div style={{ fontSize: '12px', marginTop: '15px' }}>
-                {celebrity?.field}
+              <div className={styles.celebrity_info}>
+                <div style={{ fontSize: '12px', marginTop: '15px' }}>
+                  {celebrity?.field}
+                </div>
+                <h2 className={styles.celebrity_name}>{celebrity.fullname}</h2>
               </div>
-              <h2 className={styles.celebrity_name}>{celebrity.fullname}</h2>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

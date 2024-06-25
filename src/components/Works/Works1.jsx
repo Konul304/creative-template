@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper';
 import { getPortfolio } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const swiperOptions = {
   modules: [Autoplay, Navigation],
@@ -43,6 +43,7 @@ const swiperOptions = {
 
 const Works1 = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const language = pathname?.split('/')[1];
 
   const { data: portfolio } = useQuery(
@@ -91,6 +92,12 @@ const Works1 = () => {
                   return (
                     <SwiperSlide key={item?.id} className="swiper-slide">
                       <div
+                        style={{ cursor: 'pointer' }}
+                        onClick={() =>
+                          router?.push(
+                            `/${pathname?.split('/')?.[1]}/portfolio`
+                          )
+                        }
                         className="content wow noraidus fadeInUp"
                         data-wow-delay=".3s"
                       >

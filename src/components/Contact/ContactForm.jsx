@@ -215,13 +215,22 @@ const ContactForm = ({ theme }) => {
                 <h6>{contactInfo?.address}</h6>
               </div>
               <div className="social mt-50">
-                <a href="https://www.instagram.com/creative_141?igsh=ZjZtZjAxcGdoMjJh">
+                <a
+                  href="https://www.instagram.com/creative_141?igsh=ZjZtZjAxcGdoMjJh"
+                  target="_blank"
+                >
                   <i className="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.facebook.com/c141worldwide?mibextid=ZbWKwL">
+                <a
+                  href="https://www.facebook.com/c141worldwide?mibextid=ZbWKwL"
+                  target="_blank"
+                >
                   <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.linkedin.com/company/marketing-agency-c141-creative-one-for-one-/">
+                <a
+                  href="https://www.linkedin.com/company/marketing-agency-c141-creative-one-for-one-/"
+                  target="_blank"
+                >
                   <i className="fab fa-linkedin"></i>
                 </a>
               </div>

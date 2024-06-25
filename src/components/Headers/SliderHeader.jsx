@@ -137,7 +137,7 @@ const SliderHeader = () => {
                     data-overlay-dark="6"
                   >
                     <a
-                      href={`/cases/cases-dark/${slide?.id}`}
+                      href={`/${pathname?.split('/')?.[1]}/cases/${slide?.id}`}
                       className="container"
                       style={{
                         display: 'block',
@@ -197,7 +197,7 @@ const SliderHeader = () => {
                     data-overlay-dark="6"
                   >
                     <a
-                      href={`/news/${slide?.id}`}
+                      href={`/${pathname?.split('/')?.[1]}/news/${slide?.id}`}
                       className="container"
                       style={{
                         display: 'block',
