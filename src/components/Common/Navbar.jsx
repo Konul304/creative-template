@@ -151,7 +151,7 @@ const Navbar = ({ theme }) => {
                 className="nav-link"
                 href={`/${pathname?.split('/')?.[1]}/celebrities`}
               >
-                Celebrities
+                Athletes and Artists
               </a>
             </li>
             <li className="nav-item">
