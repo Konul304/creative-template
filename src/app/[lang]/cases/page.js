@@ -7,10 +7,6 @@ import Footer from '../../../components/Common/Footer';
 import CasesGrid from '../../../components/Blogs/CasesGrid';
 import { usePathname } from 'next/navigation';
 
-export const metadata = {
-  title: 'MVP Agency',
-};
-
 const CasesPage = async () => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];

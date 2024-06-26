@@ -8,10 +8,6 @@ import BlogGrid from '../../../components/Blogs/BlogGrid';
 import Footer from '../../../components/Common/Footer';
 import { usePathname } from 'next/navigation';
 
-export const metadata = {
-  title: 'MVP Agency',
-};
-
 const NewsPage = async () => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
