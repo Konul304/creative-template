@@ -23,10 +23,10 @@ const CasesPage = async () => {
       <PageHeader
         title={
           language === 'en'
-            ? 'Our Cases'
+            ? 'OUR CASES'
             : language === 'az'
-            ? 'Our Cases'
-            : 'Наши кейсы'
+            ? 'OUR CASES'
+            : 'НАШИ КЕЙСЫ'
         }
         paragraph="All the most current news and events of our creative team."
       />
