@@ -32,7 +32,6 @@ const OurHistory = () => {
       : language === 'az'
       ? azAboutData
       : rusAboutData;
-
   const img_link =
     'https://project141.s3.eu-north-1.amazonaws.com/' + data?.historyPhotoLink;
 
@@ -49,7 +48,11 @@ const OurHistory = () => {
             <div className="col-lg-7 valign">
               <div className="cont">
                 <h1 className="wow color-font  mb-50 fw-700 ">
-                  {dataToRender?.historyTitle}
+                  {language === 'en'
+                    ? 'OUR HISTORY'
+                    : language === 'az'
+                    ? 'TARİXİMİZ'
+                    : 'НАША ИСТОРИЯ'}
                 </h1>
                 {/* <p>{data?.historyText}</p> */}
                 <div>

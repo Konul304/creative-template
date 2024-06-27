@@ -32,14 +32,20 @@ const AboutIntro = () => {
       : language === 'az'
       ? azAboutData
       : rusAboutData;
-
+  console.log(dataToRender);
   return (
     <section className="intro-section section-padding pb-0">
       <div className="container">
         <div className="row">
           <div className="col-lg-3 col-md-4">
             <div className="htit sm-mb30">
-              <h4>{dataToRender?.weTitle}</h4>
+              <h4>
+                {language === 'en'
+                  ? 'WHO WE ARE?'
+                  : language === 'az'
+                  ? 'BİZ KİMİK?'
+                  : 'КТО МЫ?'}
+              </h4>
             </div>
           </div>
           <div className="col-lg-8 offset-lg-1 col-md-8">

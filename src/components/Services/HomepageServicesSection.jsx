@@ -43,10 +43,10 @@ const HomepageServicesSection = ({ style, lines }) => {
             <div className="sec-head  text-center">
               <h3 className="wow color-font">
                 {language === 'en'
-                  ? 'Our Services'
+                  ? 'OUR SERVICES'
                   : language === 'az'
-                  ? 'Xidmətlərimiz'
-                  : 'Наши услуги'}
+                  ? 'XİDMƏTLƏRİMİZ'
+                  : 'НАШИ УСЛУГИ'}
               </h3>
             </div>
           </div>
@@ -59,7 +59,7 @@ const HomepageServicesSection = ({ style, lines }) => {
                 className="col-md-4 wow fadeInLeft"
                 data-wow-delay={`0s`}
               >
-                <Link href={`/services/services_dark`} className="item-box">
+                <Link href={`/${language}/services`} className="item-box">
                   <div className="cont">
                     <h6 className="text-center">{item?.title}</h6>
                   </div>

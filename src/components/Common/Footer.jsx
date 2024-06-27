@@ -253,7 +253,7 @@ const Footer = ({ hideBGCOLOR }) => {
                         }
                         className="img"
                       >
-                        <a href="/portfolio">
+                        <a href={`/${pathname?.split('/')?.[1]}/portfolio`}>
                           <img src={img_link} alt="" />
                         </a>
                       </div>

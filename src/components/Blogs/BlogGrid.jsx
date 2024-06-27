@@ -80,20 +80,20 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                   // ref={ourNewsTabRef}
                 >
                   {language === 'az'
-                    ? 'Öz xəbərlərimiz'
+                    ? 'ÖZ XƏBƏRLƏRİMİZ'
                     : language === 'en'
-                    ? 'Our news'
-                    : 'Наши новости'}
+                    ? 'OUR NEWS'
+                    : 'НАШИ НОВОСТИ'}
                 </span>
                 <span
                   data-filter=".videos"
                   // ref={otherNewsTabRef}
                 >
                   {language === 'az'
-                    ? 'Digərləri'
+                    ? 'DİGƏRLƏRİ'
                     : language === 'en'
-                    ? 'Other news'
-                    : 'Другугие'}
+                    ? 'OTHER NEWS'
+                    : 'ДРУГИЕ НОВОСТИ'}
                 </span>
               </div>
             </div>

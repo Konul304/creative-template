@@ -44,6 +44,11 @@ const CelebrityDetailsPage = ({ id }) => {
       : language === 'az'
       ? azCelebrityData
       : rusCelebrityData;
+  console.log(celebrityData);
+
+  const profile_img =
+    'https://project141.s3.eu-north-1.amazonaws.com/' +
+    celebrityData?.profileImage;
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">
@@ -97,7 +102,7 @@ const CelebrityDetailsPage = ({ id }) => {
                   }}
                 >
                   <img
-                    src={`https://img.redbull.com/images/c_crop,x_0,y_61,h_3196,w_3196/c_fill,w_150,h_150/q_auto,f_auto/redbullcom/2022/4/26/k1wzshxsxnoiwflkgh9n/antonia-abraham-portrait`}
+                    src={profile_img}
                     alt={'celebrity'}
                     className={styles.celebrity_image}
                     style={{

@@ -62,10 +62,10 @@ const Numbers = () => {
             <div className="sec-head  text-center">
               <h3 className="wow color-font mb-4">
                 {language === 'en'
-                  ? 'Statistics'
+                  ? 'STATISTICS'
                   : language === 'az'
-                  ? 'Statistika'
-                  : 'Cтатистика'}
+                  ? 'STATİSTİKA'
+                  : 'CТАТИСТИКА'}
               </h3>
             </div>
           </div>
