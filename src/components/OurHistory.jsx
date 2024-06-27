@@ -12,6 +12,7 @@ const OurHistory = () => {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
+  console.log(data);
 
   const azAboutData = {
     historyTitle: data?.historyTitleAz,
@@ -32,6 +33,7 @@ const OurHistory = () => {
       : language === 'az'
       ? azAboutData
       : rusAboutData;
+  console.log(dataToRender);
   const img_link =
     'https://project141.s3.eu-north-1.amazonaws.com/' + data?.historyPhotoLink;
 
