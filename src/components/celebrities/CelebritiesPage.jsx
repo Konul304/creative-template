@@ -21,10 +21,10 @@ const CelebritiesPage = () => {
     <div className={styles.celebrities_container}>
       <div className={styles.heading}>
         {language === 'en'
-          ? 'Our Athletes and Artists'
+          ? 'ATHLETES & ARTISTS'
           : language === 'az'
-          ? 'İdmançılarımız'
-          : 'Наши Атлеты'}
+          ? 'Atletlər & Artistlər'
+          : 'Атлеты & Артисты'}
       </div>
       <div className={styles.celebrity_list}>
         {data?.map((celebrity, index) => {

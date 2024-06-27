@@ -5,15 +5,15 @@ import { useQuery } from 'react-query';
 
 function WorksHeader() {
   const fixedSlider = useRef();
-  const {
-    data: presentationInfo,
-    isLoading: infoLoading,
-    isError: infoError,
-  } = useQuery(['presentationInfo'], async () => await getPresentationInfo(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
-  // });
+  const { data: presentationInfo } = useQuery(
+    ['presentationInfo'],
+    async () => await getPresentationInfo(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
+
   useEffect(() => {
     if (fixedSlider.current) {
       const MainContent = document.querySelector('.main-content');

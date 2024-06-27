@@ -54,10 +54,10 @@ const Clients = () => {
     <section className="clients section-padding">
       <h1 className="wow color-font text-center mb-50 fw-700 ">
         {language === 'en'
-          ? 'Our Partners'
+          ? 'OUR PARTNERS'
           : language === 'az'
-          ? 'Partnyorlarımız'
-          : 'Наши партнеры'}
+          ? 'PARTNYORLARIMIZ'
+          : 'НАШИ ПАРТНЕРЫ'}
       </h1>
       <div className="container-fluid position-re">
         <div className="row wow fadeInUp" data-wow-delay=".5s">

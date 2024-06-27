@@ -54,7 +54,7 @@ const AboutUs1 = () => {
           {language === 'az'
             ? 'Ən Dəyərli Partnyorunuz'
             : language === 'en'
-            ? 'Your Most Valuable Partner'
+            ? 'YOUR MOST VALUABLE PARTNER'
             : 'Ваш самый ценный партнер'}
         </div>
         <div className="row">
