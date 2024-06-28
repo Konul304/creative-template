@@ -28,6 +28,7 @@ const Navbar = ({ theme }) => {
       navbar?.current?.classList?.remove('nav-scroll');
     }
   }
+
   const handleTranslate = (e) => {
     const route = pathname.substring(4, pathname.length);
     router.push(`/${e}/${route}`);
@@ -38,6 +39,7 @@ const Navbar = ({ theme }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });
+
   return (
     <nav
       ref={navbar}
@@ -90,115 +92,142 @@ const Navbar = ({ theme }) => {
             backdropFilter: ' blur(20px)',
             backgroundColor: '#2d303273',
             borderRadius: '9999px',
-            // marginRight: '120px',
           }}
         >
-          <ul className="navbar-nav ">
-            <li className="nav-item dropdown" onClick={handleDropdown}>
+          <ul className="navbar-nav">
+            <li
+              className={`nav-item dropdown ${
+                pathname.includes('homepage') ? 'active' : ''
+              }`}
+              onClick={handleDropdown}
+            >
               <a
                 href={`/${pathname?.split('/')?.[1]}/homepage`}
-                className="nav-link "
-                // className="nav-link dropdown-toggle"
-                data-toggle="dropdown"
+                className="nav-link"
                 role="button"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
                 {language === 'en'
-                  ? 'Home'
+                  ? 'HOME'
                   : language === 'az'
-                  ? 'Ana səhifə'
-                  : 'Главная'}
+                  ? 'ANA SƏHİFƏ'
+                  : 'ГЛАВНАЯ'}
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className={`nav-item ${
+                pathname.includes('about') ? 'active' : ''
+              }`}
+            >
               <a
                 className="nav-link"
                 href={`/${pathname?.split('/')?.[1]}/about`}
               >
                 {language === 'en'
-                  ? 'About'
+                  ? 'ABOUT'
                   : language === 'az'
-                  ? 'Haqqımızda'
-                  : 'О нас'}
+                  ? 'HAQQIMIZDA'
+                  : 'О НАС'}
               </a>
             </li>
-            <li className="nav-item dropdown">
+            <li
+              className={`nav-item dropdown ${
+                pathname.includes('services') ? 'active' : ''
+              }`}
+            >
               <a
                 href={`/${pathname?.split('/')?.[1]}/services`}
-                className="nav-link "
-                // className="nav-link dropdown-toggle"
-                // data-toggle="dropdown"
+                className="nav-link"
                 role="button"
                 aria-haspopup="true"
                 aria-expanded="false"
               >
                 {language === 'en'
-                  ? 'Services'
+                  ? 'SERVICES'
                   : language === 'az'
-                  ? 'Xidmətlər'
-                  : 'Услуги'}
+                  ? 'XİDMƏTLƏR'
+                  : 'УСЛУГИ'}
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className={`nav-item ${
+                pathname.includes('cases') ? 'active' : ''
+              }`}
+            >
               <a
                 href={`/${pathname?.split('/')?.[1]}/cases`}
                 className="nav-link"
               >
                 {language === 'en'
-                  ? 'Cases'
+                  ? 'CASES'
                   : language === 'az'
-                  ? 'Cases'
-                  : 'Кейсы '}
+                  ? 'KEYSLƏR'
+                  : 'КЕЙСЫ'}
               </a>
             </li>
-
-            <li className="nav-item">
+            <li
+              className={`nav-item ${
+                pathname.includes('news') ? 'active' : ''
+              }`}
+            >
               <a
                 href={`/${pathname?.split('/')?.[1]}/news`}
                 className="nav-link"
               >
                 {language === 'en'
-                  ? 'News'
+                  ? 'NEWS'
                   : language === 'az'
-                  ? 'Xəbərlər'
-                  : 'Новости'}
+                  ? 'XƏBƏRLƏR'
+                  : 'НОВОСТИ'}
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className={`nav-item ${
+                pathname.includes('events') ? 'active' : ''
+              }`}
+            >
               <a
                 href={`/${pathname?.split('/')?.[1]}/events`}
                 className="nav-link"
               >
                 {language === 'en'
-                  ? 'Events'
+                  ? 'EVENTS'
                   : language === 'az'
-                  ? 'Tədbirlər'
-                  : 'Мероприятия'}
+                  ? 'TƏDBİRLƏR'
+                  : 'МЕРОПРИЯТИЯ'}
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className={`nav-item ${
+                pathname.includes('celebrities') ? 'active' : ''
+              }`}
+            >
               <a
                 className="nav-link"
                 href={`/${pathname?.split('/')?.[1]}/celebrities`}
               >
                 {language === 'en'
-                  ? 'Athletes & Artists'
+                  ? 'ATHLETES & ARTISTS'
                   : language === 'az'
-                  ? 'Atletlər & Artistlər'
-                  : 'Атлеты & Артисты'}
+                  ? 'ATLETLƏR & ARTİSTLƏR'
+                  : 'АТЛЕТЫ & АРТИСТЫ'}
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className={`nav-item ${
+                pathname.includes('contact') ? 'active' : ''
+              }`}
+            >
               <a
                 href={`/${pathname?.split('/')?.[1]}/contact`}
                 className="nav-link"
               >
                 {language === 'en'
-                  ? 'Contact'
+                  ? 'CONTACT'
                   : language === 'az'
-                  ? 'Əlaqə'
-                  : 'Контакты'}
+                  ? 'ƏLAQƏ'
+                  : 'КОНТАКТЫ'}
               </a>
             </li>
           </ul>

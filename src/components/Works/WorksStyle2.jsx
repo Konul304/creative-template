@@ -52,10 +52,8 @@ function WorksStyle2({
           <div className="row justify-content-center">
             <div className="col-lg-8 col-md-10">
               <div className="sec-head text-center">
-                <h6 className="wow fadeIn" data-wow-delay=".5s">
-                  Portfolio
-                </h6>
-                <h3 className="wow color-font fz-40 fw-500">
+                <h6>Portfolio</h6>
+                <h3 className=" color-font fz-40 fw-500">
                   Our Recent Web Design &amp; <br />
                   Some Past Projects.
                 </h3>
@@ -116,8 +114,7 @@ function WorksStyle2({
                       : grid === 2
                       ? 'col-md-6'
                       : 'col-12'
-                  } items presentation wow fadeInUp`}
-                  data-wow-delay=".4s"
+                  } items presentation `}
                 >
                   <div className="item-img">
                     <div className="imago wow">
@@ -170,8 +167,7 @@ function WorksStyle2({
               return (
                 <div
                   key={index}
-                  className={`col-lg-4 col-md-6 col-12 items videos wow fadeInUp`}
-                  data-wow-delay=".4s"
+                  className={`col-lg-4 col-md-6 col-12 items videos `}
                 >
                   <div className="item-img">
                     <div
@@ -215,8 +211,7 @@ function WorksStyle2({
                       : grid === 2
                       ? 'col-md-6'
                       : 'col-12'
-                  } items images wow fadeInUp`}
-                  data-wow-delay=".4s"
+                  } items images`}
                 >
                   <div className="item-img">
                     <div className="imago wow">

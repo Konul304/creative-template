@@ -8,7 +8,7 @@ import BlogGrid from '../../../components/Blogs/BlogGrid';
 import Footer from '../../../components/Common/Footer';
 import { usePathname } from 'next/navigation';
 
-const NewsPage = async () => {
+const NewsPage = () => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
   return (
@@ -18,10 +18,10 @@ const NewsPage = async () => {
       <PageHeader
         title={
           language === 'en'
-            ? 'Our News'
+            ? 'OUR NEWS'
             : language === 'az'
-            ? 'Xəbərlər'
-            : 'Новости'
+            ? 'XƏBƏRLƏR'
+            : 'НОВОСТИ'
         }
       />
       <BlogGrid />

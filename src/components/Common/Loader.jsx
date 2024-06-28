@@ -1,13 +1,14 @@
 'use client';
-import { useEffect } from 'react';
-import loadingPace from '../../common/loadingPace';
-import { Spin } from 'antd';
+// import { useEffect } from 'react';
+// import loadingPace from '../../common/loadingPace';
+// import { Spin } from 'antd';
+import styles from '../../styles/Loader.module.scss';
 
 function LoadingScreen() {
   // useEffect(() => {
   //   // const handlePace = () => {
   //   if (typeof Pace !== 'undefined') loadingPace();
-  //   // };
+  //   // };W
   //   // setTimeout(handlePace, 1000);
   //   // return () => clearTimeout(handlePace);
   // });
@@ -33,7 +34,8 @@ function LoadingScreen() {
         }}
       >
         {' '}
-        <Spin style={{ zIndex: '999' }} size="large" />
+        <div className={styles.loader_text}>MVP AGENCY</div>
+        {/* <Spin style={{ zIndex: '999' }} size="large" /> */}
       </div>
     </div>
   );

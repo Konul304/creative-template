@@ -24,18 +24,18 @@ function ContactHeader() {
               <div className="text-center">
                 <h1 className="color-font  fw-700">
                   {language === 'en'
-                    ? "Let's talk about your project."
+                    ? "LET'S TALK ABOUT YOUR PROJECT."
                     : language === 'ru'
-                    ? 'Давай поговорим о твоем проекте.'
-                    : 'Layihəniz haqqında danışaq.'}
+                    ? 'ДАВАЙ ПОГОВОРИМ О ТВОЕМ ПРОЕКТЕ.'
+                    : 'LAYIHƏNİZ HAQQINDA DANIŞAQ.'}
                 </h1>
                 <p>
                   {' '}
                   {language === 'en'
-                    ? "Feel free to ask me any question or let's talk about our future collaboration"
+                    ? "FEEL FREE TO ASK ME ANY QUESTION OR LET'S TALK ABOUT OUR FUTURE COLLABORATION"
                     : language === 'ru'
-                    ? 'Спрашивай что угодно или давай обсудим наше будущее сотрудничество.'
-                    : 'Bizə hər hansı bir sual verməkdən çəkinməyin , gəlin gələcək əməkdaşlığımız haqqında danışaq'}
+                    ? 'СПРАШИВАЙ ЧТО УГОДНО ИЛИ ДАВАЙ ОБСУДИМ НАШЕ БУДУЩЕЕ СОТРУДНИЧЕСТВО.'
+                    : 'BİZƏ HƏR HANSI BİR SUAL VERMƏKDƏN ÇƏKİNMƏYİN , GƏLİN GƏLƏCƏK ƏMƏKDAŞLIĞIMIZ HAQQINDA DANIŞAQ'}
                 </p>
               </div>
             </div>

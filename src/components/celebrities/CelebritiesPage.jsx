@@ -23,8 +23,8 @@ const CelebritiesPage = () => {
         {language === 'en'
           ? 'ATHLETES & ARTISTS'
           : language === 'az'
-          ? 'Atletlər & Artistlər'
-          : 'Атлеты & Артисты'}
+          ? 'ATLETLƏR & ARTİSTLƏR'
+          : 'АТЛЕТЫ & АРТИСТЫ'}
       </div>
       <div className={styles.celebrity_list}>
         {data?.map((celebrity, index) => {

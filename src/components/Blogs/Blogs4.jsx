@@ -10,30 +10,27 @@ import thumparallaxDown from '@/common/thumparallaxDown';
 const swiperImageOptions = {
   modules: [Pagination, Navigation, Parallax, EffectFade],
   speed: 800,
-  effect: "fade",
+  effect: 'fade',
   spaceBetween: 0,
   loop: true,
   parallax: true,
   slidesPerView: 1,
   navigation: {
-    prevEl: ".swiper-button-prev",
-    nextEl: ".swiper-button-next",
+    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next',
   },
   pagination: {
-    type: "fraction",
+    type: 'fraction',
     clickable: true,
-    el: ".swiper-pagination",
+    el: '.swiper-pagination',
   },
   onSwiper: (swiper) => {
     for (var i = 0; i < swiper.slides.length; i++) {
-      let img = swiper.slides[i].childNodes[0].childNodes[0].childNodes[0]
-      img.setAttribute(
-        "data-swiper-parallax",
-        0.75 * swiper.width
-      );
+      let img = swiper.slides[i].childNodes[0].childNodes[0].childNodes[0];
+      img.setAttribute('data-swiper-parallax', 0.75 * swiper.width);
     }
-  }
-}
+  },
+};
 
 const swiperTextOptions = {
   modules: [Pagination, Navigation],
@@ -42,15 +39,15 @@ const swiperTextOptions = {
   spaceBetween: 0,
   loop: true,
   navigation: {
-    prevEl: ".controls .swiper-button-prev",
-    nextEl: ".controls .swiper-button-next",
+    prevEl: '.controls .swiper-button-prev',
+    nextEl: '.controls .swiper-button-next',
   },
   pagination: {
-    type: "fraction",
+    type: 'fraction',
     clickable: true,
-    el: ".controls .swiper-pagination",
+    el: '.controls .swiper-pagination',
   },
-}
+};
 
 function Blogs4() {
   useEffect(() => {
@@ -64,32 +61,50 @@ function Blogs4() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-6 no-padding">
-              <Swiper className="swiper-wrapper swiper-container swiper-img" {...swiperImageOptions}>
+              <Swiper
+                className="swiper-wrapper swiper-container swiper-img"
+                {...swiperImageOptions}
+              >
                 <SwiperSlide className="SwiperSlide">
                   <div className="item wow fadeIn" data-wow-delay=".3s">
                     <div className="img">
-                      <img className="thumparallax" src="/img/blog/1.jpg" alt="" />
+                      <img
+                        className="thumparallax"
+                        src="/img/blog/1.jpg"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide className="SwiperSlide">
                   <div className="item wow fadeIn" data-wow-delay=".3s">
                     <div className="img">
-                      <img className="thumparallax" src="/img/blog/2.jpg" alt="" />
+                      <img
+                        className="thumparallax"
+                        src="/img/blog/2.jpg"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide className="SwiperSlide">
                   <div className="item wow fadeIn" data-wow-delay=".3s">
                     <div className="img">
-                      <img className="thumparallax" src="/img/blog/3.jpg" alt="" />
+                      <img
+                        className="thumparallax"
+                        src="/img/blog/3.jpg"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </SwiperSlide>
               </Swiper>
             </div>
             <div className="col-lg-6 no-padding valign">
-              <Swiper className="swiper-wrapper swiper-container swiper-content" {...swiperTextOptions}>
+              <Swiper
+                className="swiper-wrapper swiper-container swiper-content"
+                {...swiperTextOptions}
+              >
                 <SwiperSlide className="SwiperSlide">
                   <div className="item wow fadeIn" data-wow-delay=".6s">
                     <div className="content">
@@ -119,7 +134,7 @@ function Blogs4() {
                       </div>
                       <div className="more">
                         <Link href="/blog-details/blog-details-dark">
-                          Read More
+                          READ MORE
                         </Link>
                       </div>
                     </div>
@@ -140,9 +155,7 @@ function Blogs4() {
                       </div>
                       <div className="title">
                         <h4>
-                          <a href="#0">
-                            List of The Best Investment Projects
-                          </a>
+                          <a href="#0">List of The Best Investment Projects</a>
                         </h4>
                       </div>
                       <div className="text">
@@ -154,7 +167,7 @@ function Blogs4() {
                       </div>
                       <div className="more">
                         <Link href="/blog-details/blog-details-dark">
-                          Read More
+                          READ MORE
                         </Link>
                       </div>
                     </div>
@@ -187,7 +200,7 @@ function Blogs4() {
                       </div>
                       <div className="more">
                         <Link href="/blog-details/blog-details-dark">
-                          Read More
+                          READ MORE
                         </Link>
                       </div>
                     </div>
@@ -209,7 +222,7 @@ function Blogs4() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default Blogs4;

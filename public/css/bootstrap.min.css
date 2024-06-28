@@ -4359,6 +4359,10 @@ tbody.collapse.show {
   border-color: #dee2e6 #dee2e6 #fff;
 }
 
+.active a {
+  color: #ffcc2a !important;
+}
+
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-left-radius: 0;

@@ -133,10 +133,10 @@ const ContactForm = ({ theme }) => {
             <div className="form md-mb50">
               <h4 className="fw-700 color-font mb-50">
                 {language === 'en'
-                  ? 'Get In Touch.'
+                  ? 'GET IN TOUCH.'
                   : language === 'ru'
-                  ? 'Свяжись с нами.'
-                  : 'Əlaqə saxlayın"'}
+                  ? 'СВЯЖИСЬ С НАМИ.'
+                  : 'ƏLAQƏ SAXLAYIN'}
               </h4>
 
               <form id="contact-form" onSubmit={handleSubmit}>
@@ -150,10 +150,10 @@ const ContactForm = ({ theme }) => {
                       name="name"
                       placeholder={
                         language === 'en'
-                          ? 'Name'
+                          ? 'NAME'
                           : language === 'ru'
-                          ? 'Имя'
-                          : 'Ad'
+                          ? 'ИМЯ'
+                          : 'AD'
                       }
                       required="required"
                       onChange={(e) =>
@@ -172,10 +172,10 @@ const ContactForm = ({ theme }) => {
                       name="email"
                       placeholder={
                         language === 'en'
-                          ? 'Email'
+                          ? 'EMAIL'
                           : language === 'ru'
-                          ? 'e-mail'
-                          : 'Email'
+                          ? 'E-MAIL'
+                          : 'EMAIL'
                       }
                       required="required"
                       onChange={(e) =>
@@ -193,10 +193,10 @@ const ContactForm = ({ theme }) => {
                       name="message"
                       placeholder={
                         language === 'en'
-                          ? 'Message'
+                          ? 'MESSAGE'
                           : language === 'ru'
-                          ? 'Введите сообщение...'
-                          : 'Mesaj'
+                          ? 'ВВЕДИТЕ СООБЩЕНИЕ...'
+                          : 'MESAJ'
                       }
                       rows="4"
                       required="required"
@@ -215,10 +215,10 @@ const ContactForm = ({ theme }) => {
                   >
                     <span>
                       {language === 'en'
-                        ? 'Send Message'
+                        ? 'SEND MESSAGE'
                         : language === 'ru'
-                        ? 'Отправить'
-                        : 'Göndər'}
+                        ? 'ОТПРАВИТЬ'
+                        : 'GÖNDƏR'}
                     </span>
                   </button>
                 </div>
@@ -230,18 +230,18 @@ const ContactForm = ({ theme }) => {
               <h4 className="fw-700 color-font mb-50">
                 {' '}
                 {language === 'en'
-                  ? 'Contact Info.'
+                  ? 'CONTACT INFO.'
                   : language === 'ru'
-                  ? 'Контакты'
-                  : 'Əlaqə'}
+                  ? 'КОНТАКТЫ'
+                  : 'ƏLAQƏ'}
               </h4>
               <Split>
                 <h3 className="wow" data-splitting>
                   {language === 'en'
-                    ? "Let's Talk."
+                    ? "LET'S TALK."
                     : language === 'ru'
-                    ? 'Давай поговорим.'
-                    : 'Danışaq'}
+                    ? 'ДАВАЙ ПОГОВОРИМ.'
+                    : 'DANIŞAQ'}
                 </h3>
               </Split>
               <div className="item mb-40">
@@ -253,10 +253,10 @@ const ContactForm = ({ theme }) => {
               <Split>
                 <h3 className="wow" data-splitting>
                   {language === 'en'
-                    ? 'Visit Us.'
+                    ? 'VISIT US.'
                     : language === 'ru'
-                    ? 'Приходи к нам.'
-                    : 'Ünvanımız'}
+                    ? 'ПРИХОДИ К НАМ.'
+                    : 'ÜNVANIMIZ'}
                 </h3>
               </Split>
               <div className="item">

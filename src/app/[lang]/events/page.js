@@ -17,10 +17,10 @@ const page = () => {
       <PageHeader
         title={
           language === 'en'
-            ? 'Our Events'
+            ? 'OUR EVENTS'
             : language === 'az'
-            ? 'Tədbirlər'
-            : 'Мероприятия'
+            ? 'TƏDBİRLƏR'
+            : 'МЕРОПРИЯТИЯ'
         }
       />
       <EventCards />

@@ -184,10 +184,10 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                   className="simple-btn"
                                 >
                                   {language === 'az'
-                                    ? 'Daha çox'
+                                    ? 'DAHA ÇOX'
                                     : language === 'en'
-                                    ? 'Read more'
-                                    : 'читать далее'}
+                                    ? 'READ MORE'
+                                    : 'ДАЛЕЕ'}
                                 </Link>
                               </div>
                             </div>
@@ -274,10 +274,10 @@ const BlogGrid = ({ grid = 3, hideFilter }) => {
                                   className="simple-btn"
                                 >
                                   {language === 'az'
-                                    ? 'Daha çox'
+                                    ? 'DAHA ÇOX'
                                     : language === 'en'
-                                    ? 'Read more'
-                                    : 'читать далее'}
+                                    ? 'READ MORE'
+                                    : 'ДАЛЕЕ'}
                                 </Link>
                               </div>
                             </div>
