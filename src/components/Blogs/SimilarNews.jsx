@@ -71,7 +71,7 @@ const SimilarNews = (data) => {
                       </h5>
                       <div className="btn-more">
                         <Link href={`/news/${item?.id}`} className="simple-btn">
-                          Read More
+                          READ MORE
                         </Link>
                       </div>
                     </div>

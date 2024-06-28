@@ -52,10 +52,10 @@ const AboutUs1 = () => {
           }}
         >
           {language === 'az'
-            ? 'Ən Dəyərli Partnyorunuz'
+            ? 'ƏN DƏYƏRLİ PARTNYORUNUZ'
             : language === 'en'
             ? 'YOUR MOST VALUABLE PARTNER'
-            : 'Ваш самый ценный партнер'}
+            : 'ВАШ САМЫЙ ЦЕННЫЙ ПАРТНЕР'}
         </div>
         <div className="row">
           <div className="col-lg-5 valign md-mb50">
@@ -81,10 +81,10 @@ const AboutUs1 = () => {
               >
                 <span>
                   {language === 'az'
-                    ? 'Daha çox'
+                    ? 'DAHA ÇOX'
                     : language === 'en'
-                    ? 'Read more'
-                    : 'Далее'}
+                    ? 'READ MORE'
+                    : 'ДАЛЕЕ'}
                 </span>
               </a>
             </div>

@@ -135,7 +135,6 @@ const SliderHeader = () => {
       MainContent.style.marginTop = slideHeight + 'px';
     }
   }, [data]);
-  console.log(eventsData);
   const casesToRender =
     language === 'en'
       ? engCaseData
@@ -154,7 +153,6 @@ const SliderHeader = () => {
       : language === 'az'
       ? azEventData
       : rusEventData;
-  console.log(engEventData);
   return (
     <header
       className="slider slider-prlx fixed-slider text-center"

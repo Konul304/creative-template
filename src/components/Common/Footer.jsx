@@ -138,10 +138,10 @@ const Footer = ({ hideBGCOLOR }) => {
                 <h5>
                   {' '}
                   {language === 'en'
-                    ? 'Contact Us'
+                    ? 'CCONTACT US'
                     : language === 'ru'
-                    ? 'Контакты'
-                    : 'Əlaqə '}
+                    ? 'КОНТАКТЫ'
+                    : 'ƏLAQƏ '}
                 </h5>
               </div>
               <Select
@@ -189,10 +189,10 @@ const Footer = ({ hideBGCOLOR }) => {
                     <h6>
                       {' '}
                       {language === 'en'
-                        ? 'Official Address'
+                        ? 'OFFICIAL ADDRESS'
                         : language === 'ru'
-                        ? 'Оффицальный адресс'
-                        : 'Rəsmi ünvan'}
+                        ? 'ОФФИЦАЛЬНЫЙ АДРЕСС'
+                        : 'RƏSMİ ÜNVAN'}
                     </h6>
                     <p>{contactInfo?.address}</p>
                   </div>
@@ -202,10 +202,10 @@ const Footer = ({ hideBGCOLOR }) => {
                   <div className="cont">
                     <h6>
                       {language === 'en'
-                        ? 'Email Us'
+                        ? 'EMAIL US'
                         : language === 'ru'
-                        ? 'Отправить е-маил'
-                        : 'Email göndər'}
+                        ? 'ОТПРАВИТЬ Е-МАИЛ'
+                        : 'EMAIL GÖNDƏR'}
                     </h6>
                     <p>{contactInfo?.email}</p>
                   </div>
@@ -215,10 +215,10 @@ const Footer = ({ hideBGCOLOR }) => {
                   <div className="cont">
                     <h6>
                       {language === 'en'
-                        ? 'Call Us'
+                        ? 'CALL US'
                         : language === 'ru'
-                        ? 'Позвони нам'
-                        : 'Zəng edin'}
+                        ? 'ПОЗВОНИ НАМ'
+                        : 'ZƏNG EDİN'}
                     </h6>
                     <p>{contactInfo?.phoneNumber}</p>
                   </div>
@@ -232,10 +232,10 @@ const Footer = ({ hideBGCOLOR }) => {
                 <h5>
                   {' '}
                   {language === 'en'
-                    ? 'Portfolio'
+                    ? 'PORTFOLIO'
                     : language === 'ru'
-                    ? 'Портфолио'
-                    : 'Portfolio'}
+                    ? 'ПОРТФОЛИО'
+                    : 'PORTFOLİO'}
                 </h5>
               </div>
               <ul>
@@ -275,10 +275,10 @@ const Footer = ({ hideBGCOLOR }) => {
                         required
                         placeholder={
                           language === 'en'
-                            ? '"Type Your Email"'
+                            ? 'TYPE YOUR EMAIL'
                             : language === 'ru'
-                            ? 'Напишите ваш е-маил'
-                            : 'Emailinizi yazın'
+                            ? 'НАПИШИТЕ ВАШ Е-МАИЛ'
+                            : 'EMAILINIZI YAZIN'
                         }
                         onChange={(e) => setEmail(e?.target?.value)}
                       />
@@ -298,10 +298,10 @@ const Footer = ({ hideBGCOLOR }) => {
                 <h5>
                   {' '}
                   {language === 'en'
-                    ? 'Socials'
+                    ? 'SOCIALS'
                     : language === 'ru'
-                    ? 'Соцыальные сети'
-                    : 'Sosial'}
+                    ? 'СОЦЫАЛЬНЫЕ СЕТИ'
+                    : 'SOSIAL'}
                 </h5>
               </div>
               <div className="social">

@@ -44,7 +44,6 @@ const CelebrityDetailsPage = ({ id }) => {
       : language === 'az'
       ? azCelebrityData
       : rusCelebrityData;
-  console.log(celebrityData);
 
   const profile_img =
     'https://project141.s3.eu-north-1.amazonaws.com/' +

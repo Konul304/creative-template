@@ -2579,7 +2579,7 @@ span:hover {
 }
 
 .slider .swiper-pagination-fraction.top .swiper-pagination-current:after {
-  /* content: '/'; */
+  content: '/';
   color: #fff;
   position: relative;
   margin: 0 10px;

@@ -6,14 +6,10 @@ import { getCases } from '../../app/(api)/api';
 import { useQuery } from 'react-query';
 
 const CasesHomePage = () => {
-  const { data, isLoading, isError } = useQuery(
-    ['caseData'],
-    async () => await getCases(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
+  const { data } = useQuery(['caseData'], async () => await getCases(), {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
   if (data?.length > 3) {
     data?.splice(0, data?.length - 3);
   }
@@ -76,7 +72,7 @@ const CasesHomePage = () => {
                               href={`/cases/cases-dark/${item?.id}`}
                               className="simple-btn"
                             >
-                              Read More
+                              READ MORE
                             </Link>
                           </div>
                         </div>

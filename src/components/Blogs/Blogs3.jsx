@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 const Blogs3 = () => {
   return (
@@ -17,7 +17,10 @@ const Blogs3 = () => {
         </div>
         <div className="row">
           <div className="col-lg-4 wow fadeInUp" data-wow-delay=".3s">
-            <div className="item bg-img" style={{ backgroundImage: "url(/img/blog/1.jpg)" }}>
+            <div
+              className="item bg-img"
+              style={{ backgroundImage: 'url(/img/blog/1.jpg)' }}
+            >
               <div className="cont">
                 <Link href="/blog/blog-dark" className="date">
                   <span>
@@ -34,13 +37,15 @@ const Blogs3 = () => {
                 </div>
                 <h6>
                   <Link href="/blog-details/blog-details-dark">
-                    The Start-Up Ultimate Guide to Make Your WordPress
-                    Journal.
+                    The Start-Up Ultimate Guide to Make Your WordPress Journal.
                   </Link>
                 </h6>
                 <div className="btn-more">
-                  <Link href="/blog-details/blog-details-dark" className="simple-btn">
-                    Read More
+                  <Link
+                    href="/blog-details/blog-details-dark"
+                    className="simple-btn"
+                  >
+                    READ MORE
                   </Link>
                 </div>
               </div>
@@ -49,7 +54,7 @@ const Blogs3 = () => {
           <div className="col-lg-4 wow fadeInUp" data-wow-delay=".6s">
             <div
               className="item active bg-img"
-              style={{ backgroundImage: "url(/img/blog/2.jpg)" }}
+              style={{ backgroundImage: 'url(/img/blog/2.jpg)' }}
             >
               <div className="cont">
                 <Link href="/blog/blog-dark" className="date">
@@ -67,13 +72,15 @@ const Blogs3 = () => {
                 </div>
                 <h6>
                   <Link href="/blog-details/blog-details-dark">
-                    The Start-Up Ultimate Guide to Make Your WordPress
-                    Journal.
+                    The Start-Up Ultimate Guide to Make Your WordPress Journal.
                   </Link>
                 </h6>
                 <div className="btn-more">
-                  <Link href="/blog-details/blog-details-dark" className="simple-btn">
-                    Read More
+                  <Link
+                    href="/blog-details/blog-details-dark"
+                    className="simple-btn"
+                  >
+                    READ MORE
                   </Link>
                 </div>
               </div>
@@ -82,7 +89,7 @@ const Blogs3 = () => {
           <div className="col-lg-4 wow fadeInUp" data-wow-delay=".9s">
             <div
               className="item bg-img"
-              style={{ backgroundImage: "url(/img/blog/3.jpg)" }}
+              style={{ backgroundImage: 'url(/img/blog/3.jpg)' }}
             >
               <div className="cont">
                 <Link href="/blog/blog-dark" className="date">
@@ -100,13 +107,15 @@ const Blogs3 = () => {
                 </div>
                 <h6>
                   <Link href="/blog-details/blog-details-dark">
-                    The Start-Up Ultimate Guide to Make Your WordPress
-                    Journal.
+                    The Start-Up Ultimate Guide to Make Your WordPress Journal.
                   </Link>
                 </h6>
                 <div className="btn-more">
-                  <Link href="/blog-details/blog-details-dark" className="simple-btn">
-                    Read More
+                  <Link
+                    href="/blog-details/blog-details-dark"
+                    className="simple-btn"
+                  >
+                    READ MORE
                   </Link>
                 </div>
               </div>

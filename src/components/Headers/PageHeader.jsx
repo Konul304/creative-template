@@ -5,7 +5,7 @@ function PageHeader({ title, classText }) {
     <section className={`page-header ${classText && classText}`}>
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-lg-7 col-md-9">
+          <div>
             <div className="cont text-center">
               <h1 className="mb-10 color-font">{title}</h1>
             </div>

@@ -5,11 +5,7 @@ import Loading from '../../../components/Common/Loader';
 import Services1 from '../../../components/Services/Services1';
 import BlogStanderd from '../../../components/Blogs/ServicesFAQ';
 
-export const metadata = {
-  title: 'MVP Agency',
-};
-
-export default async function Services() {
+const Services = async () => {
   return (
     <>
       <Loading />
@@ -27,4 +23,5 @@ export default async function Services() {
       </div>
     </>
   );
-}
+};
+export default Services;

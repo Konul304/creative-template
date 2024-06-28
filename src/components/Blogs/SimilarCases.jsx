@@ -82,7 +82,7 @@ const SimilarCases = (data) => {
                           href={`/cases/cases-dark/${item?.id}`}
                           className="simple-btn"
                         >
-                          Read More
+                          READ MORE
                         </Link>
                       </div>
                     </div>

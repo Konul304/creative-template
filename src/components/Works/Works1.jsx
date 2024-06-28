@@ -93,28 +93,21 @@ const Works1 = () => {
                     <SwiperSlide key={item?.id} className="swiper-slide">
                       <div
                         style={{ cursor: 'pointer' }}
-                        // onClick={() =>
-                        //   router?.push(
-                        //     `/${pathname?.split('/')?.[1]}/portfolio`
-                        //   )
-                        // }
-                        // href={`/${pathname?.split('/')?.[1]}/portfolio`}
                         className="content wow noraidus fadeInUp"
                         data-wow-delay=".3s"
+                        onClick={() =>
+                          router.push(`/${pathname?.split('/')?.[1]}/portfolio`)
+                        }
                       >
                         <div
-                          // onClick={() =>
-                          //   router?.push(
-                          //     `/${pathname?.split('/')?.[1]}/portfolio`
-                          //   )
-                          // }
                           className="item-img bg-img wow imago"
+                          onClick={() =>
+                            router.push(
+                              `/${pathname?.split('/')?.[1]}/portfolio`
+                            )
+                          }
                           style={{ backgroundImage: `url(${img_url})` }}
-                        >
-                          {/* <a
-                            href={`/${pathname?.split('/')?.[1]}/portfolio`}
-                          ></a> */}
-                        </div>
+                        ></div>
                         <div className="cont">
                           <h6 className="color-font">
                             <a href={`/${pathname?.split('/')?.[1]}/portfolio`}>

@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 //= Static Data
-import blogs from "@/data/blogs2.json";
+import blogs from '@/data/blogs2.json';
 
 const BlogList = () => {
   return (
@@ -11,7 +11,11 @@ const BlogList = () => {
           <div className="col-lg-11">
             <div className="posts mt-80">
               {blogs.map((blogItem) => (
-                <div className="item mb-80 wow fadeInUp" key={blogItem.id} data-wow-delay=".3s">
+                <div
+                  className="item mb-80 wow fadeInUp"
+                  key={blogItem.id}
+                  data-wow-delay=".3s"
+                >
                   <div className="row">
                     <div className="col-lg-6 valign">
                       <div className="img md-mb50">
@@ -30,7 +34,11 @@ const BlogList = () => {
                             </Link>
                             <span>/</span>
                             {blogItem.tags.map((tag, index) => (
-                              <Link key={index} href="/blog/blog-dark" className="tag">
+                              <Link
+                                key={index}
+                                href="/blog/blog-dark"
+                                className="tag"
+                              >
                                 <span>{tag}</span>
                               </Link>
                             ))}
@@ -44,8 +52,11 @@ const BlogList = () => {
                             {blogItem.content.substr(0, 146) + '...'}
                           </p>
                           <div className="btn-more mt-30">
-                            <Link href="/blog-details/blog-details-dark" className="simple-btn">
-                              Read More
+                            <Link
+                              href="/blog-details/blog-details-dark"
+                              className="simple-btn"
+                            >
+                              READ MORE
                             </Link>
                           </div>
                         </div>

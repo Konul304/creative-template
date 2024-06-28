@@ -39,7 +39,10 @@ const OurHistory = () => {
 
   return (
     <div>
-      <header className="slider-stwo valign position-re">
+      <header
+        className="slider-stwo valign position-re"
+        style={{ boxShadow: 'none' }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-5">
