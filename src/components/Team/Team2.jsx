@@ -1,23 +1,23 @@
-'use client';
-import HTMLReactParser from 'html-react-parser';
-import React from 'react';
-import styles from '../../styles/Cases.module.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper';
-import { usePathname } from 'next/navigation';
+"use client";
+import HTMLReactParser from "html-react-parser";
+import React from "react";
+import styles from "../../styles/Cases.module.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper";
+import { usePathname } from "next/navigation";
 
 function Team2(data) {
   const pathname = usePathname();
-  const language = pathname?.split('/')[1];
+  const language = pathname?.split("/")[1];
   const img_url =
-    'https://project141.s3.eu-north-1.amazonaws.com/' + data?.data?.imageLink;
+    "https://project141.s3.eu-north-1.amazonaws.com/" + data?.data?.imageLink;
 
   const swiperOptions = {
     modules: [Autoplay, Navigation],
     loop: true,
     navigation: {
-      prevEl: '.arrows .prev',
-      nextEl: '.arrows .next',
+      prevEl: ".arrows .prev",
+      nextEl: ".arrows .next",
     },
     centeredSlides: true,
     autoplay: {
@@ -53,9 +53,9 @@ function Team2(data) {
   };
 
   const dataToRender =
-    language === 'en'
+    language === "en"
       ? engTeamData
-      : language === 'az'
+      : language === "az"
       ? azTeamData
       : rusTeamData;
 
@@ -70,11 +70,11 @@ function Team2(data) {
           <div className="col-lg-8 col-md-10">
             <div className="sec-head text-center">
               <h3 className="wow color-font">
-                {language === 'en'
-                  ? 'Our Team'
-                  : language === 'az'
-                  ? 'Komandamız'
-                  : 'Наша команда'}
+                {language === "en"
+                  ? "OUR TEAM"
+                  : language === "az"
+                  ? "KOMANDAMIZ"
+                  : "НАША КОМАНДА"}
               </h3>
             </div>
           </div>
@@ -88,7 +88,7 @@ function Team2(data) {
               <div
                 className="row wow fadeInUp"
                 data-wow-delay=".5s"
-                style={{ marginTop: '70px', marginBottom: '70px' }}
+                style={{ marginTop: "70px", marginBottom: "70px" }}
               >
                 <div className="col-lg-12">
                   <Swiper
@@ -113,14 +113,14 @@ function Team2(data) {
                                   className="item wow fadeIn"
                                   data-wow-delay={`${
                                     image.id === 1
-                                      ? '.3'
+                                      ? ".3"
                                       : image.id === 2
-                                      ? '.6'
+                                      ? ".6"
                                       : image.id === 3
-                                      ? '.8'
+                                      ? ".8"
                                       : image.id === 4
-                                      ? '.3'
-                                      : ''
+                                      ? ".3"
+                                      : ""
                                   }s`}
                                 >
                                   <div className="img">
