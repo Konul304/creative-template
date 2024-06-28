@@ -38,6 +38,16 @@ const CelebrityDetailsPage = ({ id }) => {
     description: celebrityData?.descriptionRus,
   };
 
+  const birthDate = new Date(celebrityData?.birthdate);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  const dayDifference = today.getDate() - birthDate.getDate();
+
+  if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+    age--;
+  }
+
   const dataToRender =
     language === 'en'
       ? engCelebrityData
@@ -48,6 +58,7 @@ const CelebrityDetailsPage = ({ id }) => {
   const profile_img =
     'https://project141.s3.eu-north-1.amazonaws.com/' +
     celebrityData?.profileImage;
+
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">
@@ -178,7 +189,7 @@ const CelebrityDetailsPage = ({ id }) => {
               </div>
               <div className={styles.item}>
                 <div className={styles.title}>Age</div>
-                <div className={styles.description}>{celebrityData?.age}</div>
+                <div className={styles.description}>{age}</div>
               </div>
               <div className={styles.item}>
                 <div className={styles.title}>Nationality</div>
