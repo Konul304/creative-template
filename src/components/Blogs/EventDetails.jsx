@@ -1,5 +1,5 @@
 import React from 'react';
-import Content from './Details/Content';
+import EventContent from './Details/EventContent';
 import { Card } from 'antd';
 import {
   callIcon,
@@ -17,12 +17,12 @@ const EventDetails = ({ data }) => {
   const eventsData = data?.data?.find(
     (item) => item.id?.toString() === data?.id?.eventID
   );
+  console.log(eventsData);
   const img_url =
     'https://project141.s3.eu-north-1.amazonaws.com/' + eventsData?.logoLink;
   const formattedStartDate = dayjs(eventsData?.startDate).format('D MMM');
   const formattedEndDate = dayjs(eventsData?.endDate).format('D MMM');
-  //Организатор
-  //Касса
+
   const azEventData = {
     title: eventsData?.titleAz,
     location: eventsData?.locationAz,
@@ -51,6 +51,7 @@ const EventDetails = ({ data }) => {
       : language === 'az'
       ? azEventData
       : rusEventData;
+  console.log(dataToRender);
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">
@@ -111,7 +112,7 @@ const EventDetails = ({ data }) => {
               </div>
             </div>
           </div>
-          <Content data={eventsData} />
+          <EventContent data={eventsData} />
           <div
             style={{
               display: 'flex',

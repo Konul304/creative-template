@@ -2,20 +2,17 @@ import HTMLReactParser from 'html-react-parser';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 
-const Content = (data) => {
+const EventContent = (data) => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
   const azContent = {
-    heading1: data?.data?.heading1Az,
-    paragraph: data?.data?.paragraphAz,
+    description: data?.data?.descriptionAz,
   };
   const engContent = {
-    heading1: data?.data?.heading1Eng,
-    paragraph: data?.data?.paragraphEng,
+    description: data?.data?.descriptionEng,
   };
   const rusContent = {
-    heading1: data?.data?.heading1Rus,
-    paragraph: data?.data?.paragraphRus,
+    description: data?.data?.descriptionRus,
   };
   const dataToRender =
     language === 'en' ? engContent : language === 'az' ? azContent : rusContent;
@@ -28,10 +25,9 @@ const Content = (data) => {
       <div className="row justify-content-center">
         <div className="col-lg-10">
           <div className="cont cases_content">
-            <div className="extra-title">{dataToRender?.heading1}</div>
             <div>
-              {dataToRender?.paragraph &&
-                HTMLReactParser(dataToRender?.paragraph)}
+              {dataToRender?.description &&
+                HTMLReactParser(dataToRender?.description)}
             </div>
           </div>
         </div>
@@ -40,4 +36,4 @@ const Content = (data) => {
   );
 };
 
-export default Content;
+export default EventContent;
