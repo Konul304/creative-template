@@ -1,40 +1,40 @@
-'use client';
+"use client";
 
-import { getContactData, getPortfolio, postEmail } from '../../app/(api)/api';
-import { useEffect, useState } from 'react';
-import countryData from '../../data/regions-to-countries';
-import { Select, message } from 'antd';
-import { usePathname, useRouter } from 'next/navigation';
+import { getContactData, getPortfolio, postEmail } from "../../app/(api)/api";
+import { useEffect, useState } from "react";
+import countryData from "../../data/regions-to-countries";
+import { Select, message } from "antd";
+import { usePathname, useRouter } from "next/navigation";
 
 const Footer = ({ hideBGCOLOR }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const language = pathname?.split('/')[1];
-  const { countries, zones } = require('moment-timezone/data/meta/latest.json');
+  const language = pathname?.split("/")[1];
+  const { countries, zones } = require("moment-timezone/data/meta/latest.json");
   const timeZoneToCountry = {};
   const timeZoneCityToCountry = {};
   const [portfolioData, setPortfolioData] = useState();
-  const [country, setCountry] = useState({ value: '', label: '' });
+  const [country, setCountry] = useState({ value: "", label: "" });
   const [contactData, setContactData] = useState();
   const [contactInfo, setContactInfo] = useState({
-    email: '',
-    phoneNumber: '',
-    address: '',
+    email: "",
+    phoneNumber: "",
+    address: "",
   });
   const [email, setEmail] = useState();
   const [messageApi, contextHolder] = message.useMessage();
 
   const success = () => {
     messageApi.open({
-      type: 'success',
-      content: 'Successfully subscribed',
+      type: "success",
+      content: "Successfully subscribed",
     });
   };
 
   const error = () => {
     messageApi.open({
-      type: 'error',
-      content: 'Something went wrong',
+      type: "error",
+      content: "Something went wrong",
     });
   };
 
@@ -66,9 +66,9 @@ const Footer = ({ hideBGCOLOR }) => {
   }));
 
   const dataToRender =
-    language === 'en'
+    language === "en"
       ? engPortfolioData
-      : language === 'az'
+      : language === "az"
       ? azPortfolioData
       : rusPortfolioData;
 
@@ -87,7 +87,7 @@ const Footer = ({ hideBGCOLOR }) => {
       userMail: email,
     };
     const response = await postEmail(query);
-    if (response?.message == 'Added succesfully') {
+    if (response?.message == "Added succesfully") {
       success();
     } else {
       error();
@@ -102,7 +102,7 @@ const Footer = ({ hideBGCOLOR }) => {
   useEffect(() => {
     Object.keys(zones).forEach((z) => {
       timeZoneToCountry[z] = countries[zones[z].countries[0]].name;
-      const cityArr = z.split('/');
+      const cityArr = z.split("/");
       const city = cityArr[cityArr.length - 1];
       timeZoneCityToCountry[city] = countries[zones[z].countries[0]].name;
     });
@@ -118,9 +118,9 @@ const Footer = ({ hideBGCOLOR }) => {
         email: currentLocationData?.email,
         phoneNumber: currentLocationData?.phoneNumber,
         address:
-          language === 'en'
+          language === "en"
             ? currentLocationData?.addressEng
-            : language === 'az'
+            : language === "az"
             ? currentLocationData?.addressAz
             : currentLocationData?.addressRus,
       });
@@ -128,7 +128,7 @@ const Footer = ({ hideBGCOLOR }) => {
   }, [portfolioData, contactData]);
 
   return (
-    <footer className={`${!hideBGCOLOR ? 'sub-bg' : ''}`}>
+    <footer className={`${!hideBGCOLOR ? "sub-bg" : ""}`}>
       {contextHolder}
       <div className="container">
         <div className="row">
@@ -136,12 +136,12 @@ const Footer = ({ hideBGCOLOR }) => {
             <div className="item md-mb50">
               <div className="title">
                 <h5>
-                  {' '}
-                  {language === 'en'
-                    ? 'CCONTACT US'
-                    : language === 'ru'
-                    ? 'КОНТАКТЫ'
-                    : 'ƏLAQƏ '}
+                  {" "}
+                  {language === "en"
+                    ? "CONTACT US"
+                    : language === "ru"
+                    ? "КОНТАКТЫ"
+                    : "ƏLAQƏ "}
                 </h5>
               </div>
               <Select
@@ -150,11 +150,11 @@ const Footer = ({ hideBGCOLOR }) => {
                 // placeholder="Choose country"
                 style={{ width: 120 }}
                 value={
-                  country?.label !== ''
+                  country?.label !== ""
                     ? country
                     : {
-                        value: 'Azerbaijan',
-                        label: 'Azerbaijan',
+                        value: "Azerbaijan",
+                        label: "Azerbaijan",
                       }
                 }
                 optionFilterProp="children"
@@ -169,9 +169,9 @@ const Footer = ({ hideBGCOLOR }) => {
                       email: selectedLocationData?.email,
                       phoneNumber: selectedLocationData?.phoneNumber,
                       address:
-                        language === 'en'
+                        language === "en"
                           ? selectedLocationData?.addressEng
-                          : language === 'az'
+                          : language === "az"
                           ? selectedLocationData?.addressAz
                           : selectedLocationData?.addressRus,
                     });
@@ -187,12 +187,12 @@ const Footer = ({ hideBGCOLOR }) => {
                   <span className="icon pe-7s-map-marker"></span>
                   <div className="cont">
                     <h6>
-                      {' '}
-                      {language === 'en'
-                        ? 'OFFICIAL ADDRESS'
-                        : language === 'ru'
-                        ? 'ОФФИЦАЛЬНЫЙ АДРЕСС'
-                        : 'RƏSMİ ÜNVAN'}
+                      {" "}
+                      {language === "en"
+                        ? "OFFICIAL ADDRESS"
+                        : language === "ru"
+                        ? "ОФФИЦАЛЬНЫЙ АДРЕСС"
+                        : "RƏSMİ ÜNVAN"}
                     </h6>
                     <p>{contactInfo?.address}</p>
                   </div>
@@ -201,11 +201,11 @@ const Footer = ({ hideBGCOLOR }) => {
                   <span className="icon pe-7s-mail"></span>
                   <div className="cont">
                     <h6>
-                      {language === 'en'
-                        ? 'EMAIL US'
-                        : language === 'ru'
-                        ? 'ОТПРАВИТЬ Е-МАИЛ'
-                        : 'EMAIL GÖNDƏR'}
+                      {language === "en"
+                        ? "EMAIL US"
+                        : language === "ru"
+                        ? "ОТПРАВИТЬ Е-МАИЛ"
+                        : "EMAIL GÖNDƏR"}
                     </h6>
                     <p>{contactInfo?.email}</p>
                   </div>
@@ -214,11 +214,11 @@ const Footer = ({ hideBGCOLOR }) => {
                   <span className="icon pe-7s-call"></span>
                   <div className="cont">
                     <h6>
-                      {language === 'en'
-                        ? 'CALL US'
-                        : language === 'ru'
-                        ? 'ПОЗВОНИ НАМ'
-                        : 'ZƏNG EDİN'}
+                      {language === "en"
+                        ? "CALL US"
+                        : language === "ru"
+                        ? "ПОЗВОНИ НАМ"
+                        : "ZƏNG EDİN"}
                     </h6>
                     <p>{contactInfo?.phoneNumber}</p>
                   </div>
@@ -230,35 +230,35 @@ const Footer = ({ hideBGCOLOR }) => {
             <div className="item md-mb50">
               <div className="title">
                 <h5>
-                  {' '}
-                  {language === 'en'
-                    ? 'PORTFOLIO'
-                    : language === 'ru'
-                    ? 'ПОРТФОЛИО'
-                    : 'PORTFOLİO'}
+                  {" "}
+                  {language === "en"
+                    ? "PORTFOLIO"
+                    : language === "ru"
+                    ? "ПОРТФОЛИО"
+                    : "PORTFOLİO"}
                 </h5>
               </div>
               <ul>
                 {dataToRender?.map((item) => {
                   const img_link =
-                    'https://project141.s3.eu-north-1.amazonaws.com/' +
+                    "https://project141.s3.eu-north-1.amazonaws.com/" +
                     item?.logoLink;
                   return (
                     <li key={item?.id}>
                       <div
                         onClick={() =>
                           router?.push(
-                            `/${pathname?.split('/')?.[1]}/portfolio`
+                            `/${pathname?.split("/")?.[1]}/portfolio`
                           )
                         }
                         className="img"
                       >
-                        <a href={`/${pathname?.split('/')?.[1]}/portfolio`}>
+                        <a href={`/${pathname?.split("/")?.[1]}/portfolio`}>
                           <img src={img_link} alt="" />
                         </a>
                       </div>
                       <div className="sm-post">
-                        <a href={`/${pathname?.split('/')?.[1]}/portfolio`}>
+                        <a href={`/${pathname?.split("/")?.[1]}/portfolio`}>
                           <p>{item?.title}</p>
                           {/* <span className="date">14 sep 2023</span> */}
                         </a>
@@ -274,11 +274,11 @@ const Footer = ({ hideBGCOLOR }) => {
                         type="email"
                         required
                         placeholder={
-                          language === 'en'
-                            ? 'TYPE YOUR EMAIL'
-                            : language === 'ru'
-                            ? 'НАПИШИТЕ ВАШ Е-МАИЛ'
-                            : 'EMAILINIZI YAZIN'
+                          language === "en"
+                            ? "TYPE YOUR EMAIL"
+                            : language === "ru"
+                            ? "НАПИШИТЕ ВАШ Е-МАИЛ"
+                            : "EMAILINIZI YAZIN"
                         }
                         onChange={(e) => setEmail(e?.target?.value)}
                       />
@@ -296,12 +296,12 @@ const Footer = ({ hideBGCOLOR }) => {
             <div className="item">
               <div className="title">
                 <h5>
-                  {' '}
-                  {language === 'en'
-                    ? 'SOCIALS'
-                    : language === 'ru'
-                    ? 'СОЦЫАЛЬНЫЕ СЕТИ'
-                    : 'SOSIAL'}
+                  {" "}
+                  {language === "en"
+                    ? "SOCIALS"
+                    : language === "ru"
+                    ? "СОЦЫАЛЬНЫЕ СЕТИ"
+                    : "SOSIAL"}
                 </h5>
               </div>
               <div className="social">
