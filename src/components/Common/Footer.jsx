@@ -300,7 +300,7 @@ const Footer = ({ hideBGCOLOR }) => {
                   {language === "en"
                     ? "SOCIALS"
                     : language === "ru"
-                    ? "СОЦЫАЛЬНЫЕ СЕТИ"
+                    ? "СОЦИАЛЬНЫЕ СЕТИ"
                     : "SOSIAL"}
                 </h5>
               </div>
