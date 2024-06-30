@@ -5,12 +5,22 @@ import styles from "../../styles/Cases.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper";
 import { usePathname } from "next/navigation";
+import { getTeamMembersImages } from "../../app/(api)/api";
+import { useQuery } from "react-query";
 
 function Team2(data) {
   const pathname = usePathname();
   const language = pathname?.split("/")[1];
   const img_url =
     "https://project141.s3.eu-north-1.amazonaws.com/" + data?.data?.imageLink;
+  const { data: imagesData } = useQuery(
+    ["teamImagesData"],
+    async () => await getTeamMembersImages(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
 
   const swiperOptions = {
     modules: [Autoplay, Navigation],
@@ -59,10 +69,8 @@ function Team2(data) {
       ? azTeamData
       : rusTeamData;
 
-  const imagesPerPage = 4;
-  const totalSlides = Math.ceil(
-    data?.data?.teamMembersImages?.length / imagesPerPage
-  );
+  const totalSlides = Math.ceil(imagesData?.length / 4);
+
   return (
     <section className="team section-padding">
       <div className="container">
@@ -99,11 +107,8 @@ function Team2(data) {
                     {Array.from({ length: totalSlides }, (_, slideIndex) => (
                       <SwiperSlide className="item" key={slideIndex}>
                         <div className="row bord">
-                          {data?.data?.teamMembersImages
-                            ?.slice(
-                              slideIndex * imagesPerPage,
-                              (slideIndex + 1) * imagesPerPage
-                            )
+                          {imagesData
+                            ?.slice(slideIndex * 4, (slideIndex + 1) * 4)
                             .map((image) => (
                               <div
                                 key={image.id}
@@ -128,6 +133,13 @@ function Team2(data) {
                                       src={`https://project141.s3.eu-north-1.amazonaws.com/${image?.logoLink}`}
                                       alt=""
                                     />
+                                    <div className="text-center mt-3">
+                                      {language === "az"
+                                        ? image?.titleAz
+                                        : language === "en"
+                                        ? image?.titleEng
+                                        : image?.titleRus}
+                                    </div>
                                     {/* <Split>
                                       <a
                                         href={`${partner?.link}`}
@@ -157,7 +169,7 @@ function Team2(data) {
                   </div>
                 </div>
               </div>
-              <div className={` text-center mt-5 ${styles.team_info}`}>
+              <div className={` mt-5 ${styles.team_info}`}>
                 {dataToRender?.description &&
                   HTMLReactParser(dataToRender?.description)}
               </div>
