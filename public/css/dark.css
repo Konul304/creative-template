@@ -72,7 +72,7 @@ html {
 
 body {
   color: #fff;
-  background: #111215;
+  background: #0d2236;
   line-height: 1.5;
   font-weight: 400;
   overflow-x: hidden !important;
@@ -299,7 +299,7 @@ span:hover {
 }
 
 .sub-bg {
-  background: #111215 !important;
+  background: #0d2236 !important;
 }
 
 .bg-img {
@@ -2769,7 +2769,7 @@ span:hover {
   left: 0;
   bottom: 0;
   right: 0;
-  background: #111215;
+  background: #0d2236;
   border-radius: 5px;
   z-index: -1;
 }
@@ -3454,7 +3454,7 @@ span:hover {
 }
 
 .main-content {
-  background-color: #111215 !important;
+  background-color: #0d2236 !important;
   color: #fff !important;
   position: relative;
   z-index: 3;
@@ -4079,7 +4079,7 @@ span:hover {
   left: 0;
   bottom: 0;
   right: 0;
-  background: #111215;
+  background: #0d2236;
   z-index: -1;
 }
 
@@ -4236,7 +4236,7 @@ span:hover {
   right: 1px;
   bottom: 1px;
   border-radius: 50%;
-  background: #111215;
+  background: #0d2236;
   z-index: -1;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -5800,7 +5800,7 @@ span:hover {
 .work-carousel .noraidus .cont {
   position: absolute;
   padding: 15px 30px;
-  background: #111215;
+  background: #0d2236;
   bottom: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
@@ -6898,7 +6898,7 @@ span:hover {
   top: 0px;
   right: 0px;
   bottom: 0px;
-  background: #111215;
+  background: #0d2236;
   z-index: -1;
 }
 
