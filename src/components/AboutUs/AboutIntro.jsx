@@ -1,14 +1,14 @@
-'use client';
-import { getAbout } from '../../app/(api)/api';
-import HTMLReactParser from 'html-react-parser';
-import { usePathname } from 'next/navigation';
-import React from 'react';
-import { useQuery } from 'react-query';
+"use client";
+import { getAbout } from "../../app/(api)/api";
+import HTMLReactParser from "html-react-parser";
+import { usePathname } from "next/navigation";
+import React from "react";
+import { useQuery } from "react-query";
 
 const AboutIntro = () => {
   const pathname = usePathname();
-  const language = pathname?.split('/')[1];
-  const { data } = useQuery(['aboutData'], async () => await getAbout(), {
+  const language = pathname?.split("/")[1];
+  const { data } = useQuery(["aboutData"], async () => await getAbout(), {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
@@ -27,12 +27,12 @@ const AboutIntro = () => {
   };
 
   const dataToRender =
-    language === 'en'
+    language === "en"
       ? engAboutData
-      : language === 'az'
+      : language === "az"
       ? azAboutData
       : rusAboutData;
-  console.log(dataToRender);
+
   return (
     <section className="intro-section section-padding pb-0">
       <div className="container">
@@ -40,11 +40,11 @@ const AboutIntro = () => {
           <div className="col-lg-3 col-md-4">
             <div className="htit sm-mb30">
               <h4>
-                {language === 'en'
-                  ? 'WHO WE ARE?'
-                  : language === 'az'
-                  ? 'BİZ KİMİK?'
-                  : 'КТО МЫ?'}
+                {language === "en"
+                  ? "WHO WE ARE?"
+                  : language === "az"
+                  ? "BİZ KİMİK?"
+                  : "КТО МЫ?"}
               </h4>
             </div>
           </div>

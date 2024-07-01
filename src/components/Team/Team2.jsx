@@ -1,23 +1,33 @@
-'use client';
-import HTMLReactParser from 'html-react-parser';
-import React from 'react';
-import styles from '../../styles/Cases.module.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper';
-import { usePathname } from 'next/navigation';
+"use client";
+import HTMLReactParser from "html-react-parser";
+import React from "react";
+import styles from "../../styles/Cases.module.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper";
+import { usePathname } from "next/navigation";
+import { getTeamMembersImages } from "../../app/(api)/api";
+import { useQuery } from "react-query";
 
 function Team2(data) {
   const pathname = usePathname();
-  const language = pathname?.split('/')[1];
+  const language = pathname?.split("/")[1];
   const img_url =
-    'https://project141.s3.eu-north-1.amazonaws.com/' + data?.data?.imageLink;
+    "https://project141.s3.eu-north-1.amazonaws.com/" + data?.data?.imageLink;
+  const { data: imagesData } = useQuery(
+    ["teamImagesData"],
+    async () => await getTeamMembersImages(),
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
 
   const swiperOptions = {
     modules: [Autoplay, Navigation],
     loop: true,
     navigation: {
-      prevEl: '.arrows .prev',
-      nextEl: '.arrows .next',
+      prevEl: ".arrows .prev",
+      nextEl: ".arrows .next",
     },
     centeredSlides: true,
     autoplay: {
@@ -53,16 +63,14 @@ function Team2(data) {
   };
 
   const dataToRender =
-    language === 'en'
+    language === "en"
       ? engTeamData
-      : language === 'az'
+      : language === "az"
       ? azTeamData
       : rusTeamData;
 
-  const imagesPerPage = 4;
-  const totalSlides = Math.ceil(
-    data?.data?.teamMembersImages?.length / imagesPerPage
-  );
+  const totalSlides = Math.ceil(imagesData?.length / 4);
+
   return (
     <section className="team section-padding">
       <div className="container">
@@ -70,11 +78,11 @@ function Team2(data) {
           <div className="col-lg-8 col-md-10">
             <div className="sec-head text-center">
               <h3 className="wow color-font">
-                {language === 'en'
-                  ? 'Our Team'
-                  : language === 'az'
-                  ? 'Komandamız'
-                  : 'Наша команда'}
+                {language === "en"
+                  ? "OUR TEAM"
+                  : language === "az"
+                  ? "KOMANDAMIZ"
+                  : "НАША КОМАНДА"}
               </h3>
             </div>
           </div>
@@ -88,7 +96,7 @@ function Team2(data) {
               <div
                 className="row wow fadeInUp"
                 data-wow-delay=".5s"
-                style={{ marginTop: '70px', marginBottom: '70px' }}
+                style={{ marginTop: "70px", marginBottom: "70px" }}
               >
                 <div className="col-lg-12">
                   <Swiper
@@ -99,11 +107,8 @@ function Team2(data) {
                     {Array.from({ length: totalSlides }, (_, slideIndex) => (
                       <SwiperSlide className="item" key={slideIndex}>
                         <div className="row bord">
-                          {data?.data?.teamMembersImages
-                            ?.slice(
-                              slideIndex * imagesPerPage,
-                              (slideIndex + 1) * imagesPerPage
-                            )
+                          {imagesData
+                            ?.slice(slideIndex * 4, (slideIndex + 1) * 4)
                             .map((image) => (
                               <div
                                 key={image.id}
@@ -113,14 +118,14 @@ function Team2(data) {
                                   className="item wow fadeIn"
                                   data-wow-delay={`${
                                     image.id === 1
-                                      ? '.3'
+                                      ? ".3"
                                       : image.id === 2
-                                      ? '.6'
+                                      ? ".6"
                                       : image.id === 3
-                                      ? '.8'
+                                      ? ".8"
                                       : image.id === 4
-                                      ? '.3'
-                                      : ''
+                                      ? ".3"
+                                      : ""
                                   }s`}
                                 >
                                   <div className="img">
@@ -128,6 +133,13 @@ function Team2(data) {
                                       src={`https://project141.s3.eu-north-1.amazonaws.com/${image?.logoLink}`}
                                       alt=""
                                     />
+                                    <div className="text-center mt-3">
+                                      {language === "az"
+                                        ? image?.titleAz
+                                        : language === "en"
+                                        ? image?.titleEng
+                                        : image?.titleRus}
+                                    </div>
                                     {/* <Split>
                                       <a
                                         href={`${partner?.link}`}
@@ -157,7 +169,7 @@ function Team2(data) {
                   </div>
                 </div>
               </div>
-              <div className={` text-center mt-5 ${styles.team_info}`}>
+              <div className={` mt-5 ${styles.team_info}`}>
                 {dataToRender?.description &&
                   HTMLReactParser(dataToRender?.description)}
               </div>
