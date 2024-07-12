@@ -8,7 +8,7 @@ function Team3() {
           <div className="col-lg-8 col-md-10">
             <div className="sec-head text-center">
               <h2 className="wow fadeIn" data-wow-delay=".3s">
-                Our Team
+                Team
               </h2>
             </div>
           </div>
@@ -138,6 +138,6 @@ function Team3() {
       </div>
     </section>
   );
-};
+}
 
-export default Team3
+export default Team3;

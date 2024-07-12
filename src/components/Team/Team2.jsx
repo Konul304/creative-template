@@ -79,10 +79,10 @@ function Team2(data) {
             <div className="sec-head text-center">
               <h3 className="wow color-font">
                 {language === "en"
-                  ? "OUR TEAM"
+                  ? "TEAM"
                   : language === "az"
-                  ? "KOMANDAMIZ"
-                  : "НАША КОМАНДА"}
+                  ? "KOMANDA"
+                  : "КОМАНДА"}
               </h3>
             </div>
           </div>

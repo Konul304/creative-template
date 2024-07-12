@@ -9,6 +9,7 @@ import { Select } from "antd";
 import styles from "../../styles/Navbar.module.scss";
 
 const Navbar = ({ theme }) => {
+  const router = useRouter();
   const navbarRef = useRef(null);
   const pathname = usePathname();
   const language = pathname?.split("/")[1];
@@ -34,6 +35,11 @@ const Navbar = ({ theme }) => {
     }
 
     setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // Prevent negative values
+  };
+
+  const handleTranslate = (e) => {
+    const route = pathname.substring(4, pathname.length);
+    router.push(`/${e}/${route}`);
   };
 
   useEffect(() => {
@@ -179,10 +185,10 @@ const Navbar = ({ theme }) => {
                 href={`/${pathname?.split("/")?.[1]}/news`}
               >
                 {language === "en"
-                  ? "NEWS"
+                  ? "NEWS & INSIGHTS"
                   : language === "az"
-                  ? "XƏBƏRLƏR"
-                  : "НОВОСТИ"}
+                  ? "XƏBƏRLƏR VƏ DƏRİNLİKLƏR"
+                  : "НОВОСТИ И ИНСАЙТЫ"}
               </a>
             </li>
             <li

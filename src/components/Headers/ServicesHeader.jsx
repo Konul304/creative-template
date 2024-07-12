@@ -1,14 +1,14 @@
-'use client';
-import React, { useRef, useEffect } from 'react';
+"use client";
+import React, { useRef, useEffect } from "react";
 
 function ServicesHeader() {
   const fixedSlider = useRef();
 
   useEffect(() => {
     if (fixedSlider.current) {
-      const MainContent = document.querySelector('.main-content');
+      const MainContent = document.querySelector(".main-content");
       const slideHeight = fixedSlider.current.offsetHeight;
-      MainContent.style.marginTop = slideHeight + 'px';
+      MainContent.style.marginTop = slideHeight + "px";
     }
   }, []);
 
@@ -22,7 +22,7 @@ function ServicesHeader() {
           <div className="col-lg-7 col-md-9 static">
             <div className="capt mt-50">
               <div className="parlx text-center">
-                <h1 className="color-font">Our Services</h1>
+                <h1 className="color-font">Services</h1>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
                   blanditiis aliquam officia exercitationem est totam, voluptas
