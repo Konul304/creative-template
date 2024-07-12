@@ -194,7 +194,7 @@ const Footer = ({ hideBGCOLOR }) => {
                         ? "ОФФИЦАЛЬНЫЙ АДРЕСС"
                         : "RƏSMİ ÜNVAN"}
                     </h6>
-                    <p>{contactInfo?.address}</p>
+                    <p style={{ maxWidth: "300px" }}>{contactInfo?.address}</p>
                   </div>
                 </li>
                 <li>

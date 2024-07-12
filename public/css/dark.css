@@ -8153,7 +8153,7 @@ footer .item li h6 {
 footer .item li .icon {
   font-size: 30px;
   margin-right: 30px;
-  margin-top: 21px !important;
+  /* margin-top: 21px !important; */
 }
 
 footer .item li .img {

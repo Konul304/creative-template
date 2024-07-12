@@ -283,3 +283,12 @@ body.hideX .pace {
 .ant-card .ant-card-cover img {
   border-radius: 6px 6px 0 0 !important;
 }
+
+.ant-collapse
+  > .ant-collapse-item
+  > .ant-collapse-header
+  .ant-collapse-arrow
+  svg {
+  color: white !important;
+  margin-bottom: 9px !important;
+}
