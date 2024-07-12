@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { handleDropdown, handleMobileDropdown } from "../../common/navbar";
 import { usePathname, useRouter } from "next/navigation";
@@ -9,43 +9,45 @@ import { Select } from "antd";
 import styles from "../../styles/Navbar.module.scss";
 
 const Navbar = ({ theme }) => {
-  const navbar = useRef();
-  const router = useRouter();
+  const navbarRef = useRef(null);
   const pathname = usePathname();
   const language = pathname?.split("/")[1];
-
   const { data } = useQuery(["Logo"], async () => await getLogo(), {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
   const img_url =
     "https://project141.s3.eu-north-1.amazonaws.com/" + data?.[0]?.logoLink;
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [navVisible, setNavVisible] = useState(true);
+  const scrollThreshold = 50; // Adjust the threshold as needed
 
-  function handleScroll() {
-    if (window.scrollY > 300) {
-      navbar?.current?.classList?.add("nav-scroll");
-    } else {
-      navbar?.current?.classList?.remove("nav-scroll");
+  const handleScroll = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop + scrollThreshold) {
+      // Scroll down
+      setNavVisible(false);
+    } else if (scrollTop < lastScrollTop - scrollThreshold) {
+      // Scroll up
+      setNavVisible(true);
     }
-  }
 
-  const handleTranslate = (e) => {
-    const route = pathname.substring(4, pathname.length);
-    router.push(`/${e}/${route}`);
+    setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // Prevent negative values
   };
 
   useEffect(() => {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  });
+  }, [lastScrollTop]);
 
   return (
     <nav
-      ref={navbar}
-      className={`navbar navbar-expand-lg change ${
+      ref={navbarRef}
+      className={`navbar navbar-expand-lg nav-scroll ${
         theme === "light" ? "light" : ""
-      }`}
+      } ${navVisible ? "visible" : ""}`}
     >
       <div
         className="container"
@@ -89,7 +91,7 @@ const Navbar = ({ theme }) => {
           id="navbarSupportedContent"
           style={{
             flexGrow: "0",
-            backdropFilter: " blur(20px)",
+            backdropFilter: "blur(20px)",
             backgroundColor: "#2d303273",
             borderRadius: "9999px",
             width: language === "az" && "1488px",
@@ -157,8 +159,8 @@ const Navbar = ({ theme }) => {
               }`}
             >
               <a
-                href={`/${pathname?.split("/")?.[1]}/cases`}
                 className="nav-link"
+                href={`/${pathname?.split("/")?.[1]}/cases`}
               >
                 {language === "en"
                   ? "CASES"
@@ -173,8 +175,8 @@ const Navbar = ({ theme }) => {
               }`}
             >
               <a
-                href={`/${pathname?.split("/")?.[1]}/news`}
                 className="nav-link"
+                href={`/${pathname?.split("/")?.[1]}/news`}
               >
                 {language === "en"
                   ? "NEWS"
@@ -189,8 +191,8 @@ const Navbar = ({ theme }) => {
               }`}
             >
               <a
-                href={`/${pathname?.split("/")?.[1]}/events`}
                 className="nav-link"
+                href={`/${pathname?.split("/")?.[1]}/events`}
               >
                 {language === "en"
                   ? "EVENTS"
@@ -221,8 +223,8 @@ const Navbar = ({ theme }) => {
               }`}
             >
               <a
-                href={`/${pathname?.split("/")?.[1]}/contact`}
                 className="nav-link"
+                href={`/${pathname?.split("/")?.[1]}/contact`}
               >
                 {language === "en"
                   ? "CONTACT"
