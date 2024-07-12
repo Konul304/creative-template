@@ -1,16 +1,16 @@
-'use client';
-import Split from '../../components/Common/Split';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper';
-import { getPartners } from '../../app/(api)/api';
-import { useQuery } from 'react-query';
-import { usePathname } from 'next/navigation';
+"use client";
+import Split from "../../components/Common/Split";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper";
+import { getPartners } from "../../app/(api)/api";
+import { useQuery } from "react-query";
+import { usePathname } from "next/navigation";
 
 const Clients = () => {
   const pathname = usePathname();
-  const language = pathname?.split('/')[1];
+  const language = pathname?.split("/")[1];
   const { data: partners } = useQuery(
-    ['partnerData'],
+    ["partnerData"],
     async () => await getPartners(),
     {
       refetchOnWindowFocus: false,
@@ -21,8 +21,8 @@ const Clients = () => {
     modules: [Autoplay, Navigation],
     loop: true,
     navigation: {
-      prevEl: '.arrows .prev',
-      nextEl: '.arrows .next',
+      prevEl: ".arrows .prev",
+      nextEl: ".arrows .next",
     },
     centeredSlides: true,
     autoplay: {
@@ -53,11 +53,11 @@ const Clients = () => {
   return (
     <section className="clients section-padding">
       <h1 className="wow color-font text-center mb-50 fw-700 ">
-        {language === 'en'
-          ? 'OUR PARTNERS'
-          : language === 'az'
-          ? 'PARTNYORLARIMIZ'
-          : 'НАШИ ПАРТНЕРЫ'}
+        {language === "en"
+          ? "PARTNERS"
+          : language === "az"
+          ? "PARTNYORLAR"
+          : "ПАРТНЕРЫ"}
       </h1>
       <div className="container-fluid position-re">
         <div className="row wow fadeInUp" data-wow-delay=".5s">
@@ -81,14 +81,14 @@ const Clients = () => {
                             className="item wow fadeIn"
                             data-wow-delay={`${
                               partner.id === 1
-                                ? '.3'
+                                ? ".3"
                                 : partner.id === 2
-                                ? '.6'
+                                ? ".6"
                                 : partner.id === 3
-                                ? '.8'
+                                ? ".8"
                                 : partner.id === 4
-                                ? '.3'
-                                : ''
+                                ? ".3"
+                                : ""
                             }s`}
                           >
                             <div className="img">
