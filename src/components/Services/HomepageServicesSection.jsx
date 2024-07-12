@@ -1,16 +1,16 @@
-'use client';
-import React from 'react';
-import Link from 'next/link';
-import { useQuery } from 'react-query';
-import { getServiceFAQ } from '../../app/(api)/api';
-import { usePathname } from 'next/navigation';
+"use client";
+import React from "react";
+import Link from "next/link";
+import { useQuery } from "react-query";
+import { getServiceFAQ } from "../../app/(api)/api";
+import { usePathname } from "next/navigation";
 
 const HomepageServicesSection = ({ style, lines }) => {
   const pathname = usePathname();
-  const language = pathname?.split('/')[1];
+  const language = pathname?.split("/")[1];
 
   const { data: services } = useQuery(
-    ['servicesFAQ'],
+    ["servicesFAQ"],
     async () => await getServiceFAQ(),
     {
       refetchOnWindowFocus: false,
@@ -29,12 +29,12 @@ const HomepageServicesSection = ({ style, lines }) => {
   }));
 
   const dataToRender =
-    language === 'en' ? engFAQData : language === 'az' ? azFAQData : rusFAQData;
+    language === "en" ? engFAQData : language === "az" ? azFAQData : rusFAQData;
 
   return (
     <section
       className={`services bords section-padding ${
-        style === '4item' ? 'lficon' : lines ? '' : 'pt-0'
+        style === "4item" ? "lficon" : lines ? "" : "pt-0"
       }`}
     >
       <div className="container">
@@ -42,11 +42,11 @@ const HomepageServicesSection = ({ style, lines }) => {
           <div className="col-lg-8 col-md-10">
             <div className="sec-head  text-center">
               <h3 className="wow color-font">
-                {language === 'en'
-                  ? 'OUR SERVICES'
-                  : language === 'az'
-                  ? 'XİDMƏTLƏRİMİZ'
-                  : 'НАШИ УСЛУГИ'}
+                {language === "en"
+                  ? "OUR SERVICES"
+                  : language === "az"
+                  ? "XİDMƏTLƏRİMİZ"
+                  : "НАШИ УСЛУГИ"}
               </h3>
             </div>
           </div>
@@ -59,7 +59,11 @@ const HomepageServicesSection = ({ style, lines }) => {
                 className="col-md-4 wow fadeInLeft"
                 data-wow-delay={`0s`}
               >
-                <Link href={`/${language}/services`} className="item-box">
+                <Link
+                  href={`/${language}/services`}
+                  className="item-box"
+                  target="_blank"
+                >
                   <div className="cont">
                     <h6 className="text-center">{item?.title}</h6>
                   </div>
