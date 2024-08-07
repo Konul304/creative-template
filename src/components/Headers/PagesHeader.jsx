@@ -1,14 +1,9 @@
 'use client';
-import { getAbout } from '../../app/(api)/api';
 import React, { useEffect, useRef } from 'react';
-import { useQuery } from 'react-query';
 
-const PagesHeader = () => {
+const PagesHeader = (data) => {
   const fixedSlider = useRef();
-  const { data } = useQuery(['aboutData'], async () => await getAbout(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+
   useEffect(() => {
     if (fixedSlider.current) {
       const MainContent = document.querySelector('.main-content');
@@ -17,7 +12,7 @@ const PagesHeader = () => {
     }
   }, []);
   const img_link =
-    'https://project141.s3.eu-north-1.amazonaws.com/' + data?.wePhotoLink;
+    'https://project141.s3.eu-north-1.amazonaws.com/' + data?.data?.wePhotoLink;
 
   return (
     <header

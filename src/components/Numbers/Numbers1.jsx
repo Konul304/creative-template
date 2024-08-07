@@ -2,23 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
 import Split from '../Common/Split';
-import { useQuery } from 'react-query';
-import { getStatistics } from '../../app/(api)/api';
 import { usePathname } from 'next/navigation';
 
-const Numbers = () => {
+const Numbers = ({ data }) => {
   const [renderCounters, setRenderCounters] = useState(false);
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
-
-  const { data } = useQuery(
-    ['statisticData'],
-    async () => await getStatistics(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
 
   const azNumbersData = data?.map((item) => ({
     icon: item.icon,

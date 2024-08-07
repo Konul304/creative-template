@@ -1,40 +1,29 @@
-"use client";
-import React from "react";
-import Link from "next/link";
-import { useQuery } from "react-query";
-import { getServiceFAQ } from "../../app/(api)/api";
-import { usePathname } from "next/navigation";
+'use client';
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const HomepageServicesSection = ({ style, lines }) => {
+const HomepageServicesSection = ({ style, lines, FAQData }) => {
   const pathname = usePathname();
-  const language = pathname?.split("/")[1];
+  const language = pathname?.split('/')[1];
 
-  const { data: services } = useQuery(
-    ["servicesFAQ"],
-    async () => await getServiceFAQ(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
-
-  const azFAQData = services?.map((item) => ({
+  const azFAQData = FAQData?.map((item) => ({
     title: item.titleAz,
   }));
-  const engFAQData = services?.map((item) => ({
+  const engFAQData = FAQData?.map((item) => ({
     title: item.titleEng,
   }));
-  const rusFAQData = services?.map((item) => ({
+  const rusFAQData = FAQData?.map((item) => ({
     title: item.titleRus,
   }));
 
   const dataToRender =
-    language === "en" ? engFAQData : language === "az" ? azFAQData : rusFAQData;
+    language === 'en' ? engFAQData : language === 'az' ? azFAQData : rusFAQData;
 
   return (
     <section
       className={`services bords section-padding ${
-        style === "4item" ? "lficon" : lines ? "" : "pt-0"
+        style === '4item' ? 'lficon' : lines ? '' : 'pt-0'
       }`}
     >
       <div className="container">
@@ -42,11 +31,11 @@ const HomepageServicesSection = ({ style, lines }) => {
           <div className="col-lg-8 col-md-10">
             <div className="sec-head  text-center">
               <h3 className="wow color-font">
-                {language === "en"
-                  ? "OUR SERVICES"
-                  : language === "az"
-                  ? "XİDMƏTLƏRİMİZ"
-                  : "НАШИ УСЛУГИ"}
+                {language === 'en'
+                  ? 'OUR SERVICES'
+                  : language === 'az'
+                  ? 'XİDMƏTLƏRİMİZ'
+                  : 'НАШИ УСЛУГИ'}
               </h3>
             </div>
           </div>

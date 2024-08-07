@@ -1,7 +1,5 @@
 'use client';
 import React, { useEffect } from 'react';
-//= Static Data
-import contentHeaderData from '../../data/contact-header.json';
 import { usePathname } from 'next/navigation';
 
 function ContactHeader() {
