@@ -4,8 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Parallax } from 'swiper';
 import removeSlashFromBagination from '../../common/removeSlashpagination';
 import fadeWhenScroll from '../../common/fadeWhenScroll';
-import { getCases, getEvents, getNews } from '../../app/(api)/api';
-import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 import { usePathname } from 'next/navigation';
 
@@ -33,39 +31,14 @@ const swiperOptions = {
   },
 };
 
-const SliderHeader = () => {
+const SliderHeader = ({ cases, news, events }) => {
   const fixedSlider = useRef();
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
 
-  const { data } = useQuery(['caseData'], async () => await getCases(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
-
-  const { data: newsData } = useQuery(
-    ['newsData'],
-    async () => await getNews(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
-
-  const { data: eventsData } = useQuery(
-    ['eventData'],
-    async () => await getEvents(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
-
-  const filteredCaseData = data?.filter((item) => item.isSlider === true);
-  const filteredNewsData = newsData?.filter((item) => item.isSlider === true);
-  const filteredEventsData = eventsData?.filter(
-    (item) => item.isSlider === true
-  );
+  const filteredCaseData = cases?.filter((item) => item.isSlider === true);
+  const filteredNewsData = news?.filter((item) => item.isSlider === true);
+  const filteredEventsData = events?.filter((item) => item.isSlider === true);
 
   const azCaseData = filteredCaseData?.map((item) => ({
     sliderLogoLink: item.sliderLogoLink,
@@ -126,7 +99,7 @@ const SliderHeader = () => {
   useEffect(() => {
     removeSlashFromBagination();
     fadeWhenScroll(document.querySelectorAll('.fixed-slider .caption'));
-  }, [data]);
+  }, [cases]);
 
   useEffect(() => {
     if (fixedSlider.current) {
@@ -134,7 +107,7 @@ const SliderHeader = () => {
       const slideHeight = fixedSlider.current.offsetHeight;
       MainContent.style.marginTop = slideHeight + 'px';
     }
-  }, [data]);
+  }, [cases]);
   const casesToRender =
     language === 'en'
       ? engCaseData

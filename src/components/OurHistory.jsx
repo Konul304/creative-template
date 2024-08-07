@@ -1,46 +1,41 @@
-"use client";
-import { getAbout } from "../app/(api)/api";
-import HTMLReactParser from "html-react-parser";
-import { usePathname } from "next/navigation";
-import React from "react";
-import { useQuery } from "react-query";
+'use client';
+import HTMLReactParser from 'html-react-parser';
+import { usePathname } from 'next/navigation';
+import React from 'react';
 
-const OurHistory = () => {
+const OurHistory = (data) => {
   const pathname = usePathname();
-  const language = pathname?.split("/")[1];
-  const { data } = useQuery(["aboutData"], async () => await getAbout(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  const language = pathname?.split('/')[1];
 
   const azAboutData = {
-    historyTitle: data?.historyTitleAz,
-    historyText: data?.historyTextAz,
+    historyTitle: data?.data?.historyTitleAz,
+    historyText: data?.data?.historyTextAz,
   };
   const engAboutData = {
-    historyTitle: data?.historyTitleEng,
-    historyText: data?.historyTextEng,
+    historyTitle: data?.data?.historyTitleEng,
+    historyText: data?.data?.historyTextEng,
   };
   const rusAboutData = {
-    historyTitle: data?.historyTitleRus,
-    historyText: data?.historyTextRus,
+    historyTitle: data?.data?.historyTitleRus,
+    historyText: data?.data?.historyTextRus,
   };
 
   const dataToRender =
-    language === "en"
+    language === 'en'
       ? engAboutData
-      : language === "az"
+      : language === 'az'
       ? azAboutData
       : rusAboutData;
 
   const img_link =
-    "https://project141.s3.eu-north-1.amazonaws.com/" + data?.historyPhotoLink;
+    'https://project141.s3.eu-north-1.amazonaws.com/' +
+    data?.data?.historyPhotoLink;
 
   return (
     <div>
       <header
         className="slider-stwo valign position-re"
-        style={{ boxShadow: "none" }}
+        style={{ boxShadow: 'none' }}
       >
         <div className="container">
           <div className="row">
@@ -52,13 +47,13 @@ const OurHistory = () => {
             <div className="col-lg-7 valign">
               <div className="cont">
                 <h1 className="wow color-font  mb-50 fw-700 ">
-                  {language === "en"
-                    ? "OUR HISTORY"
-                    : language === "az"
-                    ? "TARİXİMİZ"
-                    : "НАША ИСТОРИЯ"}
+                  {language === 'en'
+                    ? 'OUR HISTORY'
+                    : language === 'az'
+                    ? 'TARİXİMİZ'
+                    : 'НАША ИСТОРИЯ'}
                 </h1>
-                {/* <p>{data?.historyText}</p> */}
+                {/* <p>{data?.data?.historyText}</p> */}
                 <div>
                   {dataToRender?.historyText &&
                     HTMLReactParser(dataToRender?.historyText)}

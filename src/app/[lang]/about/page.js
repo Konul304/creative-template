@@ -7,23 +7,36 @@ import Partners from '../../../components/Clients/Partners';
 import Footer from '../../../components/Common/Footer';
 import Loading from '../../../components/Common/Loader';
 import OurHistory from '../../../components/OurHistory';
+import {
+  getAbout,
+  getContactData,
+  getPartners,
+  getTeamMembers,
+  getTeamMembersImages,
+} from '../../(api)/api';
 
 export const metadata = {
   title: 'MVP Agency',
 };
 
 const AboutDark = async () => {
+  const aboutData = await getAbout();
+  const historyData = await getAbout();
+  const partnersData = await getPartners();
+  const teamData = await getTeamMembers();
+  const contactData = await getContactData();
+  const teamImagesData = await getTeamMembersImages();
   return (
     <>
       <Loading />
       <Navbar />
-      <PagesHeader />
+      <PagesHeader data={aboutData} />
       <div className="main-content">
-        <AboutIntro />
-        <Partners theme="dark" />
-        <OurHistory />
-        <Team />
-        <Footer />
+        <AboutIntro data={aboutData} />
+        <Partners theme="dark" data={partnersData} />
+        <OurHistory data={historyData} />
+        <Team data={teamData} teamImagesData={teamImagesData} />
+        <Footer contactData={contactData} />
       </div>
     </>
   );

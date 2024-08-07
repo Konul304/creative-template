@@ -1,22 +1,18 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-//= Components
 import Split from '../Common/Split';
-//= Static Data
-import contentFormData from '../../data/contact-form.json';
 import styles from '../../styles/Contact.module.scss';
 import countryData from '../../data/regions-to-countries';
 import { Select, message } from 'antd';
-import { getContactData, postMessage } from '../../app/(api)/api';
+import { postMessage } from '../../app/(api)/api';
 import { usePathname } from 'next/navigation';
 
-const ContactForm = ({ theme }) => {
+const ContactForm = (data) => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
   const { countries, zones } = require('moment-timezone/data/meta/latest.json');
   const timeZoneToCountry = {};
   const timeZoneCityToCountry = {};
-  const [data, setData] = useState();
   const [country, setCountry] = useState({ value: '', label: '' });
   const [messageApi, contextHolder] = message.useMessage();
   const [contactInfo, setContactInfo] = useState({
@@ -32,8 +28,6 @@ const ContactForm = ({ theme }) => {
   let myCountry;
 
   const getData = async () => {
-    const response = await getContactData();
-    setData(response);
     Object.keys(zones).forEach((z) => {
       timeZoneToCountry[z] = countries[zones[z].countries[0]].name;
       const cityArr = z.split('/');
@@ -45,13 +39,18 @@ const ContactForm = ({ theme }) => {
       myCountry = Object.entries(countryData).find(
         ([key, value]) => key === userTimeZone
       );
-      const currentLocationData = response?.find(
+      const currentLocationData = data?.data?.find(
         (item) => item.country === myCountry[1]
       );
       setContactInfo({
         email: currentLocationData?.email,
         phoneNumber: currentLocationData?.phoneNumber,
-        address: currentLocationData?.address,
+        address:
+          language === 'az'
+            ? currentLocationData.addressAz
+            : language === 'en'
+            ? currentLocationData.addressEng
+            : currentLocationData.addressRus,
       });
     }
   };
@@ -84,11 +83,10 @@ const ContactForm = ({ theme }) => {
       error();
     }
   };
-
-  //finds the country in data which is the same with the country found based on timezone
   useEffect(() => {
     getData();
   }, []);
+  //finds the country in data which is the same with the country found based on timezone
 
   return (
     <section className="contact ">
@@ -110,7 +108,7 @@ const ContactForm = ({ theme }) => {
           optionFilterProp="children"
           onChange={(value, option) => {
             setCountry(option);
-            const selectedLocationData = data?.find(
+            const selectedLocationData = data?.data?.find(
               (item) => item.country === option?.label
             );
             if (selectedLocationData) {
@@ -121,7 +119,7 @@ const ContactForm = ({ theme }) => {
               });
             }
           }}
-          options={data?.map((item) => ({
+          options={data?.data?.map((item) => ({
             value: item?.country,
             label: item?.country,
           }))}
@@ -209,10 +207,7 @@ const ContactForm = ({ theme }) => {
                     ></textarea>
                   </div>
 
-                  <button
-                    type="submit"
-                    className={`butn ${theme === 'light' ? 'dark' : 'bord'}`}
-                  >
+                  <button type="submit" className={`butn ${'bord'}`}>
                     <span>
                       {language === 'en'
                         ? 'SEND MESSAGE'

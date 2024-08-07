@@ -1,33 +1,27 @@
 'use client';
 import React from 'react';
 import aboutData from '../../data/about-us1.json';
-import { getAbout } from '../../app/(api)/api';
-import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 import { usePathname } from 'next/navigation';
 
-const AboutUs1 = () => {
+const AboutUs1 = (data) => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
 
-  const { data } = useQuery(['aboutData'], async () => await getAbout(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
   const azAboutData = {
-    wePhotoLink: data?.wePhotoLink,
-    weTitle: data?.weTitleAz,
-    weText: data?.weTextAz,
+    wePhotoLink: data?.data?.wePhotoLink,
+    weTitle: data?.data?.weTitleAz,
+    weText: data?.data?.weTextAz,
   };
   const engAboutData = {
-    wePhotoLink: data?.wePhotoLink,
-    weTitle: data?.weTitleEng,
-    weText: data?.weTextEng,
+    wePhotoLink: data?.data?.wePhotoLink,
+    weTitle: data?.data?.weTitleEng,
+    weText: data?.data?.weTextEng,
   };
   const rusAboutData = {
-    wePhotoLink: data?.wePhotoLink,
-    weTitle: data?.weTitleRus,
-    weText: data?.weTextRus,
+    wePhotoLink: data?.data?.wePhotoLink,
+    weTitle: data?.data?.weTitleRus,
+    weText: data?.data?.weTextRus,
   };
 
   const dataToRender =

@@ -1,26 +1,19 @@
-"use client";
-import React, { useEffect } from "react";
-import teamSkillsProgress from "../../common/teamSkillsProgress";
-import tooltipEffect from "../../common/tooltipEffect";
-import Team2 from "./Team2";
-import { getTeamMembers } from "../../app/(api)/api";
-import { useQuery } from "react-query";
+'use client';
+import React, { useEffect } from 'react';
+import teamSkillsProgress from '../../common/teamSkillsProgress';
+import tooltipEffect from '../../common/tooltipEffect';
+import Team2 from './Team2';
 
-const Team = () => {
+const Team = ({ data, teamImagesData }) => {
   useEffect(() => {
     teamSkillsProgress();
     setTimeout(() => {
       tooltipEffect();
     }, 500);
   }, []);
-  const { data } = useQuery(["teamData"], async () => await getTeamMembers(), {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
-
   return (
     <div className="team-crv section-padding">
-      <Team2 data={data} />
+      <Team2 data={data} teamImagesData={teamImagesData} />
     </div>
   );
 };

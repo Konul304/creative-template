@@ -3,8 +3,6 @@ import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
 import removeSlashFromBagination from '../../common/removeSlashpagination';
-import { getTestimonials } from '../../app/(api)/api';
-import { useQuery } from 'react-query';
 import HTMLReactParser from 'html-react-parser';
 import { usePathname } from 'next/navigation';
 
@@ -49,41 +47,33 @@ function FullTestimonials({
   noPadding,
   classText,
   showHead,
+  data,
 }) {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
 
-  const { data } = useQuery(
-    ['testimonialData'],
-    async () => await getTestimonials(),
-    {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-    }
-  );
-
   const azTestimonialsData = data?.map((item) => ({
     logoLink: item.logoLink,
     id: item.id,
-    fullName: item.fullNameAz,
-    position: item?.positionAz,
-    company: item?.companyAz,
+    fullName: item.fullName,
+    position: item?.position,
+    company: item?.company,
     testimonial: item?.testimonialAz,
   }));
   const engTestimonialsData = data?.map((item) => ({
     logoLink: item.logoLink,
     id: item.id,
-    fullName: item.fullNameEng,
-    position: item?.positionEng,
-    company: item?.companyEng,
+    fullName: item.fullName,
+    position: item?.position,
+    company: item?.company,
     testimonial: item?.testimonialEng,
   }));
   const rusTestimonialsData = data?.map((item) => ({
     logoLink: item.logoLink,
     id: item.id,
-    fullName: item.fullNameRus,
-    position: item?.positionRus,
-    company: item?.companyRus,
+    fullName: item.fullName,
+    position: item?.position,
+    company: item?.company,
     testimonial: item?.testimonialRus,
   }));
 
