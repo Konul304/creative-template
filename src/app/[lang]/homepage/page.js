@@ -12,6 +12,7 @@ import {
   getAbout,
   getCases,
   getEvents,
+  getLogo,
   getNews,
   getPartners,
   getServiceFAQ,
@@ -32,11 +33,12 @@ const Home1 = async () => {
   const servicesFaqData = await getServiceFAQ();
   const statisticsData = await getStatistics();
   const testimonialsData = await getTestimonials();
+  const logo = await getLogo();
 
   return (
     <>
       <Loading />
-      <Navbar />
+      <Navbar logo={logo} />
       <SliderHeader cases={casesData} events={eventsData} news={newsData} />
       <div className="main-content">
         <AboutUs data={aboutData} />

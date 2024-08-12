@@ -8,7 +8,7 @@ const SimilarNews = (data) => {
     (item) => item.id?.toString() === data?.data?.id?.newsID
   );
   const matchingObjects = allData?.filter((item) => {
-    const hasMatchingTag = newsData.tagNames.some(
+    const hasMatchingTag = newsData?.tagNames.some(
       (tagName) => item.tagNames && item.tagNames.includes(tagName)
     );
     return hasMatchingTag;

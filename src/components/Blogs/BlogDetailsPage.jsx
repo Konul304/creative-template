@@ -11,12 +11,10 @@ export const metadata = {
   title: 'MVP Agency',
 };
 
-const BlogDetailsPage = (data) => {
+const BlogDetailsPage = ({ data, logo, id }) => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
-  const caseData = data?.data?.find(
-    (item) => item.id?.toString() === data?.id?.casesID
-  );
+  const caseData = data?.find((item) => item.id?.toString() === id?.casesID);
   const azCaseData = {
     title: caseData?.titleAz,
   };
@@ -43,12 +41,12 @@ const BlogDetailsPage = (data) => {
           <div className="gradient-circle two"></div>
         </div>
       </div>
-      <Navbar />
+      <Navbar logo={logo} />
       <PageHeader
         title={dataToRender?.title}
         paragraph="All the most current news and events of our creative team."
       />
-      <BlogDetails data={data} />
+      <BlogDetails data={data} id={id?.casesID} />
       <Footer />
     </>
   );

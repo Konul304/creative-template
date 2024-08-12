@@ -4,12 +4,10 @@ import Content from './Details/Content';
 import WorksStyle2 from '../Works/WorksStyle2';
 import SimilarNews from './SimilarNews';
 
-const NewsDetails = ({ data }) => {
-  const newsData = data?.data?.find(
-    (item) => item.id?.toString() === data?.id?.newsID
-  );
+const NewsDetails = ({ data, id }) => {
+  const newsData = data?.find((item) => item.id?.toString() === id);
   const hasImages = newsData?.newsImages && newsData?.newsImages.length > 0;
-  const hasVideos = newsData?.newsVideos && newsData.newsVideos.length > 0;
+  const hasVideos = newsData?.newsVideos && newsData?.newsVideos.length > 0;
   return (
     <section className="blog-pg single section-padding pt-0">
       <div className="container">

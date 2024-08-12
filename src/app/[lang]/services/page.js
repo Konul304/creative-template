@@ -4,8 +4,10 @@ import Footer from '../../../components/Common/Footer';
 import Loading from '../../../components/Common/Loader';
 import Services1 from '../../../components/Services/Services1';
 import BlogStanderd from '../../../components/Blogs/ServicesFAQ';
+import { getLogo } from '../../(api)/api';
 
 const Services = async () => {
+  const logo = await getLogo();
   return (
     <>
       <Loading />
@@ -15,7 +17,7 @@ const Services = async () => {
           <div className="gradient-circle two"></div>
         </div>
       </div>
-      <Navbar />
+      <Navbar logo={logo} />
       <div className="main-content">
         <Services1 style="4item" />
         <BlogStanderd />

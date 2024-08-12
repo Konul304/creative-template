@@ -6,14 +6,16 @@ import PageHeader from '../../../components/Headers/PageHeader';
 import EventCards from '../../../components/events/EventCards';
 import Footer from '../../../components/Common/Footer';
 import { usePathname } from 'next/navigation';
+import { getLogo } from '../../(api)/api';
 
-const page = () => {
+const page = async () => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
+  const logo = await getLogo();
   return (
     <>
       <Loading />
-      <Navbar />
+      <Navbar logo={logo} />
       <PageHeader
         title={
           language === 'en'

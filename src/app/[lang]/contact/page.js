@@ -4,7 +4,7 @@ import Navbar from '../../../components/Common/Navbar';
 import ContactHeader from '../../../components/Contact/ContactHeader';
 import ContactForm from '../../../components/Contact/ContactForm';
 import Footer from '../../../components/Common/Footer';
-import { getContactData } from '../../(api)/api';
+import { getContactData, getLogo } from '../../(api)/api';
 
 export const metadata = {
   title: 'MVP Agency',
@@ -12,10 +12,11 @@ export const metadata = {
 
 const ContactPage = async () => {
   const contactData = await getContactData();
+  const logo = await getLogo();
   return (
     <>
       <Loading />
-      <Navbar />
+      <Navbar logo={logo} />
       <ContactHeader />
       <div className="main-content">
         <ContactForm data={contactData} />
