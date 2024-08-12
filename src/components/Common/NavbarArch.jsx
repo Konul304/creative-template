@@ -1,26 +1,24 @@
-"use client";
-import React, { useRef, useEffect } from "react";
-import { Link } from "react-scroll";
-//= Scripts
-import { handleDropdown, handleMobileDropdown } from "@/common/navbar";
-//= Static Data
-import appData from "@/data/app.json";
+'use client';
+import React, { useRef, useEffect } from 'react';
+import { Link } from 'react-scroll';
+import { handleDropdown, handleMobileDropdown } from '@/common/navbar';
+import appData from '@/data/app.json';
 
 function NavbarArch({ theme }) {
   const navbarRef = useRef();
 
   function handleScroll() {
     if (window.scrollY > 300) {
-      navbarRef.current.classList?.add("nav-scroll");
+      navbarRef.current.classList?.add('nav-scroll');
     } else {
-      navbarRef.current.classList?.remove("nav-scroll");
+      navbarRef.current.classList?.remove('nav-scroll');
     }
   }
 
   useEffect(() => {
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   });
 
   return (
@@ -28,7 +26,7 @@ function NavbarArch({ theme }) {
       <div className="container">
         <a className="logo" href="/">
           {theme ? (
-            theme === "themeL" ? (
+            theme === 'themeL' ? (
               <img src={appData.darkLogo} alt="logo" />
             ) : (
               <img src={appData.lightLogo} alt="logo" />

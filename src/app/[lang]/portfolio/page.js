@@ -5,8 +5,10 @@ import Navbar from '../../../components/Common/Navbar';
 import WorksHeader from '../../../components/Headers/WorksHeader';
 import Footer from '../../../components/Common/Footer';
 import WorksStylePortfolio from '../../../components/Works/worksStylePortfolio';
+import { getLogo } from '../../(api)/api';
 
 const Works2Page = async () => {
+  const logo = await getLogo();
   return (
     <>
       <Loading />
@@ -16,7 +18,7 @@ const Works2Page = async () => {
           <div className="gradient-circle two"></div>
         </div>
       </div>
-      <Navbar />
+      <Navbar logo={logo} />
       <WorksHeader />
       <div className="main-content">
         <WorksStylePortfolio grid={3} filterPosition="center" />

@@ -3,12 +3,13 @@ import Link from 'next/link';
 import styles from '../../styles/Cases.module.scss';
 import { usePathname } from 'next/navigation';
 
-const SimilarCases = (data) => {
+const SimilarCases = ({ data }) => {
+  console.log(data);
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
-  const allData = data?.data?.data;
-  const caseData = data?.data?.data?.find(
-    (item) => item.id?.toString() === data?.data?.id?.casesID
+  const allData = data;
+  const caseData = data.find(
+    (item) => item.id?.toString() === data?.id?.casesID
   );
   const matchingObjects = allData?.filter((item) => {
     const hasMatchingTag = caseData?.tagNamesAz?.some(
@@ -20,6 +21,7 @@ const SimilarCases = (data) => {
   const filteredMatchingObjects = matchingObjects?.filter(
     (item) => item.id !== caseData.id
   );
+  console.log(filteredMatchingObjects);
   return (
     <section className={`blog ${styles.similar_cases_container}`}>
       <div className="container">

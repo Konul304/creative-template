@@ -11,12 +11,10 @@ export const metadata = {
   title: 'MVP Agency',
 };
 
-const NewsDetailsPage = (data) => {
+const NewsDetailsPage = ({ data, logo, id }) => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
-  const newsData = data?.data?.find(
-    (item) => item.id?.toString() === data?.id?.newsID
-  );
+  const newsData = data?.find((item) => item.id?.toString() === id?.newsID);
   return (
     <>
       <Loading />
@@ -26,7 +24,7 @@ const NewsDetailsPage = (data) => {
           <div className="gradient-circle two"></div>
         </div>
       </div>
-      <Navbar />
+      <Navbar logo={logo} />
       <PageHeader
         title={
           language === 'en'
@@ -37,7 +35,7 @@ const NewsDetailsPage = (data) => {
         }
         paragraph="All the most current news and events of our creative team."
       />
-      <NewsDetails data={data} />
+      <NewsDetails data={data} id={id?.newsID} />
       <Footer />
     </>
   );

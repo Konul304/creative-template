@@ -1,9 +1,7 @@
-"use client";
-import React, { useState } from "react";
-//= Modules
-import { Swiper, SwiperSlide } from "swiper/react";
-//= Components
-import ModalVideo from "@/components/Common/ModalVideo";
+'use client';
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import ModalVideo from '@/components/Common/ModalVideo';
 
 const swiperOptions = {
   loop: true,

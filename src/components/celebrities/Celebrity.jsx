@@ -3,11 +3,11 @@ import LoadingScreen from '../Common/Loader';
 import Navbar from '../Common/Navbar';
 import Footer from '../Common/Footer';
 import CelebrityDetailsPage from './CelebrityDetailsPage';
+import { getLogo } from '../../app/(api)/api';
 
-const Celebrity = (id) => {
+const Celebrity = ({ id, logo }) => {
   return (
     <>
-      {' '}
       <LoadingScreen />
       <div className="circle-bg">
         <div className="circle-color fixed">
@@ -16,7 +16,7 @@ const Celebrity = (id) => {
         </div>
       </div>
       <CelebrityDetailsPage id={id} />
-      <Navbar theme={''} />
+      <Navbar logo={logo} />
       <Footer hideBGCOLOR={''} />
     </>
   );

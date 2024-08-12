@@ -1,11 +1,10 @@
-'use client';
 import React from 'react';
 import Loading from '../Common/Loader';
 import Navbar from '../Common/Navbar';
 import Footer from '../Common/Footer';
 import EventDetails from './EventDetails';
 
-const EventDetailsPage = (data) => {
+const EventDetailsPage = ({ data, logo, id }) => {
   return (
     <>
       <Loading />
@@ -15,8 +14,8 @@ const EventDetailsPage = (data) => {
           <div className="gradient-circle two"></div>
         </div>
       </div>
-      <Navbar />
-      <EventDetails data={data} />
+      <Navbar logo={logo} />
+      <EventDetails data={data} id={id} />
       <Footer />
     </>
   );

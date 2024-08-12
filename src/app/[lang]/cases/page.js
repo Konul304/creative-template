@@ -6,10 +6,12 @@ import PageHeader from '../../../components/Headers/PageHeader';
 import Footer from '../../../components/Common/Footer';
 import CasesGrid from '../../../components/Blogs/CasesGrid';
 import { usePathname } from 'next/navigation';
+import { getLogo } from '../../(api)/api';
 
 const CasesPage = async () => {
   const pathname = usePathname();
   const language = pathname?.split('/')[1];
+  const logo = await getLogo();
   return (
     <>
       <Loading />
@@ -19,7 +21,7 @@ const CasesPage = async () => {
           <div className="gradient-circle two"></div>
         </div>
       </div>
-      <Navbar />
+      <Navbar logo={logo} />
       <PageHeader
         title={
           language === 'en'

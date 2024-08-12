@@ -10,6 +10,7 @@ import OurHistory from '../../../components/OurHistory';
 import {
   getAbout,
   getContactData,
+  getLogo,
   getPartners,
   getTeamMembers,
   getTeamMembersImages,
@@ -26,10 +27,11 @@ const AboutDark = async () => {
   const teamData = await getTeamMembers();
   const contactData = await getContactData();
   const teamImagesData = await getTeamMembersImages();
+  const logo = await getLogo();
   return (
     <>
       <Loading />
-      <Navbar />
+      <Navbar logo={logo} />
       <PagesHeader data={aboutData} />
       <div className="main-content">
         <AboutIntro data={aboutData} />

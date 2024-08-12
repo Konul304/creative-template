@@ -4,10 +4,8 @@ import Content from './Details/Content';
 import SimilarCases from '../Blogs/SimilarCases';
 import WorksStyle2 from '../Works/WorksStyle2';
 
-const BlogDetails = ({ data }) => {
-  const caseData = data?.data?.find(
-    (item) => item.id?.toString() === data?.id?.casesID
-  );
+const BlogDetails = ({ data, id }) => {
+  const caseData = data?.find((item) => item.id?.toString() === id);
   const hasImages = caseData?.caseImages && caseData?.caseImages.length > 0;
   const hasVideos = caseData?.caseVideos && caseData.caseVideos.length > 0;
   return (

@@ -21,9 +21,8 @@ const CelebrityDetailsPage = ({ id }) => {
     }
   );
   const celebrityData = data?.find(
-    (item) => item.id?.toString() === id?.id?.celebrityID
+    (item) => item.id?.toString() === id?.celebrityID
   );
-
   const img_url =
     'https://project141.s3.eu-north-1.amazonaws.com/' +
     celebrityData?.backgroundImage;
