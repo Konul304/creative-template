@@ -1,30 +1,30 @@
-'use client';
-import React, { useEffect, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Parallax } from 'swiper';
-import removeSlashFromBagination from '../../common/removeSlashpagination';
-import fadeWhenScroll from '../../common/fadeWhenScroll';
-import HTMLReactParser from 'html-react-parser';
-import { usePathname } from 'next/navigation';
+"use client";
+import React, { useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Parallax } from "swiper";
+import removeSlashFromBagination from "../../common/removeSlashpagination";
+import fadeWhenScroll from "../../common/fadeWhenScroll";
+import HTMLReactParser from "html-react-parser";
+import { usePathname } from "next/navigation";
 
 const swiperOptions = {
   modules: [Parallax, Navigation, Pagination],
   loop: true,
   speed: 1000,
   navigation: {
-    prevEl: '.swiper-button-prev',
-    nextEl: '.swiper-button-next',
+    prevEl: ".swiper-button-prev",
+    nextEl: ".swiper-button-next",
   },
   parallax: true,
   pagination: {
-    type: 'fraction',
+    type: "fraction",
     clickable: true,
-    el: '.swiper-pagination',
+    el: ".swiper-pagination",
   },
   onSwiper: (swiper) => {
     for (var i = 0; i < swiper.slides.length; i++) {
       swiper.slides[i].childNodes[0].setAttribute(
-        'data-swiper-parallax',
+        "data-swiper-parallax",
         0.75 * swiper.width
       );
     }
@@ -34,26 +34,26 @@ const swiperOptions = {
 const SliderHeader = ({ cases, news, events }) => {
   const fixedSlider = useRef();
   const pathname = usePathname();
-  const language = pathname?.split('/')[1];
+  const language = pathname?.split("/")[1];
 
   const filteredCaseData = cases?.filter((item) => item.isSlider === true);
   const filteredNewsData = news?.filter((item) => item.isSlider === true);
   const filteredEventsData = events?.filter((item) => item.isSlider === true);
 
   const azCaseData = filteredCaseData?.map((item) => ({
-    sliderLogoLink: item.sliderLogoLink,
+    sliderLogoLink: item.logoLink,
     id: item.id,
     sliderTitle: item.sliderTitleAz,
     sliderDescription: item.sliderDescriptionAz,
   }));
   const engCaseData = filteredCaseData?.map((item) => ({
-    sliderLogoLink: item.sliderLogoLink,
+    sliderLogoLink: item.logoLink,
     id: item.id,
     sliderTitle: item.sliderTitleEng,
     sliderDescription: item.sliderDescriptionEng,
   }));
   const rusCaseData = filteredCaseData?.map((item) => ({
-    sliderLogoLink: item.sliderLogoLink,
+    sliderLogoLink: item.logoLink,
     id: item.id,
     sliderTitle: item.sliderTitleRus,
     sliderDescription: item.sliderDescriptionRus,
@@ -98,34 +98,35 @@ const SliderHeader = ({ cases, news, events }) => {
 
   useEffect(() => {
     removeSlashFromBagination();
-    fadeWhenScroll(document.querySelectorAll('.fixed-slider .caption'));
+    fadeWhenScroll(document.querySelectorAll(".fixed-slider .caption"));
   }, [cases]);
 
   useEffect(() => {
     if (fixedSlider.current) {
-      const MainContent = document.querySelector('.main-content');
+      const MainContent = document.querySelector(".main-content");
       const slideHeight = fixedSlider.current.offsetHeight;
-      MainContent.style.marginTop = slideHeight + 'px';
+      MainContent.style.marginTop = slideHeight + "px";
     }
   }, [cases]);
   const casesToRender =
-    language === 'en'
+    language === "en"
       ? engCaseData
-      : language === 'az'
+      : language === "az"
       ? azCaseData
       : rusCaseData;
   const newsToRender =
-    language === 'en'
+    language === "en"
       ? engNewsData
-      : language === 'az'
+      : language === "az"
       ? azNewsData
       : rusNewsData;
   const eventsToRender =
-    language === 'en'
+    language === "en"
       ? engEventData
-      : language === 'az'
+      : language === "az"
       ? azEventData
       : rusEventData;
+
   return (
     <header
       className="slider slider-prlx fixed-slider text-center"
@@ -135,9 +136,11 @@ const SliderHeader = ({ cases, news, events }) => {
         {(casesToRender || newsToRender || eventsToRender) && (
           <Swiper {...swiperOptions} className="swiper-wrapper">
             {casesToRender?.map((slide) => {
+              console.log(slide);
               const img_url =
-                'https://project141.s3.eu-north-1.amazonaws.com/' +
+                "https://project141.s3.eu-north-1.amazonaws.com/" +
                 slide?.sliderLogoLink;
+              console.log(img_url);
               return (
                 <SwiperSlide key={slide.id} className="swiper-slide">
                   <div
@@ -146,37 +149,37 @@ const SliderHeader = ({ cases, news, events }) => {
                     data-overlay-dark="6"
                   >
                     <a
-                      href={`/${pathname?.split('/')?.[1]}/cases/${slide?.id}`}
+                      href={`/${pathname?.split("/")?.[1]}/cases/${slide?.id}`}
                       className="container"
                       style={{
-                        display: 'block',
-                        height: '100vh',
-                        position: 'absolute',
+                        display: "block",
+                        height: "100vh",
+                        position: "absolute",
                       }}
                     >
                       <div
                         className=" justify-content-center"
                         style={{
-                          position: 'absolute',
-                          bottom: '10px',
-                          left: '3%',
-                          maxWidth: '900px',
+                          position: "absolute",
+                          bottom: "10px",
+                          left: "3%",
+                          maxWidth: "900px",
                         }}
                       >
                         <div>
                           <div className="caption center mt-30">
                             <h1
                               className="color-font"
-                              style={{ fontSize: '48px', textAlign: 'left' }}
+                              style={{ fontSize: "48px", textAlign: "left" }}
                             >
-                              {' '}
+                              {" "}
                               {slide.sliderTitle &&
                                 HTMLReactParser(slide.sliderTitle)}
                             </h1>
                             <div
                               style={{
-                                fontSize: '16px',
-                                textAlign: 'left',
+                                fontSize: "16px",
+                                textAlign: "left",
                               }}
                               className="slider_desc"
                             >
@@ -196,7 +199,7 @@ const SliderHeader = ({ cases, news, events }) => {
             })}
             {newsToRender?.map((slide) => {
               const img_url =
-                'https://project141.s3.eu-north-1.amazonaws.com/' +
+                "https://project141.s3.eu-north-1.amazonaws.com/" +
                 slide?.sliderLogoLink;
               return (
                 <SwiperSlide key={slide.id} className="swiper-slide">
@@ -206,37 +209,37 @@ const SliderHeader = ({ cases, news, events }) => {
                     data-overlay-dark="6"
                   >
                     <a
-                      href={`/${pathname?.split('/')?.[1]}/news/${slide?.id}`}
+                      href={`/${pathname?.split("/")?.[1]}/news/${slide?.id}`}
                       className="container"
                       style={{
-                        display: 'block',
-                        height: '100vh',
-                        position: 'absolute',
+                        display: "block",
+                        height: "100vh",
+                        position: "absolute",
                       }}
                     >
                       <div
                         className=" justify-content-center"
                         style={{
-                          position: 'absolute',
-                          bottom: '10px',
-                          left: '3%',
-                          maxWidth: '900px',
+                          position: "absolute",
+                          bottom: "10px",
+                          left: "3%",
+                          maxWidth: "900px",
                         }}
                       >
                         <div>
                           <div className="caption center mt-30">
                             <h1
                               className="color-font"
-                              style={{ fontSize: '48px', textAlign: 'left' }}
+                              style={{ fontSize: "48px", textAlign: "left" }}
                             >
-                              {' '}
+                              {" "}
                               {slide.sliderTitle &&
                                 HTMLReactParser(slide.sliderTitle)}
                             </h1>
                             <div
                               style={{
-                                fontSize: '16px',
-                                textAlign: 'left',
+                                fontSize: "16px",
+                                textAlign: "left",
                               }}
                               className="slider_desc"
                             >
@@ -256,7 +259,7 @@ const SliderHeader = ({ cases, news, events }) => {
             })}
             {eventsToRender?.map((slide) => {
               const img_url =
-                'https://project141.s3.eu-north-1.amazonaws.com/' +
+                "https://project141.s3.eu-north-1.amazonaws.com/" +
                 slide?.sliderLogoLink;
               return (
                 <SwiperSlide key={slide.id} className="swiper-slide">
@@ -266,37 +269,37 @@ const SliderHeader = ({ cases, news, events }) => {
                     data-overlay-dark="6"
                   >
                     <a
-                      href={`/${pathname?.split('/')?.[1]}/events/${slide?.id}`}
+                      href={`/${pathname?.split("/")?.[1]}/events/${slide?.id}`}
                       className="container"
                       style={{
-                        display: 'block',
-                        height: '100vh',
-                        position: 'absolute',
+                        display: "block",
+                        height: "100vh",
+                        position: "absolute",
                       }}
                     >
                       <div
                         className=" justify-content-center"
                         style={{
-                          position: 'absolute',
-                          bottom: '10px',
-                          left: '3%',
-                          maxWidth: '900px',
+                          position: "absolute",
+                          bottom: "10px",
+                          left: "3%",
+                          maxWidth: "900px",
                         }}
                       >
                         <div>
                           <div className="caption center mt-30">
                             <h1
                               className="color-font"
-                              style={{ fontSize: '48px', textAlign: 'left' }}
+                              style={{ fontSize: "48px", textAlign: "left" }}
                             >
-                              {' '}
+                              {" "}
                               {slide.sliderTitle &&
                                 HTMLReactParser(slide.sliderTitle)}
                             </h1>
                             <div
                               style={{
-                                fontSize: '16px',
-                                textAlign: 'left',
+                                fontSize: "16px",
+                                textAlign: "left",
                               }}
                               className="slider_desc"
                             >
