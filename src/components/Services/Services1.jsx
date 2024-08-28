@@ -1,17 +1,19 @@
-'use client';
-import React from 'react';
-import { getServiceDetail } from '../../app/(api)/api';
-import { useQuery } from 'react-query';
-import HTMLReactParser from 'html-react-parser';
-import styles from '../../styles/Cases.module.scss';
-import ReactPlayer from 'react-player';
-import { usePathname } from 'next/navigation';
+"use client";
+import React, { useState } from "react";
+import { getServiceDetail } from "../../app/(api)/api";
+import { useQuery } from "react-query";
+import HTMLReactParser from "html-react-parser";
+import styles from "../../styles/Cases.module.scss";
+import ReactPlayer from "react-player";
+import { usePathname } from "next/navigation";
 
 function Services1({ style, lines }) {
   const pathname = usePathname();
-  const language = pathname?.split('/')[1];
+  const language = pathname?.split("/")[1];
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const { data } = useQuery(
-    ['serviceDetails'],
+    ["serviceDetails"],
     async () => await getServiceDetail(),
     {
       refetchOnWindowFocus: false,
@@ -36,23 +38,27 @@ function Services1({ style, lines }) {
   };
 
   const dataToRender =
-    language === 'en'
+    language === "en"
       ? engServicesData
-      : language === 'az'
+      : language === "az"
       ? azServicesData
       : rusServicesData;
+
+  const handleToggle = () => {
+    setIsExpanded((prevState) => !prevState);
+  };
 
   return (
     <section
       className={`services bords section-padding ${
-        style === '4item' ? 'lficon' : lines ? '' : 'pt-0'
+        style === "4item" ? "lficon" : lines ? "" : "pt-0"
       }`}
     >
       <div className="container">
         <div className="row justify-content-center">
           <div className="sec-head  text-center ">
-            <h3 style={{ fontSize: '48px' }} className="wow color-font">
-              {' '}
+            <h3 style={{ fontSize: "48px" }} className="wow color-font">
+              {" "}
               {dataToRender?.title && HTMLReactParser(dataToRender?.title)}
             </h3>
             <ReactPlayer
@@ -61,14 +67,25 @@ function Services1({ style, lines }) {
               height={680}
               controls
               playing={true}
-              style={{ width: '1240px', height: '680px' }}
+              style={{ width: "1240px", height: "680px" }}
               loop={true}
             />
           </div>
 
           <div className={styles.team_info}>
-            {dataToRender?.description &&
-              HTMLReactParser(dataToRender?.description)}
+            <div
+              className={`${styles.description} ${
+                isExpanded ? styles.expanded : styles.collapsed
+              }`}
+            >
+              {dataToRender?.description &&
+                HTMLReactParser(dataToRender?.description)}
+            </div>
+            {dataToRender?.description && (
+              <button onClick={handleToggle} className={styles.readMoreButton}>
+                {isExpanded ? "Read Less" : "Read More"}
+              </button>
+            )}
           </div>
         </div>
       </div>
