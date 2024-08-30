@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 //= Page components
-import Loading from '../../../components/Common/Loader';
-import Navbar from '../../../components/Common/Navbar';
-import WorksHeader from '../../../components/Headers/WorksHeader';
-import Footer from '../../../components/Common/Footer';
-import WorksStylePortfolio from '../../../components/Works/worksStylePortfolio';
-import { getLogo } from '../../(api)/api';
+import Loading from "../../../components/Common/Loader";
+import Navbar from "../../../components/Common/Navbar";
+import WorksHeader from "../../../components/Headers/WorksHeader";
+import Footer from "../../../components/Common/Footer";
+import WorksStylePortfolio from "../../../components/Works/worksStylePortfolio";
+import { getContactData, getLogo } from "../../(api)/api";
 
 const Works2Page = async () => {
   const logo = await getLogo();
+  const contactData = await getContactData();
+
   return (
     <>
       <Loading />
@@ -22,7 +24,7 @@ const Works2Page = async () => {
       <WorksHeader />
       <div className="main-content">
         <WorksStylePortfolio grid={3} filterPosition="center" />
-        <Footer />
+        <Footer contactData={contactData} />
       </div>
     </>
   );
