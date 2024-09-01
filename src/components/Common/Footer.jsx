@@ -86,9 +86,7 @@ const Footer = ({ hideBGCOLOR, contactData }) => {
 
   function formatPhoneNumber(phoneNumber) {
     // Replace the first zero with (+994) and format the rest of the number
-    const formattedNumber = phoneNumber
-      .replace(/^0/, "(+994) ")
-      .replace(/(\d{2})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+    const formattedNumber = phoneNumber?.replace(/^0/, "(+994) ").replace(/(\d{2})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
 
     return formattedNumber;
   }
