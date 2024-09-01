@@ -6646,6 +6646,9 @@ span:hover {
 }
 
 .testimonials .item {
+  max-height: 350px;
+  min-height: 350px;
+  overflow-y: hidden;
   text-align: left;
   padding: 80px 40px;
   -webkit-transform: scale(0.8);
@@ -6682,11 +6685,18 @@ span:hover {
 
 .testimonials .item p {
   color: #fff;
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
   padding-left: 30px;
-  margin-left: 30px;
+  margin-left: 6px;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5; /* Adjust the line height as needed */
+  max-height: calc(1.5em * 8);
 }
 
 .testimonials .item .info {
