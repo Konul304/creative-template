@@ -48,7 +48,7 @@ const Navbar = ({ logo }) => {
   return (
     <nav
       ref={navbarRef}
-      className={`navbar navbar-expand-lg nav-scroll 
+      className={`navbar navbar-expand-xl nav-scroll 
         
        ${navVisible ? "visible" : ""}`}
     >
@@ -56,12 +56,11 @@ const Navbar = ({ logo }) => {
         className="container"
         style={{
           marginLeft: "0px",
-          marginRight: "24px",
           maxWidth: "100%",
           justifyContent: "space-between",
         }}
       >
-        <Link className="logo" href="/" style={{ marginRight: "45px" }}>
+        <Link className="logo" href="/" style={{ order: '1' }}>
           <img
             src={logo ? `${img_url}` : ""}
             style={{
@@ -73,26 +72,43 @@ const Navbar = ({ logo }) => {
           />
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          style={{
-            zIndex: "2",
-            position: "absolute",
-            right: "15px",
-            top: "14px",
-          }}
-          onClick={handleMobileDropdown}
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="icon-bar">
-            <i className="fas fa-bars"></i>
-          </span>
-        </button>
+        <div style={{ order: "2" }} className="d-flex align-items-center d-xl-none">
+          <div className={styles.translate_select}>
+            <Select
+              style={{
+                width: "70px",
+                color: "white",
+                maxHeight: "150px",
+                marginBottom: "0px"
+              }}
+              onChange={(e) => handleTranslate(e)}
+              placeholder={pathname?.split("/")?.[1]}
+              options={[
+                { value: "az", label: "az" },
+                { value: "en", label: "en" },
+                { value: "ru", label: "ru" },
+              ]}
+            />
+          </div>
+          <button
+            className="navbar-toggler"
+            type="button"
+            style={{
+              zIndex: "2"
+            }}
+            onClick={handleMobileDropdown}
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="icon-bar">
+              <i className="fas fa-bars"></i>
+            </span>
+          </button>
+
+        </div>
 
         <div
           className="collapse navbar-collapse"
@@ -102,14 +118,13 @@ const Navbar = ({ logo }) => {
             backdropFilter: "blur(20px)",
             backgroundColor: "#2d303273",
             borderRadius: "9999px",
-            width: language === "az" && "1488px",
+            // width: language === "az" && "1488px",
           }}
         >
           <ul className="navbar-nav">
             <li
-              className={`nav-item dropdown ${
-                pathname.includes("homepage") ? "active" : ""
-              }`}
+              className={`nav-item dropdown ${pathname.includes("homepage") ? "active" : ""
+                }`}
               onClick={handleDropdown}
             >
               <a
@@ -122,14 +137,13 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "HOME"
                   : language === "az"
-                  ? "ANA SƏHİFƏ"
-                  : "ГЛАВНАЯ"}
+                    ? "ANA SƏHİFƏ"
+                    : "ГЛАВНАЯ"}
               </a>
             </li>
             <li
-              className={`nav-item ${
-                pathname.includes("about") ? "active" : ""
-              }`}
+              className={`nav-item ${pathname.includes("about") ? "active" : ""
+                }`}
             >
               <a
                 className="nav-link"
@@ -138,14 +152,13 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "ABOUT"
                   : language === "az"
-                  ? "HAQQIMIZDA"
-                  : "О НАС"}
+                    ? "HAQQIMIZDA"
+                    : "О НАС"}
               </a>
             </li>
             <li
-              className={`nav-item dropdown ${
-                pathname.includes("services") ? "active" : ""
-              }`}
+              className={`nav-item dropdown ${pathname.includes("services") ? "active" : ""
+                }`}
             >
               <a
                 href={`/${pathname?.split("/")?.[1]}/services`}
@@ -157,14 +170,13 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "SERVICES"
                   : language === "az"
-                  ? "XİDMƏTLƏR"
-                  : "УСЛУГИ"}
+                    ? "XİDMƏTLƏR"
+                    : "УСЛУГИ"}
               </a>
             </li>
             <li
-              className={`nav-item ${
-                pathname.includes("cases") ? "active" : ""
-              }`}
+              className={`nav-item ${pathname.includes("cases") ? "active" : ""
+                }`}
             >
               <a
                 className="nav-link"
@@ -173,14 +185,13 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "CASES"
                   : language === "az"
-                  ? "KEYSLƏR"
-                  : "КЕЙСЫ"}
+                    ? "KEYSLƏR"
+                    : "КЕЙСЫ"}
               </a>
             </li>
             <li
-              className={`nav-item ${
-                pathname.includes("news") ? "active" : ""
-              }`}
+              className={`nav-item ${pathname.includes("news") ? "active" : ""
+                }`}
             >
               <a
                 className="nav-link"
@@ -189,14 +200,13 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "NEWS & INSIGHTS"
                   : language === "az"
-                  ? "XƏBƏRLƏR VƏ DƏRİNLİKLƏR"
-                  : "НОВОСТИ И ИНСАЙТЫ"}
+                    ? "XƏBƏRLƏR VƏ DƏRİNLİKLƏR"
+                    : "НОВОСТИ И ИНСАЙТЫ"}
               </a>
             </li>
             <li
-              className={`nav-item ${
-                pathname.includes("events") ? "active" : ""
-              }`}
+              className={`nav-item ${pathname.includes("events") ? "active" : ""
+                }`}
             >
               <a
                 className="nav-link"
@@ -205,14 +215,13 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "EVENTS"
                   : language === "az"
-                  ? "TƏDBİRLƏR"
-                  : "МЕРОПРИЯТИЯ"}
+                    ? "TƏDBİRLƏR"
+                    : "МЕРОПРИЯТИЯ"}
               </a>
             </li>
             <li
-              className={`nav-item ${
-                pathname.includes("celebrities") ? "active" : ""
-              }`}
+              className={`nav-item ${pathname.includes("celebrities") ? "active" : ""
+                }`}
             >
               <a
                 className="nav-link"
@@ -221,14 +230,13 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "ATHLETES & ARTISTS"
                   : language === "az"
-                  ? "ATLETLƏR & ARTİSTLƏR"
-                  : "АТЛЕТЫ & АРТИСТЫ"}
+                    ? "ATLETLƏR & ARTİSTLƏR"
+                    : "АТЛЕТЫ & АРТИСТЫ"}
               </a>
             </li>
             <li
-              className={`nav-item ${
-                pathname.includes("contact") ? "active" : ""
-              }`}
+              className={`nav-item ${pathname.includes("contact") ? "active" : ""
+                }`}
             >
               <a
                 className="nav-link"
@@ -237,19 +245,19 @@ const Navbar = ({ logo }) => {
                 {language === "en"
                   ? "CONTACT"
                   : language === "az"
-                  ? "ƏLAQƏ"
-                  : "КОНТАКТЫ"}
+                    ? "ƏLAQƏ"
+                    : "КОНТАКТЫ"}
               </a>
             </li>
           </ul>
         </div>
-        <div className={styles.translate_select}>
+        <div className={styles.translate_select+" d-none d-xl-flex"} style={{order:"3"}}>
           <Select
             style={{
               width: "70px",
               color: "white",
-              marginTop: "18px",
               maxHeight: "150px",
+              marginBottom: "0px"
             }}
             onChange={(e) => handleTranslate(e)}
             placeholder={pathname?.split("/")?.[1]}
